@@ -14,7 +14,7 @@ stage.addEventListener('pointermove',e=>{if(reduced.matches||!fine.matches)retur
 const clamp=v=>Math.max(0,Math.min(1,v)),mix=(a,b,t)=>a+(b-a)*t;
 const faded=[root.querySelector('.gallery-intro'),root.querySelector('.scene-toolbar'),root.querySelector('.hero-editorial'),root.querySelector('.luxury-stats')];
 function clear(){gallery.style.cssText='';panels.forEach(p=>p.style.cssText='');faded.forEach(el=>el.style.cssText='');geometry=null;locked=false;}
-function update(){frame=0;if(reduced.matches){clear();leaf.style.transform='';return}
+function update(){frame=0;if(reduced.matches||innerWidth<=800){clear();leaf.style.transform='';return}
 const distance=Math.max(1,root.offsetHeight-stage.offsetHeight),t=clamp(-root.getBoundingClientRect().top/distance),u=t*t*(3-2*t);
 if(t>0){if(!geometry){const sr=stage.getBoundingClientRect(),gr=gallery.getBoundingClientRect();geometry={gallery:{x:gr.left-sr.left,y:gr.top-sr.top,w:gr.width,h:gr.height},panels:panels.map(p=>{const r=p.getBoundingClientRect();return{x:r.left-gr.left,y:r.top-gr.top,w:r.width,h:r.height}})}}
 locked=true;
