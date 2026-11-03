@@ -42,3 +42,5 @@ h1 em,h2 em,h3 em{font-family:inherit;font-style:normal}
 @media(prefers-reduced-motion:reduce){.living-hero{height:auto;min-height:0}.hero-sticky{position:relative;height:auto;min-height:880px}.botanical-sculpture{will-change:auto}}
 
 @media(max-width:800px){.living-hero{height:auto;min-height:0}.hero-sticky{position:relative;height:auto;min-height:0;padding-bottom:65px}.masthead>.logo{width:190px}.hero-editorial h1{font-size:36px}}
+
+@media(max-width:800px){.hero-editorial>div>p:last-child{max-width:56%}.masthead{background:linear-gradient(#102018f5,#102018d9)}.masthead.scrolled{background:#102018ed}}
