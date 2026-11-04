@@ -25,9 +25,9 @@ function updateScroll() {
   const openingHeight = portal.offsetHeight * 651 / 850;
   const coverScale = Math.max(window.innerWidth / openingWidth, window.innerHeight / openingHeight) * 1.16;
   // At rest, only the upper edge of the SVG cartouche is visible at the
-  // viewport bottom. Its first painted point is y=105 in the 850-unit viewBox.
+  // viewport bottom. Its first painted point is y=95 in the 850-unit viewBox.
   const restingExposure = window.innerWidth <= 800 ? 72 : 80;
-  const startingTop = stage.clientHeight - restingExposure + portal.offsetHeight * (0.5 - 105 / 850);
+  const startingTop = stage.clientHeight - restingExposure + portal.offsetHeight * (0.5 - 95 / 850);
   stage.style.setProperty('--portal-scale', (1 + (coverScale - 1) * zoom).toFixed(4));
   stage.style.setProperty('--portal-top', (startingTop + (stage.clientHeight / 2 - startingTop) * zoom).toFixed(2) + 'px');
   stage.style.setProperty('--copy-opacity', (1 - ease(clamp((p - .04) / .16))).toFixed(3));
