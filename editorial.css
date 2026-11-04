@@ -19,3 +19,4 @@ body{background:#061e17;color:var(--ivory)}h1,h2,h3{font-family:'Cormorant Garam
 .portal-ribbon:after{content:'';position:absolute;top:1%;left:50%;width:54px;height:80px;transform:translateX(-50%) rotate(-20deg);background:url('./assets/leaf-1.svg') center/contain no-repeat;opacity:.75;filter:drop-shadow(0 2px 5px #0009)}
 @media(max-width:800px){.hero-copy h1{font-size:clamp(61px,11vw,88px)}}
 @media(max-width:540px){.hero-copy h1{font-size:clamp(59px,13.5vw,78px)}.portal-ribbon:after{width:35px;height:55px}}
+@media(max-width:800px){.masthead .header-book,.masthead:not(.scrolled) .header-book{display:block;position:absolute;right:5%;top:19px;z-index:5;grid-column:auto;min-width:0;margin:0}}
