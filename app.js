@@ -11,7 +11,7 @@ let frame = 0;
 function updateScroll() {
   frame = 0;
   const y = window.scrollY;
-  header.classList.toggle('scrolled', y >= Math.max(1, hero.offsetHeight - window.innerHeight));
+  header.classList.toggle('scrolled', y >= Math.max(72, window.innerHeight * .12));
   const total = document.documentElement.scrollHeight - window.innerHeight;
   progress.style.width = (total > 0 ? y / total * 100 : 0) + '%';
   const travel = Math.max(1, hero.offsetHeight - window.innerHeight);
