@@ -1,13 +1,81 @@
 document.documentElement.classList.add('js');
-const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.08});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-const header=document.querySelector('header'),progress=document.querySelector('.progress'),leaf=document.querySelector('.leaf-a');
-let ticking=false;
-function scrollFrame(){const y=scrollY;header.classList.toggle('scrolled',y>40);const length=document.documentElement.scrollHeight-innerHeight;progress.style.width=(length>0?y/length*100:0)+'%';if(leaf&&!reduced&&y<innerHeight*1.5)leaf.style.transform='translateY('+y*.17+'px) rotate('+(-24+y*.012)+'deg)';ticking=false}
-addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(scrollFrame);ticking=true}},{passive:true});scrollFrame();
-const menu=document.querySelector('.menu'),nav=document.querySelector('nav');menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',open);menu.textContent=open?'Close −':'Menu ＋'});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='Menu ＋'}));
-const dialog=document.querySelector('#booking');document.querySelectorAll('[data-book]').forEach(b=>b.addEventListener('click',()=>dialog.showModal()));dialog.querySelector('.close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});
 
-document.querySelector('#year').textContent=new Date().getFullYear();
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='Menu +'}});
+const header = document.querySelector('.masthead');
+const hero = document.querySelector('.hero');
+const progress = document.querySelector('.scroll-progress');
+const motion = matchMedia('(prefers-reduced-motion: reduce)');
+let frame = 0;
+
+function updateScroll() {
+  frame = 0;
+  const y = window.scrollY;
+  header.classList.toggle('scrolled', y > 50);
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = (total > 0 ? y / total * 100 : 0) + '%';
+  const travel = Math.max(1, hero.offsetHeight - window.innerHeight);
+  const p = motion.matches ? 0 : Math.max(0, Math.min(1, -hero.getBoundingClientRect().top / travel));
+  const stage = hero.querySelector('.hero-sticky');
+  stage.style.setProperty('--hero-scale', (1 + p * .11).toFixed(3));
+  stage.style.setProperty('--side-y', (-95 * p).toFixed(1) + 'px');
+  stage.style.setProperty('--side-opacity', (1 - p * .9).toFixed(3));
+  stage.style.setProperty('--center-y', (-80 * p).toFixed(1) + 'px');
+  stage.style.setProperty('--center-opacity', Math.max(0, 1 - p * 1.6).toFixed(3));
+  stage.style.setProperty('--arch-y', (-8 * p).toFixed(2) + 'vh');
+  stage.style.setProperty('--arch-scale', (1 - p * .22).toFixed(3));
+}
+function scheduleScroll() { if (!frame) frame = requestAnimationFrame(updateScroll); }
+addEventListener('scroll', scheduleScroll, { passive: true });
+addEventListener('resize', scheduleScroll);
+motion.addEventListener('change', scheduleScroll);
+updateScroll();
+
+const menu = document.querySelector('.menu-toggle');
+const nav = document.querySelector('#primary-nav');
+function closeMenu() {
+  nav.classList.remove('open');
+  menu.setAttribute('aria-expanded', 'false');
+  menu.setAttribute('aria-label', 'Open navigation');
+}
+menu.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  menu.setAttribute('aria-expanded', String(open));
+  menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+});
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+const dialog = document.querySelector('#booking');
+const form = document.querySelector('#booking-form');
+const checkIn = document.querySelector('#check-in');
+const checkOut = document.querySelector('#check-out');
+const error = document.querySelector('#booking-error');
+const officialUrls = {
+  ubud: 'https://www.kamuelavillas.com/en/villa/view/3/royal-kamuela-villas-suites-at-monkey-forest-ubud-adult-only',
+  bintan: 'https://www.kamuelavillas.com/en/villa/view/7/kamuela-villas-lagoi-bay-bintan',
+  canggu: 'https://www.kamuelavillas.com/en/villa/view/8/seahaven-by-kamuela'
+};
+document.querySelectorAll('[data-book]').forEach(button => button.addEventListener('click', () => {
+  closeMenu();
+  checkIn.min = new Date().toLocaleDateString('en-CA');
+  checkOut.min = checkIn.value || checkIn.min;
+  dialog.showModal();
+}));
+dialog.querySelector('.close').addEventListener('click', () => dialog.close());
+dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+checkIn.addEventListener('change', () => { checkOut.min = checkIn.value; error.hidden = true; if (checkOut.value && checkOut.value <= checkIn.value) checkOut.value = ''; });
+checkOut.addEventListener('change', () => { error.hidden = true; });
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  if (checkOut.value <= checkIn.value) { error.hidden = false; checkOut.focus(); return; }
+  const url = officialUrls[form.elements.villa.value];
+  if (url) {
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    document.body.append(link);
+    link.click();
+    link.remove();
+  }
+});
+document.querySelector('#year').textContent = new Date().getFullYear();
