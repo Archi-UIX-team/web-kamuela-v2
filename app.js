@@ -15,19 +15,43 @@ function updateScroll() {
   const travel = Math.max(1, hero.offsetHeight - window.innerHeight);
   const p = motion.matches ? 0 : Math.max(0, Math.min(1, -hero.getBoundingClientRect().top / travel));
   const stage = hero.querySelector('.hero-sticky');
-  stage.style.setProperty('--hero-scale', (1 + p * .11).toFixed(3));
-  stage.style.setProperty('--side-y', (-95 * p).toFixed(1) + 'px');
-  stage.style.setProperty('--side-opacity', (1 - p * .9).toFixed(3));
-  stage.style.setProperty('--center-y', (-80 * p).toFixed(1) + 'px');
-  stage.style.setProperty('--center-opacity', Math.max(0, 1 - p * 1.6).toFixed(3));
-  stage.style.setProperty('--arch-y', (-8 * p).toFixed(2) + 'vh');
-  stage.style.setProperty('--arch-scale', (1 - p * .22).toFixed(3));
+  // The scene stays pinned while its architectural opening approaches the viewer.
+  // The next section is physically below the sticky hero and cannot enter until
+  // the complete zoom and final dark dissolve have run their course.
+  const ease = t => t * t * (3 - 2 * t);
+  const zoom = ease(Math.max(0, Math.min(1, p / .72)));
+  const fade = ease(Math.max(0, Math.min(1, (p - .08) / .42)));
+  const veil = ease(Math.max(0, Math.min(1, (p - .78) / .22)));
+  const scale = 1 + 2.55 * zoom;
+  stage.style.setProperty('--portal-scale', scale.toFixed(4));
+  stage.style.setProperty('--hero-fade', (1 - fade).toFixed(3));
+  stage.style.setProperty('--side-fade', (1 - fade).toFixed(3));
+  stage.style.setProperty('--copy-y', (-70 * fade).toFixed(1) + 'px');
+  stage.style.setProperty('--side-rise', (-40 * fade).toFixed(1) + 'px');
+  stage.style.setProperty('--veil-opacity', veil.toFixed(3));
 }
 function scheduleScroll() { if (!frame) frame = requestAnimationFrame(updateScroll); }
 addEventListener('scroll', scheduleScroll, { passive: true });
 addEventListener('resize', scheduleScroll);
 motion.addEventListener('change', scheduleScroll);
 updateScroll();
+
+const revealObserver = 'IntersectionObserver' in window && !motion.matches
+  ? new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -7% 0px' })
+  : null;
+document.querySelectorAll('.smart-reveal').forEach((element, index) => {
+  if (revealObserver) revealObserver.observe(element);
+  else element.classList.add('is-visible');
+});
+motion.addEventListener('change', () => {
+  if (motion.matches) document.querySelectorAll('.smart-reveal').forEach(el => el.classList.add('is-visible'));
+});
 
 const menu = document.querySelector('.menu-toggle');
 const nav = document.querySelector('#primary-nav');
