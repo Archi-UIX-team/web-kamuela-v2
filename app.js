@@ -11,7 +11,7 @@ let frame = 0;
 function updateScroll() {
   frame = 0;
   const y = window.scrollY;
-  header.classList.toggle('scrolled', y > 50);
+  header.classList.toggle('scrolled', y >= Math.max(1, hero.offsetHeight - window.innerHeight));
   const total = document.documentElement.scrollHeight - window.innerHeight;
   progress.style.width = (total > 0 ? y / total * 100 : 0) + '%';
   const travel = Math.max(1, hero.offsetHeight - window.innerHeight);
@@ -24,7 +24,7 @@ function updateScroll() {
   const openingWidth = portal.offsetWidth * 850 / 1200;
   const openingHeight = portal.offsetHeight * 651 / 850;
   const coverScale = Math.max(window.innerWidth / openingWidth, window.innerHeight / openingHeight) * 1.16;
-  const startingTop = window.innerWidth <= 540 ? 114 : window.innerWidth <= 800 ? 108 : 124;
+  const startingTop = window.innerWidth <= 800 ? 108 : 116;
   stage.style.setProperty('--portal-scale', (1 + (coverScale - 1) * zoom).toFixed(4));
   stage.style.setProperty('--portal-top', (startingTop + (50 - startingTop) * zoom).toFixed(3) + '%');
   stage.style.setProperty('--copy-opacity', (1 - ease(clamp((p - .04) / .16))).toFixed(3));
