@@ -46,9 +46,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu();
 
 const dialog = document.querySelector('#booking');
 const form = document.querySelector('#booking-form');
-const checkIn = document.querySelector('#check-in');
-const checkOut = document.querySelector('#check-out');
-const error = document.querySelector('#booking-error');
 const officialUrls = {
   ubud: 'https://www.kamuelavillas.com/en/villa/view/3/royal-kamuela-villas-suites-at-monkey-forest-ubud-adult-only',
   bintan: 'https://www.kamuelavillas.com/en/villa/view/7/kamuela-villas-lagoi-bay-bintan',
@@ -56,17 +53,12 @@ const officialUrls = {
 };
 document.querySelectorAll('[data-book]').forEach(button => button.addEventListener('click', () => {
   closeMenu();
-  checkIn.min = new Date().toLocaleDateString('en-CA');
-  checkOut.min = checkIn.value || checkIn.min;
   dialog.showModal();
 }));
 dialog.querySelector('.close').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
-checkIn.addEventListener('change', () => { checkOut.min = checkIn.value; error.hidden = true; if (checkOut.value && checkOut.value <= checkIn.value) checkOut.value = ''; });
-checkOut.addEventListener('change', () => { error.hidden = true; });
 form.addEventListener('submit', e => {
   e.preventDefault();
-  if (checkOut.value <= checkIn.value) { error.hidden = false; checkOut.focus(); return; }
   const url = officialUrls[form.elements.villa.value];
   if (url) {
     const link = document.createElement('a');
