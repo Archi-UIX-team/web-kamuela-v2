@@ -4,13 +4,13 @@
 .masthead:not(.scrolled){height:178px;display:grid;grid-template-columns:1fr auto 1fr;grid-template-rows:100px 50px;padding:12px 5% 16px;background:linear-gradient(#07160fca,#07160f55)}
 .masthead:not(.scrolled) .brand{grid-column:2;grid-row:1;width:235px;justify-self:center}
 .masthead:not(.scrolled) nav{grid-column:2;grid-row:2;display:flex;align-items:center;justify-content:center;gap:30px}
-.masthead:not(.scrolled) nav a{font:11px Inter,Arial,sans-serif;letter-spacing:.035em}
-.masthead:not(.scrolled) .header-book{grid-column:3;grid-row:2;justify-self:end;position:static;min-width:0;border:1px solid #d2b98a9c;border-radius:0;padding:14px 19px;font:11px Inter,Arial,sans-serif;letter-spacing:.08em}
+.masthead:not(.scrolled) nav a{font:11px Inter;letter-spacing:.035em}
+.masthead:not(.scrolled) .header-book{grid-column:3;grid-row:2;justify-self:end;position:static;min-width:0;border:1px solid #d2b98a9c;border-radius:0;padding:14px 19px;font:11px Inter;letter-spacing:.08em}
 .masthead.scrolled{height:78px;padding:10px 5%;display:grid;grid-template-columns:1fr auto 1fr;grid-template-rows:1fr;background:#102018ed}
 .masthead.scrolled .brand{grid-column:1;grid-row:1;width:165px;justify-self:start}
 .masthead.scrolled nav{grid-column:2;grid-row:1;display:flex;justify-content:center;gap:30px}
-.masthead.scrolled nav a{font:11px Inter,Arial,sans-serif;letter-spacing:.035em}
-.masthead.scrolled .header-book{grid-column:3;grid-row:1;position:static;min-width:0;border:1px solid #d2b98a9c;border-radius:0;padding:14px 19px;font:11px Inter,Arial,sans-serif;letter-spacing:.08em}
+.masthead.scrolled nav a{font:11px Inter;letter-spacing:.035em}
+.masthead.scrolled .header-book{grid-column:3;grid-row:1;position:static;min-width:0;border:1px solid #d2b98a9c;border-radius:0;padding:14px 19px;font:11px Inter;letter-spacing:.08em}
 .masthead nav .nav-book{display:none}
 /* Hero remains the background of the pinned transition; photographs never receive scroll transforms. */
 .hero{height:200svh;min-height:1200px;position:relative;z-index:10;background:#061e17}
