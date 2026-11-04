@@ -115,3 +115,24 @@ em,.footer-top p{font-family:Allura}
 @media (max-width:540px){.hero-image-gallery{top:54%;height:31%}.hero-photo-feature{left:27%;width:46%}.hero-photo-secondary{width:20%;height:60%}.hero-photo-secondary-right{width:17%;height:55%}}
 @media (hover:none){.hero-property-caption strong{opacity:0;transform:translateY(12px)}.hero-property:focus-visible .hero-property-caption strong{opacity:1;transform:translateY(0)}}
 
+/* Keep the centered masthead compact and bring both official leaves into view. */
+.masthead:not(.scrolled){height:105px;grid-template-rows:67px 32px;padding:0 5% 6px;align-items:initial}
+.masthead:not(.scrolled) nav{align-self:center}
+.hero-masthead-brand{width:156px;top:4px}
+.masthead.scrolled .brand{width:92px}
+.hero-botanical-left{left:-10%;top:-37%;width:34vw;height:65vh;opacity:1;filter:none;animation:leaf-grow-visible 15s ease-in-out infinite alternate}
+@keyframes leaf-grow-visible{from{transform:rotate(28deg) scale(.94);clip-path:inset(0 0 12% 0)}to{transform:rotate(28deg) scale(1);clip-path:inset(0 0 0 0)}}
+.hero-copy{isolation:isolate}
+.hero-copy:before{content:'';position:absolute;left:-18%;top:-24%;width:115%;height:91%;z-index:-1;background:radial-gradient(ellipse at 45% 46%,#BEAA442a,transparent 70%);filter:blur(20px);pointer-events:none}
+.hero-copy h1{text-shadow:0 0 22px #BEAA444c,0 5px 28px #061a12a0}
+.hero-copy h1 em{text-shadow:0 0 10px #E6F3A589,0 0 32px #BEAA445b}
+.hero-photo-feature,.hero-photo-secondary{padding:3px;box-shadow:0 26px 68px #0009,0 0 0 1px #B2A34945}
+.hero-photo-feature{left:30%;width:41%;border-radius:49% 49% 3px 3px / 17% 17% 3px 3px}
+.hero-photo-secondary{left:auto;width:16%;border-radius:49% 49% 3px 3px / 14% 14% 3px 3px}
+.hero-photo-secondary-left{left:6%;top:20%;height:62%}
+.hero-photo-secondary-right{right:6%;top:30%;width:14%;height:56%}
+.hero-photo-feature:after,.hero-photo-secondary:after{inset:3px}
+.ornamental-portal-art{filter:drop-shadow(0 0 5px #E5F09780) drop-shadow(0 -8px 25px #BEAA443c)}
+@media (max-width:800px){.masthead:not(.scrolled){height:77px;grid-template-rows:1fr;padding:10px 5%}.hero-masthead-brand{width:99px;top:7px}.masthead.scrolled .brand{width:82px}.hero-botanical-left{left:-20%;top:-23%;width:70vw;height:40vh}.hero-photo-feature{left:30%;width:40%}.hero-photo-secondary{width:17%}.hero-photo-secondary-left{left:5%}.hero-photo-secondary-right{right:5%;width:15%}}
+@media (max-width:540px){.hero-masthead-brand{width:92px}.hero-photo-feature{left:30%;width:40%}.hero-photo-secondary{width:17%}.hero-photo-secondary-right{width:15%}}
+
