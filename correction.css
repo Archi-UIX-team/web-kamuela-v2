@@ -31,7 +31,7 @@
 .hero-scroll-note{opacity:var(--copy-opacity,1)}
 .hero-botanical{opacity:.055}
 /* This architectural portal is independent of hero photography and villa cards. */
-.ornamental-portal-transition{position:absolute;left:50%;top:var(--portal-top,135%);width:min(98vw,1400px);aspect-ratio:1200/850;z-index:11;transform:translate(-50%,-50%) scale(var(--portal-scale,1));transform-origin:50% 53%;pointer-events:none;will-change:transform,top}
+.ornamental-portal-transition{position:absolute;left:50%;top:var(--portal-top,124%);width:min(82vw,1150px);aspect-ratio:1200/850;z-index:11;transform:translate(-50%,-50%) scale(var(--portal-scale,1));transform-origin:50% 53%;pointer-events:none;will-change:transform,top}
 .ornamental-portal-art{width:100%;height:100%;display:block;object-fit:contain;filter:drop-shadow(0 16px 35px #0008)}
 /* The same section begins beneath the pinned hero and locks into the viewport only for Stage B. */
 .villas{z-index:1;margin-top:-100svh;background:#061e17;position:relative}
