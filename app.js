@@ -24,9 +24,12 @@ function updateScroll() {
   const openingWidth = portal.offsetWidth * 850 / 1200;
   const openingHeight = portal.offsetHeight * 651 / 850;
   const coverScale = Math.max(window.innerWidth / openingWidth, window.innerHeight / openingHeight) * 1.16;
-  const startingTop = window.innerWidth <= 800 ? 108 : 116;
+  // At rest, only the upper edge of the SVG cartouche is visible at the
+  // viewport bottom. Its first painted point is y=105 in the 850-unit viewBox.
+  const restingExposure = window.innerWidth <= 800 ? 72 : 80;
+  const startingTop = stage.clientHeight - restingExposure + portal.offsetHeight * (0.5 - 105 / 850);
   stage.style.setProperty('--portal-scale', (1 + (coverScale - 1) * zoom).toFixed(4));
-  stage.style.setProperty('--portal-top', (startingTop + (50 - startingTop) * zoom).toFixed(3) + '%');
+  stage.style.setProperty('--portal-top', (startingTop + (stage.clientHeight / 2 - startingTop) * zoom).toFixed(2) + 'px');
   stage.style.setProperty('--copy-opacity', (1 - ease(clamp((p - .04) / .16))).toFixed(3));
   stage.style.setProperty('--gallery-opacity', (1 - ease(clamp((p - .28) / .38))).toFixed(3));
   // Stage B occupies the remaining 25%. The real Villas section pins over the
@@ -106,3 +109,4 @@ form.addEventListener('submit', e => {
   }
 });
 document.querySelector('#year').textContent = new Date().getFullYear();
+
