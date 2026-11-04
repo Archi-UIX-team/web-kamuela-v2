@@ -23,3 +23,9 @@ dialog{border:0;padding:0;background:transparent;color:var(--ivory);width:min(48
 .hero-center{transform:translateY(var(--center-y,0px));opacity:var(--center-opacity,1)}
 .arch-transition{transform:translateX(-50%) translateY(var(--arch-y,0px)) scale(var(--arch-scale,1))}
 .section-pattern:before,.section-pattern:after{filter:drop-shadow(5px 12px 5px #030d0a9c)}
+@media(min-width:801px){
+  .masthead:not(.scrolled){height:178px;grid-template-rows:100px 50px;padding-top:12px}
+  .masthead:not(.scrolled) .brand{grid-column:2;grid-row:1;width:235px;justify-self:center}
+  .masthead:not(.scrolled) nav{grid-column:2;grid-row:2}
+  .masthead:not(.scrolled) .header-book{grid-column:3;grid-row:2}
+}
