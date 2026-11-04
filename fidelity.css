@@ -121,7 +121,7 @@ em,.footer-top p{font-family:Allura}
 .hero-masthead-brand{width:156px;top:4px}
 .masthead.scrolled .brand{width:92px}
 .hero-botanical-left{left:-10%;top:-37%;width:34vw;height:65vh;opacity:1;filter:none;animation:leaf-grow-visible 15s ease-in-out infinite alternate}
-@keyframes leaf-grow-visible{from{transform:rotate(28deg) scale(.94);clip-path:inset(0 0 12% 0)}to{transform:rotate(28deg) scale(1);clip-path:inset(0 0 0 0)}}
+@keyframes leaf-grow-visible{from{transform:rotate(-7deg) scale(.94);clip-path:inset(0 0 12% 0)}to{transform:rotate(-7deg) scale(1);clip-path:inset(0 0 0 0)}}
 .hero-copy{isolation:isolate}
 .hero-copy:before{content:'';position:absolute;left:-18%;top:-24%;width:115%;height:91%;z-index:-1;background:radial-gradient(ellipse at 45% 46%,#BEAA442a,transparent 70%);filter:blur(20px);pointer-events:none}
 .hero-copy h1{text-shadow:0 0 22px #BEAA444c,0 5px 28px #061a12a0}
