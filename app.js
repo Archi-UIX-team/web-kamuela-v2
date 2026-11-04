@@ -2,6 +2,8 @@ document.documentElement.classList.add('js');
 
 const header = document.querySelector('.masthead');
 const hero = document.querySelector('.hero');
+const portal = document.querySelector('.ornamental-portal-transition');
+const villasSection = document.querySelector('.villas');
 const progress = document.querySelector('.scroll-progress');
 const motion = matchMedia('(prefers-reduced-motion: reduce)');
 let frame = 0;
@@ -15,20 +17,29 @@ function updateScroll() {
   const travel = Math.max(1, hero.offsetHeight - window.innerHeight);
   const p = motion.matches ? 0 : Math.max(0, Math.min(1, -hero.getBoundingClientRect().top / travel));
   const stage = hero.querySelector('.hero-sticky');
-  // The scene stays pinned while its architectural opening approaches the viewer.
-  // The next section is physically below the sticky hero and cannot enter until
-  // the complete zoom and final dark dissolve have run their course.
   const ease = t => t * t * (3 - 2 * t);
-  const zoom = ease(Math.max(0, Math.min(1, p / .72)));
-  const fade = ease(Math.max(0, Math.min(1, (p - .08) / .42)));
-  const veil = ease(Math.max(0, Math.min(1, (p - .78) / .22)));
-  const scale = 1 + 2.55 * zoom;
-  stage.style.setProperty('--portal-scale', scale.toFixed(4));
-  stage.style.setProperty('--hero-fade', (1 - fade).toFixed(3));
-  stage.style.setProperty('--side-fade', (1 - fade).toFixed(3));
-  stage.style.setProperty('--copy-y', (-70 * fade).toFixed(1) + 'px');
-  stage.style.setProperty('--side-rise', (-40 * fade).toFixed(1) + 'px');
-  stage.style.setProperty('--veil-opacity', veil.toFixed(3));
+  const clamp = value => Math.max(0, Math.min(1, value));
+  // Stage A occupies 75% of the pinned scroll. Only the cartouche transforms.
+  const zoom = ease(clamp((p - .18) / .57));
+  const openingWidth = portal.offsetWidth * 850 / 1200;
+  const openingHeight = portal.offsetHeight * 651 / 850;
+  const coverScale = Math.max(window.innerWidth / openingWidth, window.innerHeight / openingHeight) * 1.16;
+  const startingTop = window.innerWidth <= 540 ? 114 : window.innerWidth <= 800 ? 108 : window.innerWidth >= 1700 ? 130 : 135;
+  stage.style.setProperty('--portal-scale', (1 + (coverScale - 1) * zoom).toFixed(4));
+  stage.style.setProperty('--portal-top', (startingTop + (50 - startingTop) * zoom).toFixed(3) + '%');
+  stage.style.setProperty('--copy-opacity', (1 - ease(clamp((p - .04) / .16))).toFixed(3));
+  stage.style.setProperty('--gallery-opacity', (1 - ease(clamp((p - .28) / .38))).toFixed(3));
+  // Stage B occupies the remaining 25%. The real Villas section pins over the
+  // emerald opening, then resumes in normal flow at precisely the same top edge.
+  const heading = ease(clamp((p - .75) / .11));
+  const cards = ease(clamp((p - .85) / .15));
+  villasSection.style.setProperty('--villa-heading-reveal', heading.toFixed(3));
+  villasSection.style.setProperty('--villa-cards-reveal', cards.toFixed(3));
+  const controlled = !motion.matches && p < 1;
+  villasSection.classList.toggle('portal-controlled', controlled);
+  villasSection.classList.toggle('portal-pin', controlled && p >= .75);
+  villasSection.classList.toggle('portal-complete', !controlled);
+  if (!controlled) villasSection.querySelectorAll('.smart-reveal').forEach(el => el.classList.add('is-visible'));
 }
 function scheduleScroll() { if (!frame) frame = requestAnimationFrame(updateScroll); }
 addEventListener('scroll', scheduleScroll, { passive: true });
