@@ -24,7 +24,7 @@ function updateScroll() {
   const openingWidth = portal.offsetWidth * 850 / 1200;
   const openingHeight = portal.offsetHeight * 651 / 850;
   const coverScale = Math.max(window.innerWidth / openingWidth, window.innerHeight / openingHeight) * 1.16;
-  const startingTop = window.innerWidth <= 540 ? 114 : window.innerWidth <= 800 ? 108 : window.innerWidth >= 1700 ? 130 : 135;
+  const startingTop = window.innerWidth <= 540 ? 114 : window.innerWidth <= 800 ? 108 : 124;
   stage.style.setProperty('--portal-scale', (1 + (coverScale - 1) * zoom).toFixed(4));
   stage.style.setProperty('--portal-top', (startingTop + (50 - startingTop) * zoom).toFixed(3) + '%');
   stage.style.setProperty('--copy-opacity', (1 - ease(clamp((p - .04) / .16))).toFixed(3));
