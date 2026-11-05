@@ -77,14 +77,16 @@
 .film-card-five{background-image:linear-gradient(0deg,#061a122d,transparent 42%,#10201816),url('./assets/lifestyle-5.svg')}
 .film-card-six{background-image:linear-gradient(0deg,#061a122d,transparent 42%,#10201816),url('./assets/lifestyle-6.svg')}
 .film-card-one,.film-card-two,.film-card-three,.film-card-four,.film-card-five,.film-card-six{background-size:100% 100%,100% 100%;background-position:center,center}
-/* Keep the official pattern on the left; conceal only the right pattern. */
+/* Restore the right hero pattern at full opacity. Both background leaves sway. */
 .hero-botanical-left{animation:sway 20s ease-in-out infinite alternate;clip-path:none;transform-origin:top center}
-.hero-botanical-right{opacity:0!important}
-/* The floral photographs are unchanged; their foliage is replaced by official linework. */
-.hero-floral{aspect-ratio:520/887;height:auto}
+.hero-botanical-right{opacity:1!important}
+/* Keep the flower pixels and footprint; compose a smaller official leaf behind them. */
+.hero-floral{aspect-ratio:520/887;height:auto;filter:none;isolation:isolate}
 .hero-floral img{position:absolute;width:100%;height:100%;object-fit:contain}
-.hero-floral .floral-official-leaf{z-index:1;transform-origin:50% 48%;filter:drop-shadow(0 0 9px #b69b7242)}
-.hero-floral-left .floral-official-leaf{transform:rotate(-18deg) scale(1.06)}
-.hero-floral-right .floral-official-leaf{transform:rotate(18deg) scale(1.06)}
-.hero-floral .floral-flowers{z-index:2}
-@media(prefers-reduced-motion:reduce){.hero-botanical-left{animation:none}}
+.hero-floral .floral-official-leaf{z-index:1;width:68%;height:76%;object-fit:contain;opacity:.48;filter:drop-shadow(2px 6px 7px #061a1270);transform-origin:52% 73%;-webkit-mask-image:radial-gradient(ellipse 78% 73% at 50% 54%,#000 31%,#000b 62%,transparent 100%);mask-image:radial-gradient(ellipse 78% 73% at 50% 54%,#000 31%,#000b 62%,transparent 100%)}
+.hero-floral-left .floral-official-leaf{left:-11%;top:13%;animation:floral-leaf-left 8.6s ease-in-out infinite alternate}
+.hero-floral-right .floral-official-leaf{right:-12%;top:3%;width:65%;height:73%;opacity:.43;transform-origin:55% 79%;animation:floral-leaf-right 9.8s ease-in-out -2.8s infinite alternate}
+.hero-floral .floral-flowers{z-index:2;filter:drop-shadow(2px 4px 4px #04180f9c)}
+@keyframes floral-leaf-left{from{transform:translateY(1px) rotate(-28deg)}to{transform:translateY(-4px) rotate(-26deg)}}
+@keyframes floral-leaf-right{from{transform:translateY(-2px) rotate(23deg)}to{transform:translateY(3px) rotate(25deg)}}
+@media(prefers-reduced-motion:reduce){.hero-botanical-left,.hero-floral .floral-official-leaf{animation:none}.hero-floral-left .floral-official-leaf{transform:rotate(-27deg)}.hero-floral-right .floral-official-leaf{transform:rotate(24deg)}}
