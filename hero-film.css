@@ -38,11 +38,10 @@
 .film-column-center .film-track{animation:film-down 64s linear infinite}
 .film-column-right .film-track{animation-duration:61s}
 .film-loop{display:flex;flex-direction:column;gap:17px;padding-bottom:17px}
-.film-card{height:clamp(192px,31vh,318px);width:100%;flex:none;position:relative;overflow:hidden;border:1px solid #b69b7299;border-radius:50% 50% 11px 11px / 13% 13% 11px 11px;background-image:linear-gradient(0deg,#061a1240,transparent 35%,#10201824),url('./assets/lifestyle-sheet.svg');background-size:100% 100%,300% 200%;background-repeat:no-repeat;box-shadow:0 22px 45px #0007,0 0 17px #b69b7224;filter:saturate(.79) brightness(.79);transition:filter .6s,box-shadow .6s;pointer-events:auto}
-.film-card:hover{filter:saturate(.95) brightness(1.04);box-shadow:0 22px 45px #0007,0 0 25px #b69b724f}
-.film-card-soft{filter:saturate(.66) brightness(.68) blur(.7px)}
-.film-card-one{background-position:center,0% 0%}.film-card-two{background-position:center,50% 0%}.film-card-three{background-position:center,100% 0%}
-.film-card-four{background-position:center,0% 100%}.film-card-five{background-position:center,50% 100%}.film-card-six{background-position:center,100% 100%}
+.film-card{width:100%;flex:none;position:relative;overflow:hidden;border:0;border-radius:50% 50% 11px 11px / 13% 13% 11px 11px;background:none;box-shadow:none;filter:none;transition:none;pointer-events:auto}
+.film-card img{display:block;width:100%;height:100%;object-fit:cover;border:0;border-radius:inherit;background:transparent;box-shadow:none;filter:saturate(.79) brightness(.83);transition:filter .6s}
+.film-card:hover img{filter:saturate(.96) brightness(1.04)}
+.film-card-soft img{filter:saturate(.68) brightness(.72) blur(.7px)}
 .film-column:hover .film-track{animation-play-state:paused}
 @keyframes film-up{from{transform:translateY(0)}to{transform:translateY(-50%)}}
 @keyframes film-down{from{transform:translateY(-50%)}to{transform:translateY(0)}}
@@ -68,15 +67,10 @@
 @media(hover:none){.film-column:hover .film-track{animation-play-state:running}}
 @media(prefers-reduced-motion:reduce){.film-track,.hero-sunlight:before,.hero-botanical{animation:none!important}.film-track{transform:translateY(0)!important}.film-card{filter:brightness(.84) saturate(.8)}}
 
-/* Independent portraits preserve their source aspect ratios and fill each card. */
-.film-card{height:auto;aspect-ratio:341/768;background-color:transparent;background-image:linear-gradient(0deg,#061a122d,transparent 42%,#10201816);background-size:100% 100%;background-position:center;}
-.film-card-one{background-image:linear-gradient(0deg,#061a122d,transparent 42%,#10201816),url('./assets/lifestyle-1.svg')}
-.film-card-two{background-image:linear-gradient(0deg,#061a122d,transparent 42%,#10201816),url('./assets/lifestyle-2.svg')}
-.film-card-three{background-image:linear-gradient(0deg,#061a122d,transparent 42%,#10201816),url('./assets/lifestyle-3.svg')}
-.film-card-four{background-image:linear-gradient(0deg,#061a122d,transparent 42%,#10201816),url('./assets/lifestyle-4.svg')}
-.film-card-five{background-image:linear-gradient(0deg,#061a122d,transparent 42%,#10201816),url('./assets/lifestyle-5.svg')}
-.film-card-six{background-image:linear-gradient(0deg,#061a122d,transparent 42%,#10201816),url('./assets/lifestyle-6.svg')}
-.film-card-one,.film-card-two,.film-card-three,.film-card-four,.film-card-five,.film-card-six{background-size:100% 100%,100% 100%;background-position:center,center}
+/* Each card contains only its direct portrait image; the motion containers are invisible. */
+.film-card{height:auto;aspect-ratio:341/768;background:transparent}
+.film-gallery,.film-column,.film-track,.film-loop{background:transparent;border:0;box-shadow:none;filter:none}
+.film-card::before,.film-card::after,.film-gallery::before,.film-gallery::after{content:none!important}
 /* The left edge becomes light; the right official pattern stays fully visible. */
 .hero-botanical-left{display:none!important}
 .hero-botanical-right{opacity:1!important}
@@ -84,15 +78,19 @@
 .hero-floral{aspect-ratio:520/887;height:auto;filter:drop-shadow(0 4px 11px #061a1259)}
 .hero-floral img{position:absolute;width:100%;height:100%;object-fit:contain}
 
-/* Broad, blurred rays originate above the right edge and dissolve leftward. */
-.hero-sunlight{background:radial-gradient(ellipse 77% 78% at 102% -10%,#f0dda84f 0%,#d4c28e24 29%,#d4c28e08 53%,transparent 80%);isolation:isolate}
-.hero-sunlight::before{content:'';position:absolute;inset:-4% -7% 0 18%;width:auto;height:auto;background:conic-gradient(from 185deg at 99% 0%,transparent 0deg,#f0dda82a 8deg,transparent 20deg,#d4c28e2a 32deg,transparent 45deg,#f0dda822 58deg,transparent 76deg),radial-gradient(ellipse 76% 80% at 100% 0%,#f0dda824,transparent 77%);-webkit-mask-image:radial-gradient(ellipse 94% 101% at 96% 0%,#000 12%,#000b 42%,transparent 81%);mask-image:radial-gradient(ellipse 94% 101% at 96% 0%,#000 12%,#000b 42%,transparent 81%);filter:blur(23px);mix-blend-mode:screen;transform-origin:100% 0%;animation:sunlight-breathe 10.5s ease-in-out infinite alternate}
-.hero-sunlight::after{content:'';position:absolute;right:0;top:-13%;width:27%;height:61%;background:url('./assets/leaf-1.svg') center/contain no-repeat;filter:brightness(0) blur(8px);opacity:.12;mix-blend-mode:multiply;transform:rotate(24deg);pointer-events:none}
+/* The sunlight now enters from the upper left and fades toward the center-right. */
+.hero-sunlight{background:radial-gradient(ellipse 77% 78% at -2% -10%,#f0dda84f 0%,#d4c28e24 29%,#d4c28e08 53%,transparent 80%);isolation:isolate}
+.hero-sunlight::before{content:'';position:absolute;inset:-4% 18% 0 -7%;width:auto;height:auto;background:conic-gradient(from 95deg at 1% 0%,transparent 0deg,#f0dda82a 8deg,transparent 20deg,#d4c28e2a 32deg,transparent 45deg,#f0dda822 58deg,transparent 76deg),radial-gradient(ellipse 76% 80% at 0% 0%,#f0dda824,transparent 77%);-webkit-mask-image:radial-gradient(ellipse 94% 101% at 4% 0%,#000 12%,#000b 42%,transparent 81%);mask-image:radial-gradient(ellipse 94% 101% at 4% 0%,#000 12%,#000b 42%,transparent 81%);filter:blur(23px);mix-blend-mode:screen;transform-origin:0% 0%;animation:sunlight-breathe 10.5s ease-in-out infinite alternate}
+.hero-sunlight::after{content:'';position:absolute;left:0;right:auto;top:-13%;width:27%;height:61%;background:url('./assets/leaf-1.svg') center/contain no-repeat;filter:brightness(0) blur(8px);opacity:.12;mix-blend-mode:multiply;transform:rotate(-24deg) scaleX(-1);pointer-events:none}
 @keyframes sunlight-breathe{from{opacity:.65;transform:translate(-3px,0) rotate(-.3deg)}to{opacity:1;transform:translate(4px,5px) rotate(.45deg)}}
 
-/* A purple halo belongs only to the expressive script, behind its letterforms. */
+/* Remove the experimental halo and keep the script itself clean. */
 .hero-copy::before{background:none;filter:none}
 .hero-copy h1{text-shadow:0 6px 38px #00120a}
-.hero-copy h1 em{position:relative;isolation:isolate;text-shadow:0 2px 5px #25102f,0 0 25px #6b3b776b}
-.hero-copy h1 em::before{content:'';position:absolute;z-index:-1;left:10%;right:10%;top:-13%;bottom:-30%;background:radial-gradient(ellipse 68% 62% at center,#3c1351a3 0%,#6b3b7754 41%,transparent 83%);filter:blur(24px);pointer-events:none}
+.hero-copy h1 em{text-shadow:none}
+.hero-copy h1 em::before{content:none}
+.portal-golden-leaf{top:8.2%}
+.hero-floral-left{width:min(20vw,328px);bottom:-292px;left:-1.9vw}
+@media(max-width:800px){.hero-floral-left{width:30.4vw;bottom:-18.4vw;left:-7.2vw}}
+@media(max-width:540px){.hero-floral-left{width:36.8vw;bottom:-22.4vw;left:-12vw}}
 @media(prefers-reduced-motion:reduce){.hero-sunlight::before{animation:none}}
