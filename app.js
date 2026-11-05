@@ -11,11 +11,19 @@ document.querySelectorAll('main > section:not(.hero)').forEach((section, index) 
 
 const header = document.querySelector('.masthead');
 const hero = document.querySelector('.hero');
+const offersSection = document.querySelector('.offers');
 const portal = document.querySelector('.ornamental-portal-transition');
 const villasSection = document.querySelector('.villas');
 const progress = document.querySelector('.scroll-progress');
 const motion = matchMedia('(prefers-reduced-motion: reduce)');
 let frame = 0;
+
+if (offersSection && 'IntersectionObserver' in window) {
+  const offersHeaderObserver = new IntersectionObserver(entries => {
+    header.classList.toggle('over-offers', entries[0].isIntersecting);
+  }, { rootMargin: '-8% 0px -84% 0px', threshold: 0 });
+  offersHeaderObserver.observe(offersSection);
+}
 
 function updateScroll() {
   frame = 0;
