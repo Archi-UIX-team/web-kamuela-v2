@@ -14,7 +14,8 @@
   <link rel="stylesheet" href="./correction.css?v=hero-1">
   <link rel="stylesheet" href="./fidelity.css?v=film-3">
   <link rel="stylesheet" href="./hero-film.css?v=film-6">
-  <link rel="stylesheet" href="./villas-cinematic.css?v=1">
+  <link rel="stylesheet" href="./villas-cinematic.css?v=2">
+  <script defer src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -39,8 +40,8 @@
         <div class="hero-sunlight" aria-hidden="true">
           <svg class="sun-rays" viewBox="0 0 1000 900" preserveAspectRatio="xMaxYMin slice" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="ray-light" x1=".88" y1="0" x2=".36" y2=".96"><stop stop-color="#F3F0E7" stop-opacity=".48"/><stop offset=".16" stop-color="#E7D3A4" stop-opacity=".38"/><stop offset=".58" stop-color="#D4C28E" stop-opacity=".15"/><stop offset="1" stop-color="#D4C28E" stop-opacity="0"/></linearGradient>
-              <radialGradient id="ray-haze"><stop stop-color="#E7D3A4" stop-opacity=".18"/><stop offset="1" stop-color="#E7D3A4" stop-opacity="0"/></radialGradient>
+              <linearGradient id="ray-light" x1=".88" y1="0" x2=".36" y2=".96"><stop stop-color="#B69B72" stop-opacity=".42"/><stop offset=".16" stop-color="#D4C28E" stop-opacity=".31"/><stop offset=".58" stop-color="#B69B72" stop-opacity=".13"/><stop offset="1" stop-color="#B69B72" stop-opacity="0"/></linearGradient>
+              <radialGradient id="ray-haze"><stop stop-color="#B69B72" stop-opacity=".10"/><stop offset="1" stop-color="#B69B72" stop-opacity="0"/></radialGradient>
               <filter id="ray-feather" x="-35%" y="-30%" width="170%" height="170%"><feGaussianBlur stdDeviation="9"/></filter>
               <mask id="ray-falloff"><rect width="1000" height="900" fill="white"/><rect x="0" y="0" width="520" height="900" fill="url(#fade-out)"/></mask>
               <linearGradient id="fade-out"><stop stop-color="black"/><stop offset="1" stop-color="white"/></linearGradient>
@@ -112,18 +113,30 @@
         <div class="villa-gallery" role="group" aria-label="Explore Kamuela villas">
           <article class="villa-panel" data-scene="0" tabindex="0" role="button" aria-label="Royal Kamuela Villas and Suites, Ubud, Bali; select villa" aria-pressed="false">
             <img src="https://images.archipelagohotels.com/kamuelavillas/Images/v1/BrandPages/Homepage/RKU.jpg?d=1600x1200" alt="Royal Kamuela Villas and Suites in Ubud" draggable="false">
-            <div class="villa-panel-copy"><span class="villa-location">UBUD, BALI</span><h3>Royal Kamuela<br>Villas &amp; Suites</h3><div class="villa-expanded"><p>The luxury of privacy, surrounded by Ubud's serene sanctuary.</p><a href="https://www.kamuelavillas.com/en/villa/view/3/royal-kamuela-villas-suites-at-monkey-forest-ubud-adult-only" target="_blank" rel="noopener" tabindex="-1">Explore Villa <span aria-hidden="true">?</span></a></div></div>
+            <div class="villa-panel-copy">
+              <span class="villa-location"><iconify-icon icon="mdi:map-marker-outline" aria-hidden="true"></iconify-icon> Ubud, Bali, Indonesia</span>
+              <h3>Royal Kamuela<br>Villas &amp; Suites</h3>
+              <div class="villa-expanded"><div class="villa-services" aria-label="Property amenities"><span><iconify-icon icon="mdi:spa-outline" aria-hidden="true"></iconify-icon> Spa</span><span><iconify-icon icon="mdi:silverware-fork-knife" aria-hidden="true"></iconify-icon> Restaurant</span><span><iconify-icon icon="mdi:pool" aria-hidden="true"></iconify-icon> Swimming Pool</span></div><button class="villa-book" type="button" data-book data-villa="ubud">Book Now <iconify-icon icon="mdi:arrow-top-right" aria-hidden="true"></iconify-icon></button></div>
+            </div>
           </article>
           <article class="villa-panel is-active" data-scene="1" tabindex="0" role="button" aria-label="Kamuela Villas Lagoi Bay, Bintan; selected villa" aria-pressed="true">
             <img src="https://images.archipelagohotels.com/kamuelavillas/Images/v1/BrandPages/Homepage/bintan.jpg?d=1600x1200" alt="Kamuela Villas Lagoi Bay in Bintan" draggable="false">
-            <div class="villa-panel-copy"><span class="villa-location">LAGOI BAY, BINTAN</span><h3>Kamuela Villas<br>Lagoi Bay</h3><div class="villa-expanded"><p>A peaceful haven away from the noise and distractions of daily life.</p><a href="https://www.kamuelavillas.com/en/villa/view/7/kamuela-villas-lagoi-bay-bintan" target="_blank" rel="noopener">Explore Villa <span aria-hidden="true">?</span></a></div></div>
+            <div class="villa-panel-copy">
+              <span class="villa-location"><iconify-icon icon="mdi:map-marker-outline" aria-hidden="true"></iconify-icon> Lagoi Bay, Bintan, Indonesia</span>
+              <h3>Kamuela Villas<br>Lagoi Bay</h3>
+              <div class="villa-expanded"><div class="villa-services" aria-label="Property amenities"><span><iconify-icon icon="mdi:pool" aria-hidden="true"></iconify-icon> Private Pool</span><span><iconify-icon icon="mdi:weather-sunny" aria-hidden="true"></iconify-icon> Sundeck</span><span><iconify-icon icon="mdi:silverware-fork-knife" aria-hidden="true"></iconify-icon> Dining</span></div><button class="villa-book" type="button" data-book data-villa="bintan">Book Now <iconify-icon icon="mdi:arrow-top-right" aria-hidden="true"></iconify-icon></button></div>
+            </div>
           </article>
           <article class="villa-panel" data-scene="2" tabindex="0" role="button" aria-label="Seahaven by Kamuela, Canggu, Bali; select villa" aria-pressed="false">
             <img src="https://images.archipelagohotels.com/kamuelavillas/Images/v1/SeahavenbyKamuela/Room/SeahavenVillas_ByKamuela_Livingroom_Levithia_1.jpg?d=1600x1200" alt="Seahaven by Kamuela villa in Canggu" draggable="false">
-            <div class="villa-panel-copy"><span class="villa-location">CANGGU, BALI</span><h3>Seahaven<br>by Kamuela</h3><div class="villa-expanded"><p>Experience serenity with a perfect private getaway.</p><a href="https://www.kamuelavillas.com/en/villa/view/8/seahaven-by-kamuela" target="_blank" rel="noopener" tabindex="-1">Explore Villa <span aria-hidden="true">?</span></a></div></div>
+            <div class="villa-panel-copy">
+              <span class="villa-location"><iconify-icon icon="mdi:map-marker-outline" aria-hidden="true"></iconify-icon> Canggu, Bali, Indonesia</span>
+              <h3>Seahaven<br>by Kamuela</h3>
+              <div class="villa-expanded"><div class="villa-services" aria-label="Property amenities"><span><iconify-icon icon="mdi:pool" aria-hidden="true"></iconify-icon> Swimming Pool</span><span><iconify-icon icon="mdi:silverware-fork-knife" aria-hidden="true"></iconify-icon> Restaurant</span><span><iconify-icon icon="mdi:balcony" aria-hidden="true"></iconify-icon> Terrace</span></div><button class="villa-book" type="button" data-book data-villa="canggu">Book Now <iconify-icon icon="mdi:arrow-top-right" aria-hidden="true"></iconify-icon></button></div>
+            </div>
           </article>
         </div>
-        <div class="villa-controls" aria-label="Villa selection"><button class="scene-prev" type="button" aria-label="Previous villa"></button><div class="scene-dots" aria-label="Choose villa"><button type="button" data-dot="0" aria-label="Show Ubud" aria-pressed="false"></button><button type="button" data-dot="1" aria-label="Show Bintan" aria-pressed="true"></button><button type="button" data-dot="2" aria-label="Show Canggu" aria-pressed="false"></button></div><button class="scene-next" type="button" aria-label="Next villa"></button></div>
+        <div class="villa-controls" aria-label="Villa selection"><button class="scene-prev" type="button" aria-label="Previous villa"><iconify-icon icon="mdi:arrow-left" aria-hidden="true"></iconify-icon></button><div class="scene-dots" aria-label="Choose villa"><button type="button" data-dot="0" aria-label="Show Ubud" aria-pressed="false"></button><button type="button" data-dot="1" aria-label="Show Bintan" aria-pressed="true"></button><button type="button" data-dot="2" aria-label="Show Canggu" aria-pressed="false"></button></div><button class="scene-next" type="button" aria-label="Next villa"><iconify-icon icon="mdi:arrow-right" aria-hidden="true"></iconify-icon></button></div>
       </div>
       <div class="villas-curtain" aria-hidden="true"><span class="curtain-line"></span><img src="./assets/leaf-1.svg" alt=""></div>
     </section>
@@ -146,7 +159,7 @@
   </main>
   <footer id="footer"><div class="footer-top"><a href="#home" class="footer-logo"><img src="./assets/logo-white.png" alt="Kamuela Villas"></a><p>The Luxury of Privacy</p><button data-book>Book your stay ?</button></div><div class="footer-bottom"><span>c <span id="year"></span> Kamuela Villas</span><div><a href="#hotels">Villas</a><a href="#offers">Offers</a><a href="#news">News</a><a href="#social">Instagram</a><a href="#membership">Membership</a></div><a href="#home">Back to top </a></div></footer>
   <dialog id="booking" aria-labelledby="booking-title"><div class="booking-shell"><button class="close" aria-label="Close booking form">x</button><span class="eyebrow">YOUR PRIVATE ESCAPE</span><h2 id="booking-title">Find your <em>sanctuary.</em></h2><form id="booking-form"><label for="booking-villa">Choose your villa</label><select id="booking-villa" name="villa" required><option value="">Select a villa</option><option value="ubud">Royal Kamuela Ubud</option><option value="bintan">Kamuela Lagoi Bay Bintan</option><option value="canggu">Seahaven by Kamuela Canggu</option></select><button type="submit" class="booking-submit">Continue to official booking ?</button><small>Choose your dates, guests and availability on Kamuela's official website.</small></form></div></dialog>
-  <script src="./app.js?v=film-3"></script><script src="./hero.js?v=portal-2"></script>
+  <script src="./app.js?v=film-4"></script><script src="./hero.js?v=portal-3"></script>
 </body>
 </html>
 
