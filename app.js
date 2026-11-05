@@ -91,6 +91,7 @@ const officialUrls = {
 };
 document.querySelectorAll('[data-book]').forEach(button => button.addEventListener('click', () => {
   closeMenu();
+  if (button.dataset.villa) form.elements.villa.value = button.dataset.villa;
   dialog.showModal();
 }));
 dialog.querySelector('.close').addEventListener('click', () => dialog.close());
@@ -109,3 +110,4 @@ form.addEventListener('submit', e => {
   }
 });
 document.querySelector('#year').textContent = new Date().getFullYear();
+
