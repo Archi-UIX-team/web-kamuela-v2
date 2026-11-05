@@ -4,7 +4,6 @@
   if (!root) return;
   const gallery = root.querySelector('.villa-gallery');
   const panels = [...root.querySelectorAll('.villa-panel')];
-  const dots = [...root.querySelectorAll('[data-dot]')];
   let selected = 1;
   let preview = null;
   let pointerStart = null;
@@ -17,7 +16,6 @@
       panel.setAttribute('aria-pressed', String(i === selected));
       panel.querySelector('.villa-book').tabIndex = i === active ? 0 : -1;
     });
-    dots.forEach((dot, i) => dot.setAttribute('aria-pressed', String(i === selected)));
   }
   function select(index) {
     selected = (index + panels.length) % panels.length;
@@ -62,9 +60,6 @@
     }
   });
   gallery.addEventListener('pointercancel', () => { pointerStart = null; });
-  dots.forEach((dot, i) => dot.addEventListener('click', () => select(i)));
-  root.querySelector('.scene-prev').addEventListener('click', () => select(selected - 1));
-  root.querySelector('.scene-next').addEventListener('click', () => select(selected + 1));
   render();
 })();
 
