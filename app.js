@@ -1,5 +1,14 @@
 document.documentElement.classList.add('js');
 
+// Add one official Kamuela leaf engraving to every content section. The hero
+// already owns its dedicated botanical composition, so it is left unchanged.
+document.querySelectorAll('main > section:not(.hero)').forEach((section, index) => {
+  const leaf = document.createElement('span');
+  leaf.className = `kamuela-section-leaf kamuela-section-leaf-${index % 2 ? 'left' : 'right'}`;
+  leaf.setAttribute('aria-hidden', 'true');
+  section.prepend(leaf);
+});
+
 const header = document.querySelector('.masthead');
 const hero = document.querySelector('.hero');
 const portal = document.querySelector('.ornamental-portal-transition');
