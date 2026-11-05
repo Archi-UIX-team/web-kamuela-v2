@@ -3,8 +3,11 @@
   const gallery = document.querySelector('.offer-gallery');
   if (!gallery) return;
   const cards = [...gallery.querySelectorAll('[data-offer]')];
-  const previous = gallery.querySelector('[data-offer-prev]');
-  const next = gallery.querySelector('[data-offer-next]');
+  const previous = document.querySelector('[data-offer-prev]');
+  const next = document.querySelector('[data-offer-next]');
+  const activeLabel = document.querySelector('[data-offer-active-label]');
+  const activeTitle = document.querySelector('[data-offer-active-title]');
+  const activeLink = document.querySelector('[data-offer-active-link]');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let active = 2;
   let pointerStart = null;
@@ -26,6 +29,16 @@
       const link = card.querySelector('a');
       link.tabIndex = selected ? 0 : -1;
     });
+    const current = cards[active];
+    const currentLabel = current.querySelector('.offer-label');
+    const currentTitle = current.querySelector('h3');
+    const currentLink = current.querySelector('a');
+    activeLabel.textContent = currentLabel.textContent;
+    activeTitle.innerHTML = currentTitle.innerHTML;
+    activeLink.href = currentLink.href;
+    activeLink.setAttribute('aria-label', `Detail offer: ${currentTitle.textContent.trim()}`);
+    activeLabel.parentElement.classList.remove('is-changing');
+    requestAnimationFrame(() => activeLabel.parentElement.classList.add('is-changing'));
   }
   function select(index, restart = true) {
     active = (index + cards.length) % cards.length;
@@ -42,8 +55,8 @@
     event.preventDefault();
     select(index);
   }));
-  previous.addEventListener('click', () => select(active - 1));
-  next.addEventListener('click', () => select(active + 1));
+  if (previous) previous.addEventListener('click', () => select(active - 1));
+  if (next) next.addEventListener('click', () => select(active + 1));
   gallery.addEventListener('keydown', event => {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
     event.preventDefault();
