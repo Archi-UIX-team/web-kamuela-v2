@@ -77,16 +77,22 @@
 .film-card-five{background-image:linear-gradient(0deg,#061a122d,transparent 42%,#10201816),url('./assets/lifestyle-5.svg')}
 .film-card-six{background-image:linear-gradient(0deg,#061a122d,transparent 42%,#10201816),url('./assets/lifestyle-6.svg')}
 .film-card-one,.film-card-two,.film-card-three,.film-card-four,.film-card-five,.film-card-six{background-size:100% 100%,100% 100%;background-position:center,center}
-/* Restore the right hero pattern at full opacity. Both background leaves sway. */
-.hero-botanical-left{animation:sway 20s ease-in-out infinite alternate;clip-path:none;transform-origin:top center}
+/* The left edge becomes light; the right official pattern stays fully visible. */
+.hero-botanical-left{display:none!important}
 .hero-botanical-right{opacity:1!important}
-/* Keep the flower pixels and footprint; compose a smaller official leaf behind them. */
-.hero-floral{aspect-ratio:520/887;height:auto;filter:none;isolation:isolate}
+/* Return to the complete, naturally integrated corner graphics. */
+.hero-floral{aspect-ratio:520/887;height:auto;filter:drop-shadow(0 4px 11px #061a1259)}
 .hero-floral img{position:absolute;width:100%;height:100%;object-fit:contain}
-.hero-floral .floral-official-leaf{z-index:1;width:68%;height:76%;object-fit:contain;opacity:.48;filter:drop-shadow(2px 6px 7px #061a1270);transform-origin:52% 73%;-webkit-mask-image:radial-gradient(ellipse 78% 73% at 50% 54%,#000 31%,#000b 62%,transparent 100%);mask-image:radial-gradient(ellipse 78% 73% at 50% 54%,#000 31%,#000b 62%,transparent 100%)}
-.hero-floral-left .floral-official-leaf{left:-11%;top:13%;animation:floral-leaf-left 8.6s ease-in-out infinite alternate}
-.hero-floral-right .floral-official-leaf{right:-12%;top:3%;width:65%;height:73%;opacity:.43;transform-origin:55% 79%;animation:floral-leaf-right 9.8s ease-in-out -2.8s infinite alternate}
-.hero-floral .floral-flowers{z-index:2;filter:drop-shadow(2px 4px 4px #04180f9c)}
-@keyframes floral-leaf-left{from{transform:translateY(1px) rotate(-28deg)}to{transform:translateY(-4px) rotate(-26deg)}}
-@keyframes floral-leaf-right{from{transform:translateY(-2px) rotate(23deg)}to{transform:translateY(3px) rotate(25deg)}}
-@media(prefers-reduced-motion:reduce){.hero-botanical-left,.hero-floral .floral-official-leaf{animation:none}.hero-floral-left .floral-official-leaf{transform:rotate(-27deg)}.hero-floral-right .floral-official-leaf{transform:rotate(24deg)}}
+
+/* Broad, blurred rays originate above the right edge and dissolve leftward. */
+.hero-sunlight{background:radial-gradient(ellipse 77% 78% at 102% -10%,#f0dda84f 0%,#d4c28e24 29%,#d4c28e08 53%,transparent 80%);isolation:isolate}
+.hero-sunlight::before{content:'';position:absolute;inset:-4% -7% 0 18%;width:auto;height:auto;background:conic-gradient(from 185deg at 99% 0%,transparent 0deg,#f0dda82a 8deg,transparent 20deg,#d4c28e2a 32deg,transparent 45deg,#f0dda822 58deg,transparent 76deg),radial-gradient(ellipse 76% 80% at 100% 0%,#f0dda824,transparent 77%);-webkit-mask-image:radial-gradient(ellipse 94% 101% at 96% 0%,#000 12%,#000b 42%,transparent 81%);mask-image:radial-gradient(ellipse 94% 101% at 96% 0%,#000 12%,#000b 42%,transparent 81%);filter:blur(23px);mix-blend-mode:screen;transform-origin:100% 0%;animation:sunlight-breathe 10.5s ease-in-out infinite alternate}
+.hero-sunlight::after{content:'';position:absolute;right:0;top:-13%;width:27%;height:61%;background:url('./assets/leaf-1.svg') center/contain no-repeat;filter:brightness(0) blur(8px);opacity:.12;mix-blend-mode:multiply;transform:rotate(24deg);pointer-events:none}
+@keyframes sunlight-breathe{from{opacity:.65;transform:translate(-3px,0) rotate(-.3deg)}to{opacity:1;transform:translate(4px,5px) rotate(.45deg)}}
+
+/* A purple halo belongs only to the expressive script, behind its letterforms. */
+.hero-copy::before{background:none;filter:none}
+.hero-copy h1{text-shadow:0 6px 38px #00120a}
+.hero-copy h1 em{position:relative;isolation:isolate;text-shadow:0 2px 5px #25102f,0 0 25px #6b3b776b}
+.hero-copy h1 em::before{content:'';position:absolute;z-index:-1;left:10%;right:10%;top:-13%;bottom:-30%;background:radial-gradient(ellipse 68% 62% at center,#3c1351a3 0%,#6b3b7754 41%,transparent 83%);filter:blur(24px);pointer-events:none}
+@media(prefers-reduced-motion:reduce){.hero-sunlight::before{animation:none}}
