@@ -15,7 +15,7 @@
     panels.forEach((panel, i) => {
       panel.classList.toggle('is-active', i === active);
       panel.setAttribute('aria-pressed', String(i === selected));
-      panel.querySelector('a').tabIndex = i === active ? 0 : -1;
+      panel.querySelector('.villa-book').tabIndex = i === active ? 0 : -1;
     });
     dots.forEach((dot, i) => dot.setAttribute('aria-pressed', String(i === selected)));
   }
@@ -30,7 +30,8 @@
     });
     panel.addEventListener('focusin', () => { preview = i; render(); });
     panel.addEventListener('click', e => {
-      if (e.target.closest('a') || suppressClick) return;
+      if (e.target.closest('.villa-book')) { select(i); return; }
+      if (suppressClick) return;
       select(i);
     });
     panel.addEventListener('keydown', e => {
