@@ -16,7 +16,7 @@
 .villas-intro::before{left:-11%;transform:rotate(-22deg)}.villas-intro::after{right:-11%;transform:rotate(164deg)}
 .villas-intro .eyebrow{font:500 11px Inter;letter-spacing:.27em;color:#b69b72}
 .villas-intro h2{font:400 clamp(44px,5vw,76px)/1.05 Inter;letter-spacing:-.055em;color:#f3f0e7;margin:18px 0 10px}
-.villas-intro h2 em{font:400 1.38em/.75 Allura;color:#e7d3a4;letter-spacing:0;white-space:nowrap}
+.villas-intro h2 em{font:400 1.38em/.75 Allura;color:#b69b72;letter-spacing:0;white-space:nowrap}
 .villas-intro p{font:400 14px/1.6 Inter;letter-spacing:.03em;color:#d0dacd;margin:24px auto 0}
 .villa-showcase{position:relative;display:block!important;width:100vw!important;max-width:none!important;min-height:0!important;height:clamp(620px,90svh,1100px);margin:0!important;padding:0!important;overflow:hidden}
 .villa-gallery{position:absolute;inset:0;width:100%;height:100%!important;display:flex;align-items:stretch;gap:0;perspective:none!important;touch-action:pan-y;overflow:hidden;pointer-events:auto!important}
@@ -28,18 +28,18 @@
 .villa-panel::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 36%,#061a1280 77%,#061a12e8 100%);pointer-events:none}
 .villa-panel>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center;filter:saturate(.89);transition:object-position 950ms ease,filter 950ms ease}
 .villa-panel.is-active>img{filter:brightness(.82) saturate(.94) contrast(1.02)}
-.villa-panel:focus-visible{outline:2px solid #e7d3a4;outline-offset:-4px;z-index:2}
+.villa-panel:focus-visible{outline:2px solid #b69b72;outline-offset:-4px;z-index:2}
 .villa-panel-copy{position:absolute;z-index:3;left:clamp(22px,4vw,80px);right:clamp(16px,4vw,75px);bottom:clamp(90px,12vh,140px);color:#f3f0e7;text-shadow:0 2px 18px #061a12;pointer-events:auto;min-width:0;transition:padding .7s,border-color .7s,background .7s,backdrop-filter .7s,box-shadow .7s}
 .villa-panel.is-active .villa-panel-copy{left:clamp(20px,3vw,58px);right:clamp(20px,3vw,58px);bottom:clamp(84px,11vh,125px);padding:clamp(12px,1.25vw,18px) clamp(18px,2vw,30px);border:0;background:linear-gradient(110deg,rgba(6,26,18,.05),rgba(17,32,24,.05) 57%,rgba(6,26,18,.05));-webkit-backdrop-filter:blur(38px) saturate(1.28);backdrop-filter:blur(38px) saturate(1.28);box-shadow:0 18px 50px #0004,inset 0 0 40px #061a1280}
 .villa-panel:not(.is-active) .villa-panel-copy{left:clamp(21px,3vw,54px);right:20px}
 .villa-panel:not(.is-active) h3{font-size:clamp(19px,2vw,31px);white-space:normal}
 .villa-location{display:flex;align-items:center;gap:9px}
-.villa-location iconify-icon{font-size:16px;color:#e7d3a4}
+.villa-location iconify-icon{font-size:16px;color:#b69b72}
 .villa-services{display:flex;flex-wrap:wrap;gap:10px 17px;margin:10px 0 0;color:#f3f0e7;min-width:0}
 .villa-services span{display:inline-flex;align-items:center;gap:8px;font:400 12px/1.4 Inter;white-space:nowrap}
-.villa-services iconify-icon{font-size:17px;color:#e7d3a4}
+.villa-services iconify-icon{font-size:17px;color:#b69b72}
 iconify-icon{display:inline-block;width:1em;height:1em;flex:none;vertical-align:-.12em}
-.villa-location{font:500 11px/1.5 Inter;letter-spacing:.21em;color:#e7d3a4;white-space:nowrap}
+.villa-location{font:500 11px/1.5 Inter;letter-spacing:.21em;color:#b69b72;white-space:nowrap}
 .villa-panel h3{font:400 clamp(23px,2.3vw,43px)/1.1 Inter;letter-spacing:-.045em;margin:8px 0 0;white-space:nowrap}
 .villa-panel.is-active h3{font-size:clamp(20px,2.15vw,32px);white-space:nowrap}
 .villa-expanded{display:flex;align-items:center;justify-content:space-between;gap:20px;max-height:0;opacity:0;transform:translateY(14px);transition:max-height 750ms ease,opacity 500ms ease,transform 700ms ease;overflow:hidden}
@@ -48,16 +48,16 @@ iconify-icon{display:inline-block;width:1em;height:1em;flex:none;vertical-align:
 .villa-book:hover,.villa-book:focus-visible{background:#562269;box-shadow:0 0 18px #3c135199}
 .villa-book iconify-icon{font-size:17px}
 .villas-curtain{position:relative;height:clamp(115px,16vh,190px);background:radial-gradient(ellipse at 78% 100%,#3c135129,transparent 45%),linear-gradient(#061e17,#102018);overflow:hidden}
-.curtain-line{position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,transparent 5%,#b69b7288 26%,#e7d3a4 50%,#b69b7288 74%,transparent 95%)}
+.curtain-line{position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,transparent 5%,#b69b7288 26%,#b69b72 50%,#b69b7288 74%,transparent 95%)}
 @media(max-width:800px){.villas-intro{padding:clamp(100px,13vh,150px) 6% 75px}.villas-intro h2{font-size:clamp(43px,7vw,62px)}.villa-showcase{height:clamp(560px,82svh,870px)}.villa-panel-copy{left:19px;right:12px;bottom:100px}.villa-panel h3{font-size:clamp(16px,2.9vw,25px)}.villa-location{font-size:9px;letter-spacing:.1em}.villa-services{gap:8px 15px}.villa-services span{font-size:11px}.sun-rays{width:115vw}}
 @media(max-width:540px){.villas-intro{padding:95px 5% 65px}.villas-intro h2{font-size:39px}.villas-intro h2 em{display:block;margin-top:13px;font-size:1.7em}.villas-intro p{font-size:12px}.villa-showcase{height:72svh;min-height:490px}.villa-panel{flex-grow:.56}.villa-panel.is-active{flex-grow:2}.villa-panel-copy{left:10px;right:9px;bottom:88px}.villa-panel.is-active .villa-panel-copy{left:9px;right:9px;padding:16px;bottom:76px}.villa-panel:not(.is-active) .villa-panel-copy{left:7px;right:5px}.villa-panel:not(.is-active) h3{font-size:11px}.villa-panel h3{font-size:12px;white-space:normal;line-height:1.2}.villa-panel.is-active h3{font-size:clamp(11px,3.3vw,16px);white-space:nowrap}.villa-location{font-size:8px;white-space:normal;letter-spacing:.02em}.villa-panel:not(.is-active) .villa-location{font-size:7px}.villa-expanded{flex-wrap:wrap;gap:8px}.villa-services{margin:13px 0 0;gap:6px;width:100%}.villa-services span{font-size:9px}.villa-services iconify-icon{font-size:14px}.villa-book{padding:10px 14px;font-size:10px;margin-top:5px;margin-left:auto}.sun-rays{width:150vw;opacity:.8}.villas-curtain{height:100px}}
 @media(prefers-reduced-motion:reduce){.sun-beam,.villa-panel,.villa-panel::after,.villa-panel>img,.villa-expanded{animation:none!important;transition:none!important}.sun-beam{opacity:.45}.villas{margin-top:0}}
 
 /* Restore the approved hero's warm metal light and fine image outlines. */
 .hero-sunlight{background:radial-gradient(ellipse 49% 64% at 0% 0%,#b69b7238,transparent 74%)!important}
-.hero-copy::before{content:'';position:absolute;z-index:-1;left:-14%;top:21%;width:128%;height:60%;background:radial-gradient(ellipse at center,#b69b7254 0%,#e7d3a42a 34%,transparent 72%)!important;filter:blur(26px)!important;pointer-events:none}
-.hero-copy h1 em{text-shadow:0 0 12px #e7d3a46e,0 0 34px #b69b727d!important}
-.film-card{border:1px solid transparent;background:linear-gradient(transparent,transparent) padding-box,linear-gradient(145deg,#84663d,#e7d3a4 36%,#b69b72 76%,#84663d) border-box;box-shadow:0 0 13px #b69b7233}
+.hero-copy::before{content:'';position:absolute;z-index:-1;left:-14%;top:21%;width:128%;height:60%;background:radial-gradient(ellipse at center,#b69b7254 0%,#b69b722a 34%,transparent 72%)!important;filter:blur(26px)!important;pointer-events:none}
+.hero-copy h1 em{text-shadow:0 0 12px #b69b726e,0 0 34px #b69b727d!important}
+.film-card{border:1px solid transparent;background:linear-gradient(transparent,transparent) padding-box,linear-gradient(145deg,#84663d,#b69b72 36%,#b69b72 76%,#84663d) border-box;box-shadow:0 0 13px #b69b7233}
 @media(max-width:800px){.villas-intro{padding:85px 6% 44px}}
 @media(max-width:540px){.villas-intro{padding:75px 5% 38px}}
 
