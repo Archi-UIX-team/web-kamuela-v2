@@ -1,7 +1,8 @@
 /* The approved hero composition stays intact; only its lighting is replaced. */
 .hero-sunlight{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;background:transparent!important;isolation:isolate}
 .hero-sunlight::before,.hero-sunlight::after{content:none!important;display:none!important}
-.sun-rays{position:absolute;right:0;top:0;width:min(88vw,1600px);height:100%;overflow:visible;mix-blend-mode:screen;pointer-events:none}
+.sun-rays{position:absolute;left:0;right:auto;top:0;width:min(88vw,1600px);height:100%;overflow:visible;mix-blend-mode:screen;pointer-events:none;transform:scaleX(-1)}
+.sun-rays ellipse{opacity:.38}
 .sun-beam{fill:url(#ray-light);opacity:.42;transform-origin:94% 0%;animation:ray-breathe 13s ease-in-out infinite alternate}
 .beam-1{opacity:.38;animation-duration:13s}.beam-2{opacity:.55;animation-duration:15s;animation-delay:-5s}.beam-3{opacity:.40;animation-duration:14s;animation-delay:-8s}.beam-4{opacity:.62;animation-duration:16s;animation-delay:-2s}.beam-5{opacity:.32;animation-duration:12s;animation-delay:-9s}.beam-6{opacity:.50;animation-duration:15s;animation-delay:-4s}.beam-7{opacity:.25;animation-duration:14s;animation-delay:-7s}
 .sun-foliage{opacity:.34;filter:blur(12px)}
@@ -18,24 +19,33 @@
 .villas-intro h2 em{font:400 1.38em/.75 Allura;color:#e7d3a4;letter-spacing:0;white-space:nowrap}
 .villas-intro p{font:400 14px/1.6 Inter;letter-spacing:.03em;color:#d0dacd;margin:24px auto 0}
 .villa-showcase{position:relative;display:block!important;width:100vw!important;max-width:none!important;min-height:0!important;height:clamp(620px,90svh,1100px);margin:0!important;padding:0!important;overflow:hidden}
-.villa-gallery{position:absolute;inset:0;width:100%;height:100%!important;display:flex;align-items:stretch;gap:0;perspective:none!important;touch-action:pan-y;overflow:hidden}
-.villa-panel{position:relative;flex:1 1 0;min-width:0;height:100%;border:0;border-radius:0;outline:0;overflow:hidden;isolation:isolate;cursor:pointer;background:#061e17;transition:flex-grow 950ms cubic-bezier(.2,.7,.2,1)}
+.villa-gallery{position:absolute;inset:0;width:100%;height:100%!important;display:flex;align-items:stretch;gap:0;perspective:none!important;touch-action:pan-y;overflow:hidden;pointer-events:auto!important}
+.villa-panel{position:relative;flex:1 1 0;min-width:0;height:100%;border:0;border-radius:0;outline:0;overflow:hidden;isolation:isolate;cursor:pointer;background:#061e17;pointer-events:auto!important;transition:flex-grow 950ms cubic-bezier(.2,.7,.2,1)}
 .villa-panel.is-active{flex-grow:2}
 .villa-panel+.villa-panel{border-left:1px solid #b69b728c}
 .villa-panel::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,26,18,.38) 0%,rgba(23,67,31,.48) 55%,rgba(6,26,18,.74) 100%);pointer-events:none;transition:opacity 950ms ease}
-.villa-panel.is-active::after{opacity:0}
+.villa-panel.is-active::after{opacity:.68}
 .villa-panel::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 36%,#061a1280 77%,#061a12e8 100%);pointer-events:none}
 .villa-panel>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center;filter:saturate(.89);transition:object-position 950ms ease,filter 950ms ease}
-.villa-panel.is-active>img{filter:saturate(1) contrast(1.03)}
+.villa-panel.is-active>img{filter:brightness(.82) saturate(.94) contrast(1.02)}
 .villa-panel:focus-visible{outline:2px solid #e7d3a4;outline-offset:-4px;z-index:2}
-.villa-panel-copy{position:absolute;z-index:3;left:clamp(22px,4vw,80px);right:clamp(16px,4vw,75px);bottom:clamp(90px,12vh,140px);color:#f3f0e7;text-shadow:0 2px 18px #061a12;pointer-events:none}
+.villa-panel-copy{position:absolute;z-index:3;left:clamp(22px,4vw,80px);right:clamp(16px,4vw,75px);bottom:clamp(90px,12vh,140px);color:#f3f0e7;text-shadow:0 2px 18px #061a12;pointer-events:auto;min-width:0;transition:padding .7s,border-color .7s,background .7s,backdrop-filter .7s,box-shadow .7s}
+.villa-panel.is-active .villa-panel-copy{left:clamp(30px,4vw,75px);right:clamp(30px,4vw,75px);bottom:clamp(84px,11vh,125px);padding:clamp(24px,2.6vw,40px);border:1px solid #e7d3a45e;background:linear-gradient(110deg,rgba(6,26,18,.78),rgba(21,32,33,.69) 57%,rgba(6,26,18,.77));-webkit-backdrop-filter:blur(32px) saturate(1.22);backdrop-filter:blur(32px) saturate(1.22);box-shadow:0 22px 55px #0007,inset 0 1px 0 #f3f0e729}
+.villa-panel:not(.is-active) .villa-panel-copy{left:clamp(21px,3vw,54px);right:20px}
+.villa-panel:not(.is-active) h3{font-size:clamp(19px,2vw,31px);white-space:normal}
+.villa-location{display:flex;align-items:center;gap:9px}
+.villa-location iconify-icon{font-size:16px;color:#e7d3a4}
+.villa-services{display:flex;flex-wrap:wrap;gap:10px 23px;margin:23px 0 25px;color:#f3f0e7}
+.villa-services span{display:inline-flex;align-items:center;gap:8px;font:400 12px/1.4 Inter;white-space:nowrap}
+.villa-services iconify-icon{font-size:17px;color:#e7d3a4}
+iconify-icon{display:inline-block;width:1em;height:1em;flex:none;vertical-align:-.12em}
 .villa-location{font:500 11px/1.5 Inter;letter-spacing:.21em;color:#e7d3a4;white-space:nowrap}
 .villa-panel h3{font:400 clamp(23px,2.3vw,43px)/1.1 Inter;letter-spacing:-.045em;margin:14px 0 0;white-space:nowrap}
 .villa-expanded{max-height:0;opacity:0;transform:translateY(14px);transition:max-height 750ms ease,opacity 500ms ease,transform 700ms ease;overflow:hidden}
-.villa-panel.is-active .villa-expanded{max-height:180px;opacity:1;transform:translateY(0)}
-.villa-expanded p{font:400 13px/1.6 Inter;max-width:340px;color:#eee8dd;margin:22px 0}
-.villa-expanded a{display:inline-flex;align-items:center;gap:24px;border:1px solid #b69b72;border-radius:100px;padding:12px 21px;color:#f3f0e7;text-shadow:none;background:#061a1280;text-decoration:none;font:500 12px Inter;pointer-events:auto;white-space:nowrap}
-.villa-expanded a:hover,.villa-expanded a:focus-visible{background:#b69b72;color:#061a12}
+.villa-panel.is-active .villa-expanded{max-height:210px;opacity:1;transform:translateY(0);overflow:visible}
+.villa-book{display:inline-flex;align-items:center;justify-content:center;gap:24px;border:1px solid #b69b72b5;border-radius:2px;padding:13px 22px;color:#f3f0e7;text-shadow:none;background:#3c1351;text-decoration:none;font:500 12px Inter;pointer-events:auto;white-space:nowrap;cursor:pointer;transition:background .3s,box-shadow .3s}
+.villa-book:hover,.villa-book:focus-visible{background:#562269;box-shadow:0 0 18px #3c135199}
+.villa-book iconify-icon{font-size:17px}
 .villa-controls{position:absolute;z-index:5;bottom:23px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:18px;border:1px solid #b69b7270;border-radius:100px;padding:9px 14px;background:#061a12d9;backdrop-filter:blur(10px)}
 .villa-controls>button{width:34px;height:34px;border:0;background:none;border-radius:50%;color:#f3f0e7;font:20px Inter;cursor:pointer}
 .villa-controls>button:hover,.villa-controls>button:focus-visible{background:#b69b72;color:#061a12}
@@ -45,7 +55,7 @@
 .villas-curtain{position:relative;height:clamp(115px,16vh,190px);background:radial-gradient(ellipse at 78% 100%,#3c135129,transparent 45%),linear-gradient(#061e17,#102018);overflow:hidden}
 .curtain-line{position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,transparent 5%,#b69b7288 26%,#e7d3a4 50%,#b69b7288 74%,transparent 95%)}
 .villas-curtain img{position:absolute;left:50%;top:50%;width:29px;height:48px;transform:translate(-50%,-50%) rotate(-17deg);background:#061e17;padding:5px;filter:drop-shadow(0 0 8px #b69b7240)}
-@media(max-width:800px){.villas-intro{padding:clamp(100px,13vh,150px) 6% 75px}.villas-intro h2{font-size:clamp(43px,7vw,62px)}.villa-showcase{height:clamp(560px,82svh,870px)}.villa-panel-copy{left:19px;right:12px;bottom:100px}.villa-panel h3{font-size:clamp(16px,2.9vw,25px)}.villa-location{font-size:9px;letter-spacing:.1em}.villa-expanded p{font-size:11px;margin:16px 0}.villa-expanded a{font-size:10px;padding:9px 12px}.sun-rays{width:115vw}}
-@media(max-width:540px){.villas-intro{padding:95px 5% 65px}.villas-intro h2{font-size:39px}.villas-intro h2 em{display:block;margin-top:13px;font-size:1.7em}.villas-intro p{font-size:12px}.villa-showcase{height:72svh;min-height:490px}.villa-panel{flex-grow:.56}.villa-panel.is-active{flex-grow:2}.villa-panel-copy{left:10px;right:9px;bottom:88px}.villa-panel h3{font-size:12px;white-space:normal;line-height:1.2}.villa-panel.is-active h3{font-size:clamp(18px,5.2vw,26px)}.villa-location{font-size:8px;white-space:normal;letter-spacing:.02em}.villa-panel:not(.is-active) .villa-location{font-size:7px}.villa-expanded p{font-size:10px}.sun-rays{width:150vw;opacity:.8}.villas-curtain{height:100px}}
+@media(max-width:800px){.villas-intro{padding:clamp(100px,13vh,150px) 6% 75px}.villas-intro h2{font-size:clamp(43px,7vw,62px)}.villa-showcase{height:clamp(560px,82svh,870px)}.villa-panel-copy{left:19px;right:12px;bottom:100px}.villa-panel h3{font-size:clamp(16px,2.9vw,25px)}.villa-location{font-size:9px;letter-spacing:.1em}.villa-services{gap:8px 15px}.villa-services span{font-size:11px}.sun-rays{width:115vw}}
+@media(max-width:540px){.villas-intro{padding:95px 5% 65px}.villas-intro h2{font-size:39px}.villas-intro h2 em{display:block;margin-top:13px;font-size:1.7em}.villas-intro p{font-size:12px}.villa-showcase{height:72svh;min-height:490px}.villa-panel{flex-grow:.56}.villa-panel.is-active{flex-grow:2}.villa-panel-copy{left:10px;right:9px;bottom:88px}.villa-panel.is-active .villa-panel-copy{left:9px;right:9px;padding:16px;bottom:76px}.villa-panel:not(.is-active) .villa-panel-copy{left:7px;right:5px}.villa-panel:not(.is-active) h3{font-size:11px}.villa-panel h3{font-size:12px;white-space:normal;line-height:1.2}.villa-panel.is-active h3{font-size:clamp(18px,5.2vw,26px)}.villa-location{font-size:8px;white-space:normal;letter-spacing:.02em}.villa-panel:not(.is-active) .villa-location{font-size:7px}.villa-services{margin:13px 0 16px;gap:6px}.villa-services span{font-size:9px}.villa-services iconify-icon{font-size:14px}.villa-book{padding:10px 14px;font-size:10px}.sun-rays{width:150vw;opacity:.8}.villas-curtain{height:100px}}
 @media(prefers-reduced-motion:reduce){.sun-beam,.villa-panel,.villa-panel::after,.villa-panel>img,.villa-expanded{animation:none!important;transition:none!important}.sun-beam{opacity:.45}.villas{margin-top:0}}
 
