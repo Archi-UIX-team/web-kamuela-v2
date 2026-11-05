@@ -1,0 +1,51 @@
+/* The approved hero composition stays intact; only its lighting is replaced. */
+.hero-sunlight{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;background:transparent!important;isolation:isolate}
+.hero-sunlight::before,.hero-sunlight::after{content:none!important;display:none!important}
+.sun-rays{position:absolute;right:0;top:0;width:min(88vw,1600px);height:100%;overflow:visible;mix-blend-mode:screen;pointer-events:none}
+.sun-beam{fill:url(#ray-light);opacity:.42;transform-origin:94% 0%;animation:ray-breathe 13s ease-in-out infinite alternate}
+.beam-1{opacity:.38;animation-duration:13s}.beam-2{opacity:.55;animation-duration:15s;animation-delay:-5s}.beam-3{opacity:.40;animation-duration:14s;animation-delay:-8s}.beam-4{opacity:.62;animation-duration:16s;animation-delay:-2s}.beam-5{opacity:.32;animation-duration:12s;animation-delay:-9s}.beam-6{opacity:.50;animation-duration:15s;animation-delay:-4s}.beam-7{opacity:.25;animation-duration:14s;animation-delay:-7s}
+.sun-foliage{opacity:.34;filter:blur(12px)}
+@keyframes ray-breathe{from{opacity:var(--ray-low,.3);transform:translateX(0) rotate(0)}to{opacity:var(--ray-high,.57);transform:translateX(-3px) rotate(.12deg)}}
+.beam-1{--ray-low:.28;--ray-high:.42}.beam-2{--ray-low:.39;--ray-high:.59}.beam-3{--ray-low:.28;--ray-high:.46}.beam-4{--ray-low:.46;--ray-high:.66}.beam-5{--ray-low:.22;--ray-high:.37}.beam-6{--ray-low:.35;--ray-high:.54}.beam-7{--ray-low:.18;--ray-high:.32}
+
+/* The section's base is the same solid emerald painted inside the portal SVG. */
+.villas{padding:0!important;margin-top:-100svh;position:relative;z-index:1;background:#061e17!important;border:0!important;overflow:clip}
+.villas-intro{position:relative;isolation:isolate;max-width:none!important;margin:0!important;padding:clamp(155px,17vh,205px) 6% clamp(85px,10vh,112px);text-align:center;background:radial-gradient(ellipse 40% 68% at 50% 60%,#17431f94,transparent 100%),radial-gradient(ellipse 26% 75% at 92% 73%,#3c13512b,transparent 100%)}
+.villas-intro::before,.villas-intro::after{content:'';position:absolute;width:min(26vw,340px);height:75%;top:15%;z-index:-1;background:url('./assets/leaf-1.svg') center/contain no-repeat;opacity:.055;pointer-events:none}
+.villas-intro::before{left:-11%;transform:rotate(-22deg)}.villas-intro::after{right:-11%;transform:rotate(164deg)}
+.villas-intro .eyebrow{font:500 11px Inter;letter-spacing:.27em;color:#b69b72}
+.villas-intro h2{font:400 clamp(44px,5vw,76px)/1.05 Inter;letter-spacing:-.055em;color:#f3f0e7;margin:18px 0 10px}
+.villas-intro h2 em{font:400 1.38em/.75 Allura;color:#e7d3a4;letter-spacing:0;white-space:nowrap}
+.villas-intro p{font:400 14px/1.6 Inter;letter-spacing:.03em;color:#d0dacd;margin:24px auto 0}
+.villa-showcase{position:relative;display:block!important;width:100vw!important;max-width:none!important;min-height:0!important;height:clamp(620px,90svh,1100px);margin:0!important;padding:0!important;overflow:hidden}
+.villa-gallery{position:absolute;inset:0;width:100%;height:100%!important;display:flex;align-items:stretch;gap:0;perspective:none!important;touch-action:pan-y;overflow:hidden}
+.villa-panel{position:relative;flex:1 1 0;min-width:0;height:100%;border:0;border-radius:0;outline:0;overflow:hidden;isolation:isolate;cursor:pointer;background:#061e17;transition:flex-grow 950ms cubic-bezier(.2,.7,.2,1)}
+.villa-panel.is-active{flex-grow:2}
+.villa-panel+.villa-panel{border-left:1px solid #b69b728c}
+.villa-panel::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,26,18,.38) 0%,rgba(23,67,31,.48) 55%,rgba(6,26,18,.74) 100%);pointer-events:none;transition:opacity 950ms ease}
+.villa-panel.is-active::after{opacity:0}
+.villa-panel::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 36%,#061a1280 77%,#061a12e8 100%);pointer-events:none}
+.villa-panel>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center;filter:saturate(.89);transition:object-position 950ms ease,filter 950ms ease}
+.villa-panel.is-active>img{filter:saturate(1) contrast(1.03)}
+.villa-panel:focus-visible{outline:2px solid #e7d3a4;outline-offset:-4px;z-index:2}
+.villa-panel-copy{position:absolute;z-index:3;left:clamp(22px,4vw,80px);right:clamp(16px,4vw,75px);bottom:clamp(90px,12vh,140px);color:#f3f0e7;text-shadow:0 2px 18px #061a12;pointer-events:none}
+.villa-location{font:500 11px/1.5 Inter;letter-spacing:.21em;color:#e7d3a4;white-space:nowrap}
+.villa-panel h3{font:400 clamp(23px,2.3vw,43px)/1.1 Inter;letter-spacing:-.045em;margin:14px 0 0;white-space:nowrap}
+.villa-expanded{max-height:0;opacity:0;transform:translateY(14px);transition:max-height 750ms ease,opacity 500ms ease,transform 700ms ease;overflow:hidden}
+.villa-panel.is-active .villa-expanded{max-height:180px;opacity:1;transform:translateY(0)}
+.villa-expanded p{font:400 13px/1.6 Inter;max-width:340px;color:#eee8dd;margin:22px 0}
+.villa-expanded a{display:inline-flex;align-items:center;gap:24px;border:1px solid #b69b72;border-radius:100px;padding:12px 21px;color:#f3f0e7;text-shadow:none;background:#061a1280;text-decoration:none;font:500 12px Inter;pointer-events:auto;white-space:nowrap}
+.villa-expanded a:hover,.villa-expanded a:focus-visible{background:#b69b72;color:#061a12}
+.villa-controls{position:absolute;z-index:5;bottom:23px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:18px;border:1px solid #b69b7270;border-radius:100px;padding:9px 14px;background:#061a12d9;backdrop-filter:blur(10px)}
+.villa-controls>button{width:34px;height:34px;border:0;background:none;border-radius:50%;color:#f3f0e7;font:20px Inter;cursor:pointer}
+.villa-controls>button:hover,.villa-controls>button:focus-visible{background:#b69b72;color:#061a12}
+.villa-controls .scene-dots{display:flex;align-items:center;gap:1px}.villa-controls .scene-dots button{border:0;background:none;padding:8px;cursor:pointer}
+.villa-controls .scene-dots button::after{content:'';display:block;width:6px;height:6px;background:#f3f0e78e;border-radius:10px;transition:width .3s,background .3s}
+.villa-controls .scene-dots button[aria-pressed=true]::after{width:21px;background:#e7d3a4}
+.villas-curtain{position:relative;height:clamp(115px,16vh,190px);background:radial-gradient(ellipse at 78% 100%,#3c135129,transparent 45%),linear-gradient(#061e17,#102018);overflow:hidden}
+.curtain-line{position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,transparent 5%,#b69b7288 26%,#e7d3a4 50%,#b69b7288 74%,transparent 95%)}
+.villas-curtain img{position:absolute;left:50%;top:50%;width:29px;height:48px;transform:translate(-50%,-50%) rotate(-17deg);background:#061e17;padding:5px;filter:drop-shadow(0 0 8px #b69b7240)}
+@media(max-width:800px){.villas-intro{padding:clamp(100px,13vh,150px) 6% 75px}.villas-intro h2{font-size:clamp(43px,7vw,62px)}.villa-showcase{height:clamp(560px,82svh,870px)}.villa-panel-copy{left:19px;right:12px;bottom:100px}.villa-panel h3{font-size:clamp(16px,2.9vw,25px)}.villa-location{font-size:9px;letter-spacing:.1em}.villa-expanded p{font-size:11px;margin:16px 0}.villa-expanded a{font-size:10px;padding:9px 12px}.sun-rays{width:115vw}}
+@media(max-width:540px){.villas-intro{padding:95px 5% 65px}.villas-intro h2{font-size:39px}.villas-intro h2 em{display:block;margin-top:13px;font-size:1.7em}.villas-intro p{font-size:12px}.villa-showcase{height:72svh;min-height:490px}.villa-panel{flex-grow:.56}.villa-panel.is-active{flex-grow:2}.villa-panel-copy{left:10px;right:9px;bottom:88px}.villa-panel h3{font-size:12px;white-space:normal;line-height:1.2}.villa-panel.is-active h3{font-size:clamp(18px,5.2vw,26px)}.villa-location{font-size:8px;white-space:normal;letter-spacing:.02em}.villa-panel:not(.is-active) .villa-location{font-size:7px}.villa-expanded p{font-size:10px}.sun-rays{width:150vw;opacity:.8}.villas-curtain{height:100px}}
+@media(prefers-reduced-motion:reduce){.sun-beam,.villa-panel,.villa-panel::after,.villa-panel>img,.villa-expanded{animation:none!important;transition:none!important}.sun-beam{opacity:.45}.villas{margin-top:0}}
+
