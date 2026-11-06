@@ -1,87 +1,99 @@
 (() => {
   'use strict';
-  const gallery = document.querySelector('.offer-gallery');
-  if (!gallery) return;
-  const cards = [...gallery.querySelectorAll('[data-offer]')];
-  const previous = document.querySelector('[data-offer-prev]');
-  const next = document.querySelector('[data-offer-next]');
-  const activeLabel = document.querySelector('[data-offer-active-label]');
-  const activeTitle = document.querySelector('[data-offer-active-title]');
-  const activeLink = document.querySelector('[data-offer-active-link]');
+  const root = document.querySelector('[data-offers-carousel]');
+  if (!root) return;
+  const viewport = root.querySelector('.offers-carousel-viewport');
+  const track = root.querySelector('.offers-carousel-track');
+  const cards = [...root.querySelectorAll('[data-offer-invitation]')];
+  const previous = root.querySelector('[data-offers-prev]');
+  const next = root.querySelector('[data-offers-next]');
+  const dots = root.querySelector('[data-offers-dots]');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  let active = 2;
+  let page = 0;
+  let visible = 3;
+  let pageCount = 1;
   let pointerStart = null;
-  let timer = 0;
 
-  const positionClasses = ['is-active', 'is-prev', 'is-next', 'is-far-prev', 'is-far-next'];
+  function visibleCount() {
+    return innerWidth <= 700 ? 1 : innerWidth <= 1100 ? 2 : 3;
+  }
+  function buildDots() {
+    dots.replaceChildren();
+    for (let index = 0; index < pageCount; index += 1) {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'offers-dot';
+      dot.setAttribute('aria-label', 'Show offer page ' + (index + 1));
+      dot.addEventListener('click', () => { page = index; render(); });
+      dots.append(dot);
+    }
+  }
   function render() {
-    cards.forEach((card, index) => {
-      card.classList.remove(...positionClasses);
-      const difference = (index - active + cards.length) % cards.length;
-      const position = difference === 0 ? 'is-active'
-        : difference === 1 ? 'is-next'
-        : difference === 2 ? 'is-far-next'
-        : difference === cards.length - 1 ? 'is-prev'
-        : 'is-far-prev';
-      card.classList.add(position);
-      const selected = difference === 0;
-      card.setAttribute('aria-current', selected ? 'true' : 'false');
-      const link = card.querySelector('a');
-      link.tabIndex = selected ? 0 : -1;
+    visible = visibleCount();
+    pageCount = Math.ceil(cards.length / visible);
+    page = Math.max(0, Math.min(page, pageCount - 1));
+    const gap = innerWidth <= 700 ? 22 : innerWidth <= 1100 ? 30 : 40;
+    const cardWidth = innerWidth <= 700 ? viewport.clientWidth * .86 : (viewport.clientWidth - gap * (visible - 1)) / visible;
+    cards.forEach(card => { card.style.flexBasis = cardWidth + 'px'; });
+    const offset = page * visible * (cardWidth + gap);
+    track.style.transform = 'translate3d(' + (-offset) + 'px,0,0)';
+    if (dots.children.length !== pageCount) buildDots();
+    [...dots.children].forEach((dot, index) => {
+      dot.classList.toggle('is-active', index === page);
+      dot.setAttribute('aria-current', index === page ? 'true' : 'false');
     });
-    const current = cards[active];
-    const currentLabel = current.querySelector('.offer-label');
-    const currentTitle = current.querySelector('h3');
-    const currentLink = current.querySelector('a');
-    activeLabel.textContent = currentLabel.textContent;
-    activeTitle.innerHTML = currentTitle.innerHTML;
-    activeLink.href = currentLink.href;
-    activeLink.setAttribute('aria-label', `Detail offer: ${currentTitle.textContent.trim()}`);
-    activeLabel.parentElement.classList.remove('is-changing');
-    requestAnimationFrame(() => activeLabel.parentElement.classList.add('is-changing'));
+    previous.disabled = page === 0;
+    next.disabled = page === pageCount - 1;
+    previous.hidden = next.hidden = dots.hidden = pageCount <= 1;
   }
-  function select(index, restart = true) {
-    active = (index + cards.length) % cards.length;
-    render();
-    if (restart) startAutoplay();
-  }
-  function startAutoplay() {
-    clearInterval(timer);
-    if (reducedMotion.matches) return;
-    timer = setInterval(() => select(active + 1, false), 6000);
-  }
-  cards.forEach((card, index) => card.addEventListener('click', event => {
-    if (index === active) return;
-    event.preventDefault();
-    select(index);
-  }));
-  if (previous) previous.addEventListener('click', () => select(active - 1));
-  if (next) next.addEventListener('click', () => select(active + 1));
-  gallery.addEventListener('keydown', event => {
+  previous.addEventListener('click', () => { if (page > 0) { page -= 1; render(); } });
+  next.addEventListener('click', () => { if (page < pageCount - 1) { page += 1; render(); } });
+  root.addEventListener('keydown', event => {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
     event.preventDefault();
-    select(active + (event.key === 'ArrowRight' ? 1 : -1));
+    if (event.key === 'ArrowLeft') previous.click();
+    else next.click();
   });
-  gallery.addEventListener('pointerdown', event => {
-    pointerStart = { x: event.clientX, y: event.clientY };
-  });
-  gallery.addEventListener('pointerup', event => {
+  viewport.addEventListener('pointerdown', event => { pointerStart = { x: event.clientX, y: event.clientY }; });
+  viewport.addEventListener('pointerup', event => {
     if (!pointerStart) return;
     const dx = event.clientX - pointerStart.x;
     const dy = event.clientY - pointerStart.y;
     pointerStart = null;
-    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) select(active + (dx < 0 ? 1 : -1));
+    if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy)) (dx < 0 ? next : previous).click();
   });
-  gallery.addEventListener('pointercancel', () => { pointerStart = null; });
-  gallery.addEventListener('mouseenter', () => clearInterval(timer));
-  gallery.addEventListener('mouseleave', startAutoplay);
-  gallery.addEventListener('focusin', () => clearInterval(timer));
-  gallery.addEventListener('focusout', event => {
-    if (!gallery.contains(event.relatedTarget)) startAutoplay();
-  });
-  document.addEventListener('visibilitychange', () => document.hidden ? clearInterval(timer) : startAutoplay());
-  reducedMotion.addEventListener('change', startAutoplay);
-  render();
-  startAutoplay();
-})();
+  viewport.addEventListener('pointercancel', () => { pointerStart = null; });
 
+  cards.forEach(card => {
+    let frame = 0;
+    let currentX = card.clientWidth / 2;
+    let currentY = card.clientHeight * .42;
+    let targetX = currentX;
+    let targetY = currentY;
+    const tick = () => {
+      currentX += (targetX - currentX) * .18;
+      currentY += (targetY - currentY) * .18;
+      card.style.setProperty('--cursor-x', currentX + 'px');
+      card.style.setProperty('--cursor-y', currentY + 'px');
+      if (Math.abs(targetX-currentX) > .2 || Math.abs(targetY-currentY) > .2) frame = requestAnimationFrame(tick);
+      else frame = 0;
+    };
+    card.addEventListener('pointermove', event => {
+      if (matchMedia('(hover:none)').matches) return;
+      const rect = card.getBoundingClientRect();
+      targetX = Math.max(58, Math.min(rect.width - 58, event.clientX - rect.left));
+      targetY = Math.max(58, Math.min(rect.height - 58, event.clientY - rect.top));
+      if (!frame && !reducedMotion.matches) frame = requestAnimationFrame(tick);
+      if (reducedMotion.matches) {
+        card.style.setProperty('--cursor-x', targetX + 'px');
+        card.style.setProperty('--cursor-y', targetY + 'px');
+      }
+    });
+  });
+  let resizeFrame = 0;
+  addEventListener('resize', () => {
+    cancelAnimationFrame(resizeFrame);
+    resizeFrame = requestAnimationFrame(render);
+  });
+  render();
+})();
