@@ -58,6 +58,19 @@
     showImage(item);
   }));
 
+  // Hover previews the same synchronized article state without creating a persistent pressed UI.
+  // The last hovered article remains in the feature pane, so the image always follows the reader's focus.
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    let previewedItem = items.find(item => item.classList.contains('is-active')) || items[0];
+    items.forEach(item => item.addEventListener('pointerenter', event => {
+      if (event.pointerType !== 'mouse' || item === previewedItem) return;
+      previewedItem = item;
+      feature.href = item.dataset.url;
+      feature.setAttribute('aria-label', 'Read article: ' + item.querySelector('.journal-item-title').textContent.trim());
+      showImage(item);
+    }));
+  }
+
   // One calm glass cursor follows the pointer over both the photograph and news text.
   if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
     const showcase = section.querySelector('.journal-showcase');
