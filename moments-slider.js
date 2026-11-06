@@ -34,7 +34,6 @@
     const currentTitle = current.querySelector('h3');
     const currentLink = current.querySelector('a');
     activeLabel.textContent = currentLabel.textContent;
-    activeTitle.innerHTML = currentTitle.innerHTML;
     activeLink.href = currentLink.href;
     activeLink.setAttribute('aria-label', `Detail moment: ${currentTitle.textContent.trim()}`);
     activeLabel.parentElement.classList.remove('is-changing');
