@@ -171,23 +171,12 @@
 @media(max-width:800px){.masthead nav a,.masthead nav .nav-book{font-size:14px}}
 
 
-/* Living Golden Vein Portal — official GSM leaf-derived, transparent line gateway. */
-.masthead:not(.scrolled) nav{gap:clamp(14px,1.75vw,28px)}
-.masthead.scrolled nav{gap:clamp(12px,1.45vw,22px)}
-.hero-floral-right{transform:scale(1.35);transform-origin:right bottom}
-.living-golden-vein-portal{position:absolute;left:0;right:0;bottom:-2px;height:clamp(220px,27vh,300px);z-index:8;pointer-events:none;overflow:visible;transform:translateY(calc(var(--vein-pass-y,0)*1px)) scale(var(--vein-scale,1));transform-origin:50% 100%;opacity:var(--vein-opacity,1);will-change:transform,opacity;isolation:isolate}
-.vein-ambient{position:absolute;left:18%;right:18%;bottom:-12%;height:95%;background:radial-gradient(ellipse at 50% 82%,rgba(60,19,81,calc(.12 + var(--vein-glow,0)*.13)),transparent 66%);filter:blur(16px);opacity:calc(.55 + var(--vein-glow,0)*.35)}
-.golden-vein-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.golden-vein-svg path{fill:none;stroke:url(#livingPortalGold);stroke-width:1;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:.68;filter:drop-shadow(0 0 1.5px rgba(231,211,164,.18))}
-.golden-vein-svg .vein-secondary{stroke-width:.62;opacity:.42}
-.golden-vein-svg .vein-highlight{stroke-width:1.35;opacity:calc(.72 + var(--vein-glow,0)*.2)}
-.golden-vein-svg .vein-spine{stroke-width:1.45;opacity:.94}
-.vein-scroll-left{transform:translateX(calc(var(--vein-spread,0)*-1px)) translateY(calc(var(--vein-drop,0)*1px));transform-origin:720px 318px;will-change:transform}
-.vein-scroll-right{transform:translateX(calc(var(--vein-spread,0)*1px)) translateY(calc(var(--vein-drop,0)*1px));transform-origin:720px 318px;will-change:transform}
-.vein-crest{transform:scaleY(calc(1 + var(--vein-awake,0)*.045)) translateY(calc(var(--vein-drop,0)*.15px));transform-origin:720px 318px;opacity:calc(1 - var(--vein-exit,0)*1.25);will-change:transform,opacity}
-.vein-idle-left{transform-origin:720px 318px;animation:living-vein-left 10.8s ease-in-out infinite alternate}
-.vein-idle-right{transform-origin:720px 318px;animation:living-vein-right 13.2s ease-in-out -3.4s infinite alternate}
-@keyframes living-vein-left{from{transform:rotate(-.35deg) translateY(1px)}to{transform:rotate(.45deg) translateY(-2px)}}
-@keyframes living-vein-right{from{transform:rotate(.3deg) translateY(-1px)}to{transform:rotate(-.4deg) translateY(2px)}}
-@media(max-width:800px){.masthead:not(.scrolled) nav,.masthead.scrolled nav{gap:18px}.living-golden-vein-portal{height:clamp(160px,23vh,220px)}.golden-vein-svg path:nth-child(2n){opacity:.34}.hero-floral-right{transform:scale(1.35)}}
-@media(prefers-reduced-motion:reduce){.vein-idle-left,.vein-idle-right{animation:none}.living-golden-vein-portal{transform:none;opacity:1}}
+/* Safe hero-only refinements: no scroll or section visibility changes. */
+@media (min-width: 1121px) {
+  .masthead:not(.scrolled) nav { gap: clamp(14px, 1.55vw, 24px); }
+  .masthead.scrolled nav { gap: clamp(12px, 1.3vw, 20px); }
+}
+.hero-floral-right {
+  transform: scale(1.35);
+  transform-origin: right bottom;
+}
