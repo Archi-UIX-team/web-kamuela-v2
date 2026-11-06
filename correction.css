@@ -1,5 +1,5 @@
 /* Focused correction: original centered navigation, quiet photographic frames, independent cartouche. */
-:root{--forest:#061e17;--green:#17431F;--purple:#3C1351;--gold:#B69B72;--ivory:#F3F0E7}
+:root{--forest:#061e17;--green:#17431F;--purple:#3C1351;--gold:#c2b33a;--ivory:#F3F0E7}
 /* Restore the prior masthead's centered logo and two-row layout, including its sticky compact state. */
 .masthead:not(.scrolled){height:178px;display:grid;grid-template-columns:1fr auto 1fr;grid-template-rows:100px 50px;padding:12px 5% 16px;background:linear-gradient(#07160fca,#07160f55)}
 .masthead:not(.scrolled) .brand{grid-column:2;grid-row:1;width:235px;justify-self:center}
@@ -45,7 +45,7 @@
 .glass-card:before{inset:12px;border:0;border-radius:0;background:linear-gradient(var(--gold),var(--gold)) left top/28px 1px no-repeat,linear-gradient(var(--gold),var(--gold)) left top/1px 28px no-repeat,linear-gradient(var(--gold),var(--gold)) right top/28px 1px no-repeat,linear-gradient(var(--gold),var(--gold)) right top/1px 28px no-repeat;opacity:.8;z-index:4}
 .glass-card img{border-radius:5px 5px 0 0}
 .glass-card:after{border-radius:0 0 5px 5px}
-.offer-image{clip-path:none;border-radius:7px;border:1px solid #b69b72a3}
+.offer-image{clip-path:none;border-radius:7px;border:1px solid #c2b33aa3}
 .offer-image:after{content:'';position:absolute;right:8px;bottom:8px;width:27px;height:27px;border-right:1px solid #e2ca99;border-bottom:1px solid #e2ca99;pointer-events:none}
 @media(min-width:801px) and (max-width:1120px){.hero-copy h1{font-size:clamp(60px,6vw,79px)}.hero-copy{width:35%}.hero-image-gallery{left:40%;width:54%}.masthead:not(.scrolled) nav,.masthead.scrolled nav{gap:18px}}
 @media(max-width:800px){.masthead:not(.scrolled),.masthead.scrolled{height:77px;display:grid;grid-template-columns:1fr auto 1fr;grid-template-rows:1fr;padding:10px 5%;background:#102018ed}.masthead:not(.scrolled) .brand,.masthead.scrolled .brand{grid-column:2;grid-row:1;width:140px;justify-self:center}.masthead:not(.scrolled) .menu-toggle,.masthead.scrolled .menu-toggle{display:flex;grid-column:1;grid-row:1;justify-self:start}.masthead:not(.scrolled) nav,.masthead.scrolled nav{display:none;position:absolute;top:77px;left:0;right:0;padding:28px 6%;background:#102018fa;flex-direction:column;align-items:flex-start;gap:22px}.masthead:not(.scrolled) nav.open,.masthead.scrolled nav.open{display:flex}.masthead:not(.scrolled) .header-book,.masthead.scrolled .header-book{position:static;display:block;grid-column:3;grid-row:1;justify-self:end;padding:12px 8px;font-size:9px;white-space:nowrap}.hero{height:200svh;min-height:1000px}.hero-copy{top:22%;left:6%;width:89%}.hero-copy h1{font-size:clamp(57px,10vw,78px)}.hero-image-gallery{left:6%;top:50%;width:88%;height:36%}.hero-photo-feature{left:23%;width:54%}.hero-photo-secondary{width:21%;top:21%;height:65%}.hero-photo-secondary-right{top:26%;height:60%}.hero-stat{display:none}.ornamental-portal-transition{width:150vw;--portal-top:108%}.hero-scroll-note{bottom:3%}.villas{margin-top:-100svh}}
