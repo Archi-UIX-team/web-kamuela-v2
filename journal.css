@@ -304,3 +304,13 @@
     bottom:auto!important;
   }
 }
+
+
+/* Keep the raised Journal leaf behind copy while retaining thumbnail depth. */
+@media (min-width:1101px){
+  .news>.kamuela-section-leaf.kamuela-section-leaf-left{z-index:2!important}
+  .news .journal-inner{z-index:auto}
+  .news .journal-heading,
+  .news .journal-selector{position:relative;z-index:3}
+  .news .journal-feature{z-index:1}
+}
