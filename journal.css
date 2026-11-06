@@ -78,7 +78,7 @@
     box-sizing:border-box;
     height:calc(100dvh - 88px);
     min-height:0;
-    padding:clamp(8px,1.25dvh,12px) clamp(64px,5vw,80px) clamp(10px,1.5dvh,16px);
+    padding:clamp(18px,2.2dvh,26px) clamp(64px,5vw,80px) clamp(16px,2dvh,24px);
     overflow:visible;
   }
   .journal-inner{
