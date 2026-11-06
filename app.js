@@ -15,6 +15,17 @@ const offersSection = document.querySelector('.offers');
 const portal = document.querySelector('.ornamental-portal-transition');
 const villasSection = document.querySelector('.villas');
 const progress = document.querySelector('.scroll-progress');
+
+// Detach the Offers leaf into a zero-height bridge shared by Villas and Offers.
+// This keeps one continuous asset above both section backgrounds without clipping.
+const offersLeaf = offersSection?.querySelector(':scope > .kamuela-section-leaf');
+if (offersSection && offersLeaf) {
+  const botanicalBridge = document.createElement('div');
+  botanicalBridge.className = 'offers-botanical-bridge';
+  botanicalBridge.setAttribute('aria-hidden', 'true');
+  offersSection.before(botanicalBridge);
+  botanicalBridge.append(offersLeaf);
+}
 const motion = matchMedia('(prefers-reduced-motion: reduce)');
 let frame = 0;
 
