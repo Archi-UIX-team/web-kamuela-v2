@@ -33,7 +33,9 @@
     pageCount = Math.ceil(cards.length / visible);
     page = Math.max(0, Math.min(page, pageCount - 1));
     const gap = innerWidth <= 700 ? 22 : innerWidth <= 1100 ? 30 : 40;
-    const cardWidth = innerWidth <= 700 ? viewport.clientWidth * .86 : (viewport.clientWidth - gap * (visible - 1)) / visible;
+    const safeInline = innerWidth <= 700 ? 0 : 56;
+    const usableWidth = Math.max(0, viewport.clientWidth - safeInline);
+    const cardWidth = innerWidth <= 700 ? viewport.clientWidth * .86 : (usableWidth - gap * (visible - 1)) / visible;
     cards.forEach(card => { card.style.flexBasis = cardWidth + 'px'; });
     const offset = page * visible * (cardWidth + gap);
     track.style.transform = 'translate3d(' + (-offset) + 'px,0,0)';
@@ -90,10 +92,35 @@
       }
     });
   });
+  const offersSection = root.closest('.offers-invitation-section');
+  const transitionLeaf = offersSection?.querySelector(':scope > .kamuela-section-leaf');
+  let leafFrame = 0;
+  function updateTransitionLeaf() {
+    leafFrame = 0;
+    if (!transitionLeaf || !offersSection) return;
+    if (reducedMotion.matches) {
+      transitionLeaf.style.setProperty('--offer-leaf-x', '0px');
+      transitionLeaf.style.setProperty('--offer-leaf-y', '0px');
+      transitionLeaf.style.setProperty('--offer-leaf-rotate', '28deg');
+      return;
+    }
+    const rect = offersSection.getBoundingClientRect();
+    const travel = offersSection.offsetHeight + innerHeight * .72;
+    const progress = Math.max(0, Math.min(1, (innerHeight * .9 - rect.top) / travel));
+    transitionLeaf.style.setProperty('--offer-leaf-x', Math.min(innerWidth * .16, 230) * progress + 'px');
+    transitionLeaf.style.setProperty('--offer-leaf-y', Math.min(innerHeight * .24, 230) * progress + 'px');
+    transitionLeaf.style.setProperty('--offer-leaf-rotate', 28 + progress * 7 + 'deg');
+  }
+  function requestLeafUpdate() {
+    if (!leafFrame) leafFrame = requestAnimationFrame(updateTransitionLeaf);
+  }
+  addEventListener('scroll', requestLeafUpdate, { passive: true });
+
   let resizeFrame = 0;
   addEventListener('resize', () => {
     cancelAnimationFrame(resizeFrame);
-    resizeFrame = requestAnimationFrame(render);
+    resizeFrame = requestAnimationFrame(() => { render(); updateTransitionLeaf(); });
   });
   render();
+  updateTransitionLeaf();
 })();
