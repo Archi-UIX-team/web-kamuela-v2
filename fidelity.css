@@ -1,5 +1,5 @@
 /* Visual fidelity pass against the original Kamuela luxury mockup. */
-:root{--forest:#061a12;--green:#17431F;--purple:#3C1351;--gold:#B69B72;--ivory:#F3F0E7}
+:root{--forest:#061a12;--green:#17431F;--purple:#3C1351;--gold:#c2b33a;--ivory:#F3F0E7}
 body{background:#061a12;color:var(--ivory);font-family:Inter}
 h1,h2,h3,.hero-copy p,.section-intro p,.offer-copy p,.detail-description,.news-all,.outline-cta,.gold-cta,.play-link,.card-copy>span:not(.card-arrow),.hero-property-caption strong,.hero-stat,.footer-bottom{font-family:Inter;font-weight:400}
 em,.footer-top p{font-family:Allura}
@@ -10,9 +10,9 @@ em,.footer-top p{font-family:Allura}
 .masthead:not(.scrolled) .brand{opacity:0;pointer-events:none}
 .masthead:not(.scrolled) nav{gap:clamp(24px,2.7vw,43px)}
 .masthead:not(.scrolled) nav a,.masthead.scrolled nav a{font:400 16px/1.3 Inter;letter-spacing:0;color:#f3f0e7}
-.masthead .header-book,.masthead:not(.scrolled) .header-book,.masthead.scrolled .header-book{border:1px solid transparent;border-radius:100px;padding:13px 21px;background:linear-gradient(#071d16b0,#071d16b0) padding-box,linear-gradient(115deg,#84663D,#B69B72 48%,#B69B72 75%,#84663D) border-box;color:var(--ivory);font:400 13px Inter;letter-spacing:.01em}
-.masthead:not(.scrolled) .header-book{background:linear-gradient(#071d1640,#071d1640) padding-box,linear-gradient(115deg,#84663D,#B69B72 48%,#B69B72 75%,#84663D) border-box}
-.masthead.scrolled{background:rgba(6,26,18,.94);backdrop-filter:blur(12px);border-color:#b69b7240;transition:background .55s,height .55s,padding .55s}
+.masthead .header-book,.masthead:not(.scrolled) .header-book,.masthead.scrolled .header-book{border:1px solid transparent;border-radius:100px;padding:13px 21px;background:linear-gradient(#071d16b0,#071d16b0) padding-box,linear-gradient(115deg,#84663D,#c2b33a 48%,#c2b33a 75%,#84663D) border-box;color:var(--ivory);font:400 13px Inter;letter-spacing:.01em}
+.masthead:not(.scrolled) .header-book{background:linear-gradient(#071d1640,#071d1640) padding-box,linear-gradient(115deg,#84663D,#c2b33a 48%,#c2b33a 75%,#84663D) border-box}
+.masthead.scrolled{background:rgba(6,26,18,.94);backdrop-filter:blur(12px);border-color:#c2b33a40;transition:background .55s,height .55s,padding .55s}
 .masthead.scrolled .brand{width:135px;opacity:1;transition:opacity .4s,width .55s}
 .masthead.scrolled nav{gap:clamp(18px,2.4vw,36px)}
 /* A restrained emerald atmosphere keeps the photography and metallic linework primary. */
@@ -24,7 +24,7 @@ em,.footer-top p{font-family:Allura}
 .hero-copy h1{font:400 clamp(62px,6.7vw,102px)/.98 Inter;letter-spacing:-.09em;white-space:nowrap;margin:24px 0 20px;text-shadow:0 5px 35px #03120dbb}
 .hero-copy p{font-size:14px;line-height:1.6;letter-spacing:0;max-width:320px}
 .hero-actions{gap:24px;margin-top:30px}
-.gold-cta{font:400 13px Inter;border:1px solid #b69b72;border-radius:100px;padding:15px 24px;background:linear-gradient(105deg,#d7bd90,#9d774d 48%,#d3ac74);box-shadow:inset 0 1px 10px #fff5,0 0 22px #b69b724d;color:#fff4e3}
+.gold-cta{font:400 13px Inter;border:1px solid #c2b33a;border-radius:100px;padding:15px 24px;background:linear-gradient(105deg,#d7bd90,#9d774d 48%,#d3ac74);box-shadow:inset 0 1px 10px #fff5,0 0 22px #c2b33a4d;color:#fff4e3}
 .play-link{font:400 11px Inter;gap:12px}
 /* Three fixed positions and one consistent SVG stroke language. */
 .hero-image-gallery{left:35%;top:20%;width:60%;height:64%;z-index:3;pointer-events:auto;opacity:var(--gallery-opacity,1)}
@@ -45,22 +45,22 @@ em,.footer-top p{font-family:Allura}
 .hero-property-caption small{font:500 9px Inter;letter-spacing:.11em;color:#f1d3a1}
 .hero-property-caption strong{font-size:clamp(13px,1.2vw,18px);line-height:1.22;max-width:270px;opacity:0;transform:translateY(12px);transition:opacity .5s,transform .55s}
 .hero-property-caption>span{font:400 9px Inter;letter-spacing:.08em;opacity:0;transform:translateY(11px);transition:opacity .55s,transform .55s}
-.hero-property-caption b{font-size:16px;font-weight:400;margin-left:8px;color:#b69b72}
+.hero-property-caption b{font-size:16px;font-weight:400;margin-left:8px;color:#c2b33a}
 .hero-property:hover .hero-property-caption strong,.hero-property:focus-visible .hero-property-caption strong,.hero-property:hover .hero-property-caption>span,.hero-property:focus-visible .hero-property-caption>span{opacity:1;transform:translateY(0)}
 .hero-photo-secondary .hero-property-caption small{font-size:8px}.hero-photo-secondary .hero-property-caption strong{font-size:12px}
 /* Three deliberately placed, quiet metal reflections. */
-.hero-glint{position:absolute;z-index:8;width:3px;height:3px;background:#f3e2bb;border-radius:50%;box-shadow:0 0 7px 3px #ead1a37c,0 0 19px 7px #b69b7240;pointer-events:none;opacity:var(--gallery-opacity,1)}
+.hero-glint{position:absolute;z-index:8;width:3px;height:3px;background:#f3e2bb;border-radius:50%;box-shadow:0 0 7px 3px #ead1a37c,0 0 19px 7px #c2b33a40;pointer-events:none;opacity:var(--gallery-opacity,1)}
 .hero-glint:before,.hero-glint:after{content:'';position:absolute;top:1px;left:-13px;width:29px;height:1px;background:linear-gradient(90deg,transparent,#f3e2bb,transparent)}
 .hero-glint:after{transform:rotate(90deg)}
 .hero-glint-one{left:67%;top:20%}.hero-glint-two{right:6%;top:50%;transform:scale(.75)}.hero-glint-three{left:39%;top:66%;transform:scale(.56)}
 /* The cartouche is a shallow, finely outlined purple architectural element. */
 .ornamental-portal-transition{width:min(100vw,1440px);top:var(--portal-top,calc(100% + min(29.5vw, 425px) - 70px));filter:drop-shadow(0 -10px 23px #a58e7940)}
 .ornamental-portal-art{filter:drop-shadow(0 10px 26px #0008)}
-.portal-golden-leaf{position:absolute;left:50%;top:12%;width:43px;height:76px;object-fit:contain;transform:translateX(-50%) rotate(-18deg);filter:drop-shadow(0 0 4px #b69b726b);opacity:.82;pointer-events:none}
+.portal-golden-leaf{position:absolute;left:50%;top:12%;width:43px;height:76px;object-fit:contain;transform:translateX(-50%) rotate(-18deg);filter:drop-shadow(0 0 4px #c2b33a6b);opacity:.82;pointer-events:none}
 /* The image frames end above the portal in its resting position. */
 .hero-scroll-note{bottom:7%;left:5.2%}
 @media(max-width:1200px){.masthead:not(.scrolled) nav a,.masthead.scrolled nav a{font-size:14px}.hero-copy h1{font-size:clamp(57px,6.5vw,83px)}.hero-image-gallery{left:40%;width:55%}.hero-property-caption strong{font-size:14px}}
-@media(max-width:800px){.hero-masthead-brand{width:145px;top:8px}.masthead:not(.scrolled) .brand{opacity:0}.masthead:not(.scrolled){background:transparent!important}.masthead:not(.scrolled) .header-book{background:linear-gradient(#071d1669,#071d1669) padding-box,linear-gradient(115deg,#84663D,#B69B72 48%,#84663D) border-box}.masthead.scrolled .brand{width:120px}.masthead.scrolled nav a,.masthead:not(.scrolled) nav a{font-size:16px}.hero-copy{left:6%;top:19%;width:88%}.hero-copy h1{font-size:clamp(50px,10.5vw,72px)}.hero-image-gallery{left:6%;width:88%;top:50%;height:35%}.hero-photo-feature{left:22%;width:56%;height:96%}.hero-photo-secondary{width:20%}.hero-property-caption strong{opacity:1;transform:none}.hero-property-caption>span{display:none}.hero-glint-one{left:72%;top:51%}.hero-glint-two{right:7%;top:70%}.hero-glint-three{left:8%;top:67%}.ornamental-portal-transition{width:160vw;--portal-top:calc(100% + 47.3vw - 70px)}.portal-golden-leaf{width:25px;height:43px;top:12%}.hero-scroll-note{bottom:12%}}
+@media(max-width:800px){.hero-masthead-brand{width:145px;top:8px}.masthead:not(.scrolled) .brand{opacity:0}.masthead:not(.scrolled){background:transparent!important}.masthead:not(.scrolled) .header-book{background:linear-gradient(#071d1669,#071d1669) padding-box,linear-gradient(115deg,#84663D,#c2b33a 48%,#84663D) border-box}.masthead.scrolled .brand{width:120px}.masthead.scrolled nav a,.masthead:not(.scrolled) nav a{font-size:16px}.hero-copy{left:6%;top:19%;width:88%}.hero-copy h1{font-size:clamp(50px,10.5vw,72px)}.hero-image-gallery{left:6%;width:88%;top:50%;height:35%}.hero-photo-feature{left:22%;width:56%;height:96%}.hero-photo-secondary{width:20%}.hero-property-caption strong{opacity:1;transform:none}.hero-property-caption>span{display:none}.hero-glint-one{left:72%;top:51%}.hero-glint-two{right:7%;top:70%}.hero-glint-three{left:8%;top:67%}.ornamental-portal-transition{width:160vw;--portal-top:calc(100% + 47.3vw - 70px)}.portal-golden-leaf{width:25px;height:43px;top:12%}.hero-scroll-note{bottom:12%}}
 @media(max-width:540px){.hero-masthead-brand{width:135px;top:8px}.hero-copy{top:19%}.hero-copy h1{font-size:clamp(51px,11.5vw,65px)}.hero-copy p{font-size:12px}.hero-actions{margin-top:28px;gap:12px}.gold-cta{font-size:11px;padding:13px 16px}.play-link{font-size:9px}.hero-image-gallery{top:54%;height:31%}.hero-photo-feature{left:22%;width:56%}.hero-photo-secondary{width:20%;height:56%}.hero-photo-secondary-right{top:32%;height:50%}.hero-property-caption{left:9%;right:9%;bottom:8%}.hero-property-caption small{font-size:7px}.hero-property-caption strong{font-size:12px}.hero-photo-secondary .hero-property-caption small{font-size:6px}.hero-photo-secondary .hero-property-caption strong{font-size:9px}.portal-golden-leaf{width:23px;height:38px}.hero-scroll-note{bottom:13%}}
 @media(hover:none){.hero-property-caption strong{opacity:1;transform:none;font-size:12px}.hero-photo-secondary .hero-property-caption strong{font-size:9px}.hero-property-caption>span{display:none}.hero-property:before{background:linear-gradient(0deg,#04180feb,transparent 48%)}}
 @media(prefers-reduced-motion:reduce){.hero-property img,.hero-property-caption strong,.hero-property-caption>span{transition:none!important}}
@@ -72,13 +72,13 @@ em,.footer-top p{font-family:Allura}
 .hero-copy h1{font-size:clamp(57px,4.55vw,78px);line-height:1.03;letter-spacing:-.065em;white-space:nowrap;margin:0 0 27px}
 .hero-copy h1 em{font:400 1.23em/.8 Allura;letter-spacing:-.015em;white-space:nowrap}
 .hero-image-gallery{left:39%;top:22%;width:56%;height:63%}
-.hero-photo-feature,.hero-photo-secondary{box-sizing:border-box;padding:0;border:1px solid transparent;background:linear-gradient(#11271d,#11271d) padding-box,linear-gradient(116deg,#84663D 0%,#B69B72 26%,#B69B72 51%,#C4A475 76%,#84663D 100%) border-box;overflow:hidden;transform:none!important}
+.hero-photo-feature,.hero-photo-secondary{box-sizing:border-box;padding:0;border:1px solid transparent;background:linear-gradient(#11271d,#11271d) padding-box,linear-gradient(116deg,#84663D 0%,#c2b33a 26%,#c2b33a 51%,#C4A475 76%,#84663D 100%) border-box;overflow:hidden;transform:none!important}
 .hero-photo-feature{left:26%;top:2%;width:52%;height:93%;border-radius:49% 49% 3px 3px / 19% 19% 3px 3px}
 .hero-photo-secondary{left:auto;width:23%;top:17%;height:57%;border-radius:48% 48% 3px 3px / 16% 16% 3px 3px}
 .hero-photo-secondary-left{left:0}
 .hero-photo-secondary-right{right:0;width:19%;top:31%;height:52%}
 .hero-photo-feature img,.hero-photo-secondary img{box-sizing:border-box;display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit}
-.hero-photo-feature:after,.hero-photo-secondary:after{background:none;inset:6px;border:1px solid #b69b7280;border-radius:inherit;pointer-events:none}
+.hero-photo-feature:after,.hero-photo-secondary:after{background:none;inset:6px;border:1px solid #c2b33a80;border-radius:inherit;pointer-events:none}
 .hero-photo-feature .hero-property-caption{bottom:8%}
 .hero-botanical-left{opacity:1;left:-20%;top:-35%;width:31vw;height:60vh;filter:none}
 .hero-backdrop{background:radial-gradient(ellipse at 96% 47%,#6b3b777a 0%,#3c13514d 28%,transparent 56%),radial-gradient(circle at 45% 53%,#66934520,transparent 48%);opacity:1}
