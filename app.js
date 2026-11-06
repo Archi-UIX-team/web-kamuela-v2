@@ -49,13 +49,13 @@ function updateScroll() {
   const clamp = value => Math.max(0, Math.min(1, value));
   // Stage A occupies 75% of the pinned scroll. Only the cartouche transforms.
   const zoom = ease(clamp((p - .18) / .57));
-  const openingWidth = portal.offsetWidth * 850 / 1200;
-  const openingHeight = portal.offsetHeight * 651 / 850;
+  const openingWidth = portal.offsetWidth * 950 / 1200;
+  const openingHeight = portal.offsetHeight * 665 / 850;
   const coverScale = Math.max(window.innerWidth / openingWidth, window.innerHeight / openingHeight) * 1.16;
   // At rest, only the upper edge of the SVG cartouche is visible at the
   // viewport bottom. Its first painted point is y=70 in the 850-unit viewBox.
-  const restingExposure = 70;
-  const startingTop = stage.clientHeight - restingExposure + portal.offsetHeight * (0.5 - 70 / 850);
+  const restingExposure = 95;
+  const startingTop = stage.clientHeight - restingExposure + portal.offsetHeight * (0.5 - 95 / 850);
   stage.style.setProperty('--portal-scale', (1 + (coverScale - 1) * zoom).toFixed(4));
   stage.style.setProperty('--portal-top', (startingTop + (stage.clientHeight / 2 - startingTop) * zoom).toFixed(2) + 'px');
   stage.style.setProperty('--copy-opacity', (1 - ease(clamp((p - .04) / .16))).toFixed(3));
