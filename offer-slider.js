@@ -35,9 +35,15 @@
     const gap = innerWidth <= 700 ? 22 : innerWidth <= 1100 ? 30 : 40;
     const safeInline = innerWidth <= 700 ? 0 : 104;
     const usableWidth = Math.max(0, viewport.clientWidth - safeInline);
-    const cardWidth = innerWidth <= 700 ? viewport.clientWidth * .86 : (usableWidth - gap * (visible - 1)) / visible;
-    cards.forEach(card => { card.style.flexBasis = cardWidth + 'px'; });
-    const offset = page * visible * (cardWidth + gap);
+    const baseCardWidth = innerWidth <= 700 ? viewport.clientWidth * .86 : (usableWidth - gap * (visible - 1)) / visible;
+    const cardWidth = visible === 3 ? Math.min(baseCardWidth * .84, 330) : baseCardWidth;
+    const pageInset = visible === 3 ? Math.max(0, (usableWidth - (cardWidth * visible + gap * (visible - 1))) / 2) : 0;
+    track.style.setProperty('--offers-page-inset', pageInset + 'px');
+    cards.forEach((card, index) => {
+      card.style.flexBasis = cardWidth + 'px';
+      card.style.marginRight = ((index + 1) % visible === 0 && index < cards.length - 1) ? pageInset * 2 + 'px' : '0px';
+    });
+    const offset = page * (visible * (cardWidth + gap) + pageInset * 2);
     track.style.transform = 'translate3d(' + (-offset) + 'px,0,0)';
     if (dots.children.length !== pageCount) buildDots();
     [...dots.children].forEach((dot, index) => {
