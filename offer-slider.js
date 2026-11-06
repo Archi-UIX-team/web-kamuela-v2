@@ -105,8 +105,9 @@
       return;
     }
     const rect = offersSection.getBoundingClientRect();
-    const travel = offersSection.offsetHeight + innerHeight * .35;
-    const progress = Math.max(0, Math.min(1, (innerHeight * .78 - rect.top) / travel));
+    const anchorOffset = innerWidth <= 700 ? 72 : 88;
+    const travel = Math.max(innerHeight * .65, offersSection.offsetHeight - innerHeight + anchorOffset);
+    const progress = Math.max(0, Math.min(1, (anchorOffset - rect.top) / travel));
     const leafWidth = transitionLeaf.offsetWidth;
     const horizontalTravel = Math.max(0, offersSection.clientWidth - leafWidth - Math.max(28, innerWidth * .055));
     const verticalTravel = Math.max(0, offersSection.offsetHeight - transitionLeaf.offsetHeight - Math.max(42, innerHeight * .08));
