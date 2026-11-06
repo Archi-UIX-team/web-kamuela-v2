@@ -92,39 +92,11 @@
       }
     });
   });
-  const offersSection = root.closest('.offers-invitation-section');
-  const transitionLeaf = offersSection?.querySelector(':scope > .kamuela-section-leaf');
-  let leafFrame = 0;
-  function updateTransitionLeaf() {
-    leafFrame = 0;
-    if (!transitionLeaf || !offersSection) return;
-    if (reducedMotion.matches) {
-      transitionLeaf.style.setProperty('--offer-leaf-x', '0px');
-      transitionLeaf.style.setProperty('--offer-leaf-y', '0px');
-      transitionLeaf.style.setProperty('--offer-leaf-rotate', '28deg');
-      return;
-    }
-    const rect = offersSection.getBoundingClientRect();
-    const anchorOffset = innerWidth <= 700 ? 72 : 88;
-    const travel = Math.max(innerHeight * .65, offersSection.offsetHeight - innerHeight + anchorOffset);
-    const progress = Math.max(0, Math.min(1, (anchorOffset - rect.top) / travel));
-    const leafWidth = transitionLeaf.offsetWidth;
-    const horizontalTravel = Math.max(0, offersSection.clientWidth - leafWidth - Math.max(28, innerWidth * .055));
-    const verticalTravel = Math.max(0, offersSection.offsetHeight - transitionLeaf.offsetHeight - Math.max(42, innerHeight * .08));
-    transitionLeaf.style.setProperty('--offer-leaf-x', horizontalTravel * progress + 'px');
-    transitionLeaf.style.setProperty('--offer-leaf-y', verticalTravel * progress + 'px');
-    transitionLeaf.style.setProperty('--offer-leaf-rotate', 24 + progress * 12 + 'deg');
-  }
-  function requestLeafUpdate() {
-    if (!leafFrame) leafFrame = requestAnimationFrame(updateTransitionLeaf);
-  }
-  addEventListener('scroll', requestLeafUpdate, { passive: true });
 
   let resizeFrame = 0;
   addEventListener('resize', () => {
     cancelAnimationFrame(resizeFrame);
-    resizeFrame = requestAnimationFrame(() => { render(); updateTransitionLeaf(); });
+    resizeFrame = requestAnimationFrame(render);
   });
   render();
-  updateTransitionLeaf();
 })();
