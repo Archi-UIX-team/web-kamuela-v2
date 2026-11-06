@@ -12,7 +12,7 @@ document.querySelectorAll('main > section:not(.hero)').forEach((section, index) 
 const header = document.querySelector('.masthead');
 const hero = document.querySelector('.hero');
 const offersSection = document.querySelector('.offers');
-const portal = document.querySelector('.ornamental-portal-transition');
+const portal = document.querySelector('.living-golden-vein-portal');
 const villasSection = document.querySelector('.villas');
 const progress = document.querySelector('.scroll-progress');
 
@@ -49,15 +49,21 @@ function updateScroll() {
   const clamp = value => Math.max(0, Math.min(1, value));
   // Stage A occupies 75% of the pinned scroll. Only the cartouche transforms.
   const zoom = ease(clamp((p - .18) / .57));
-  const openingWidth = portal.offsetWidth * 1006 / 1200;
-  const openingHeight = portal.offsetHeight * 702 / 850;
-  const coverScale = Math.max(window.innerWidth / openingWidth, window.innerHeight / openingHeight) * 1.16;
-  // At rest, only the upper edge of the SVG cartouche is visible at the
-  // viewport bottom. Its first painted point is y=70 in the 850-unit viewBox.
-  const restingExposure = 95;
-  const startingTop = stage.clientHeight - restingExposure + portal.offsetHeight * (0.5 - 95 / 850);
-  stage.style.setProperty('--portal-scale', (1 + (coverScale - 1) * zoom).toFixed(4));
-  stage.style.setProperty('--portal-top', (startingTop + (stage.clientHeight / 2 - startingTop) * zoom).toFixed(2) + 'px');
+  // Four reversible phases drive only the botanical gateway. The hero itself
+  // remains fixed while official leaf-derived veins awaken, unfold and pass.
+  const awakening = ease(clamp((p - .10) / .16));
+  const unfolding = ease(clamp((p - .22) / .34));
+  const passing = ease(clamp((p - .52) / .27));
+  const exiting = ease(clamp((p - .77) / .16));
+  const responsiveSpread = Math.min(window.innerWidth * .34, 560);
+  stage.style.setProperty('--vein-awake', awakening.toFixed(4));
+  stage.style.setProperty('--vein-glow', Math.max(awakening * (1 - exiting), 0).toFixed(4));
+  stage.style.setProperty('--vein-spread', ((unfolding * .34 + passing * .66) * responsiveSpread).toFixed(2));
+  stage.style.setProperty('--vein-drop', (passing * 78 + exiting * 120).toFixed(2));
+  stage.style.setProperty('--vein-pass-y', (passing * 28 + exiting * 90).toFixed(2));
+  stage.style.setProperty('--vein-scale', (1 + unfolding * .46 + passing * 1.18).toFixed(4));
+  stage.style.setProperty('--vein-exit', exiting.toFixed(4));
+  stage.style.setProperty('--vein-opacity', Math.max(0, 1 - exiting * 1.16).toFixed(4));
   stage.style.setProperty('--copy-opacity', (1 - ease(clamp((p - .04) / .16))).toFixed(3));
   stage.style.setProperty('--gallery-opacity', (1 - ease(clamp((p - .28) / .38))).toFixed(3));
   // Stage B occupies the remaining 25%. The real Villas section pins over the
