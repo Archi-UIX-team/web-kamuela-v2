@@ -36,7 +36,7 @@
     const safeInline = innerWidth <= 700 ? 0 : 104;
     const usableWidth = Math.max(0, viewport.clientWidth - safeInline);
     const baseCardWidth = innerWidth <= 700 ? viewport.clientWidth * .86 : (usableWidth - gap * (visible - 1)) / visible;
-    const cardWidth = visible === 3 ? Math.min(baseCardWidth * .84, 330) : baseCardWidth;
+    const cardWidth = visible === 3 ? Math.min(baseCardWidth * .78, 300) : baseCardWidth;
     const pageInset = visible === 3 ? Math.max(0, (usableWidth - (cardWidth * visible + gap * (visible - 1))) / 2) : 0;
     track.style.setProperty('--offers-page-inset', pageInset + 'px');
     cards.forEach((card, index) => {
