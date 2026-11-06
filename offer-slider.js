@@ -33,7 +33,7 @@
     pageCount = Math.ceil(cards.length / visible);
     page = Math.max(0, Math.min(page, pageCount - 1));
     const gap = innerWidth <= 700 ? 22 : innerWidth <= 1100 ? 30 : 40;
-    const safeInline = innerWidth <= 700 ? 0 : 96;
+    const safeInline = innerWidth <= 700 ? 0 : 104;
     const usableWidth = Math.max(0, viewport.clientWidth - safeInline);
     const cardWidth = innerWidth <= 700 ? viewport.clientWidth * .86 : (usableWidth - gap * (visible - 1)) / visible;
     cards.forEach(card => { card.style.flexBasis = cardWidth + 'px'; });
@@ -105,11 +105,14 @@
       return;
     }
     const rect = offersSection.getBoundingClientRect();
-    const travel = offersSection.offsetHeight + innerHeight * .72;
-    const progress = Math.max(0, Math.min(1, (innerHeight * .9 - rect.top) / travel));
-    transitionLeaf.style.setProperty('--offer-leaf-x', Math.min(innerWidth * .16, 230) * progress + 'px');
-    transitionLeaf.style.setProperty('--offer-leaf-y', Math.min(innerHeight * .24, 230) * progress + 'px');
-    transitionLeaf.style.setProperty('--offer-leaf-rotate', 28 + progress * 7 + 'deg');
+    const travel = offersSection.offsetHeight + innerHeight * .35;
+    const progress = Math.max(0, Math.min(1, (innerHeight * .78 - rect.top) / travel));
+    const leafWidth = transitionLeaf.offsetWidth;
+    const horizontalTravel = Math.max(0, offersSection.clientWidth - leafWidth - Math.max(28, innerWidth * .055));
+    const verticalTravel = Math.max(0, offersSection.offsetHeight - transitionLeaf.offsetHeight - Math.max(42, innerHeight * .08));
+    transitionLeaf.style.setProperty('--offer-leaf-x', horizontalTravel * progress + 'px');
+    transitionLeaf.style.setProperty('--offer-leaf-y', verticalTravel * progress + 'px');
+    transitionLeaf.style.setProperty('--offer-leaf-rotate', 24 + progress * 12 + 'deg');
   }
   function requestLeafUpdate() {
     if (!leafFrame) leafFrame = requestAnimationFrame(updateTransitionLeaf);
