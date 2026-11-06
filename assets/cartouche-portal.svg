@@ -3,6 +3,6 @@
   <linearGradient id="plum" x1="0" y1="0" x2="1" y2=".8"><stop stop-color="#25102F"/><stop offset=".22" stop-color="#381742"/><stop offset=".48" stop-color="#53315D"/><stop offset=".68" stop-color="#3C1351"/><stop offset="1" stop-color="#25102F"/></linearGradient>
   <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#AD9648"/><stop offset=".26" stop-color="#E6F3A5"/><stop offset=".29" stop-color="#E3EEA0"/><stop offset=".33" stop-color="#D9E091"/><stop offset=".37" stop-color="#C8CA79"/><stop offset=".41" stop-color="#B2AB5B"/><stop offset=".43" stop-color="#A79E4E"/><stop offset=".49" stop-color="#B2A349"/><stop offset=".54" stop-color="#BEAA44"/><stop offset=".59" stop-color="#AB9E48"/><stop offset=".65" stop-color="#9C944B"/><stop offset=".68" stop-color="#B2AE60"/><stop offset=".73" stop-color="#CDD17C"/><stop offset=".77" stop-color="#DEE890"/><stop offset=".81" stop-color="#E5F097"/><stop offset="1" stop-color="#AD9648"/></linearGradient>
  </defs>
- <path id="outer" d="M80 820 L80 275 C80 162 310 95 600 95 C890 95 1120 162 1120 275 L1120 820 Z" fill="url(#plum)" stroke="url(#gold)" stroke-width="2.2"/>
- <path id="portal-opening" d="M125 820 L125 305 C125 211 330 155 600 155 C870 155 1075 211 1075 305 L1075 820 Z" fill="#061e17" stroke="url(#gold)" stroke-width="1.6"/>
+ <path id="outer" d="M80 820 L80 275 C80 162 310 95 600 95 C890 95 1120 162 1120 275 L1120 820 Z" fill="url(#plum)" stroke="url(#gold)" stroke-width="1.4"/>
+ <path id="portal-opening" d="M97 820 L97 288 C97 180 320 118 600 118 C880 118 1103 180 1103 288 L1103 820 Z" fill="#061e17" stroke="url(#gold)" stroke-width="1.1"/>
 </svg>
