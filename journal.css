@@ -188,3 +188,78 @@
   }
   .journal-inner{row-gap:clamp(16px,2.1dvh,22px)}
 }
+
+
+/* Journal native-zoom viewport refinement v7. */
+@media (min-width:1101px) and (min-height:720px){
+  .news{
+    box-sizing:border-box;
+    height:calc(100dvh - 70px);
+    min-height:650px;
+    padding:clamp(32px,4dvh,44px) clamp(64px,5vw,80px) clamp(28px,3.4dvh,40px);
+  }
+  .journal-inner{
+    display:grid;
+    grid-template-rows:max-content minmax(0,1fr);
+    row-gap:clamp(20px,2.6dvh,30px);
+    height:100%;
+  }
+  .journal-heading{margin:0}
+  .journal-kicker{font-size:10px;line-height:1.2}
+  .journal-heading h2{
+    display:flex;
+    align-items:baseline;
+    gap:.12em;
+    margin:clamp(7px,1dvh,10px) 0 0;
+    font-size:clamp(56px,6.5dvh,68px);
+    line-height:.88;
+    letter-spacing:-.055em;
+  }
+  .journal-heading h2 em{
+    font-size:clamp(68px,8dvh,84px);
+    line-height:.72;
+    letter-spacing:0;
+  }
+  .journal-showcase{
+    min-height:0;
+    height:auto;
+    gap:clamp(36px,3vw,48px);
+    align-items:stretch;
+  }
+  .journal-feature,
+  .journal-selector{height:100%;min-height:0}
+  .journal-item{
+    flex:1 1 0;
+    justify-content:center;
+    padding:clamp(9px,1.2dvh,13px) 32px clamp(8px,1.1dvh,12px) 0;
+  }
+  .journal-item.is-active{
+    flex-grow:1.58;
+    padding-top:clamp(13px,1.7dvh,18px);
+    padding-bottom:clamp(13px,1.7dvh,18px);
+    background:linear-gradient(105deg,rgba(194,179,58,.12) 0%,rgba(60,19,81,.1) 52%,transparent 100%);
+  }
+  .journal-item.is-active .journal-item-title{
+    margin-top:clamp(11px,1.4dvh,15px);
+    font-size:clamp(22px,1.55vw,28px);
+    line-height:1.22;
+  }
+  .journal-item.is-active .journal-item-description{
+    max-height:3.3em;
+    margin-top:clamp(8px,1.1dvh,12px);
+    font-size:clamp(12px,1.35dvh,14px);
+    opacity:1;
+    transform:translateY(0);
+  }
+  .journal-item.is-active .journal-item-arrow{
+    opacity:0;
+    transform:translate(-8px,-50%);
+  }
+}
+@media (min-width:1101px) and (min-height:720px) and (max-height:820px){
+  .news{padding-top:28px;padding-bottom:24px}
+  .journal-inner{row-gap:16px}
+  .journal-heading h2{font-size:52px}
+  .journal-heading h2 em{font-size:64px}
+  .journal-item.is-active .journal-item-title{font-size:21px}
+}
