@@ -49,8 +49,8 @@ function updateScroll() {
   const clamp = value => Math.max(0, Math.min(1, value));
   // Stage A occupies 75% of the pinned scroll. Only the cartouche transforms.
   const zoom = ease(clamp((p - .18) / .57));
-  const openingWidth = portal.offsetWidth * 950 / 1200;
-  const openingHeight = portal.offsetHeight * 665 / 850;
+  const openingWidth = portal.offsetWidth * 1006 / 1200;
+  const openingHeight = portal.offsetHeight * 702 / 850;
   const coverScale = Math.max(window.innerWidth / openingWidth, window.innerHeight / openingHeight) * 1.16;
   // At rest, only the upper edge of the SVG cartouche is visible at the
   // viewport bottom. Its first painted point is y=70 in the 850-unit viewBox.
