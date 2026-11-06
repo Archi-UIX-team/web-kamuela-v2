@@ -94,3 +94,58 @@
 @media(max-width:800px){.hero-floral-left{width:30.4vw;bottom:-18.4vw;left:-7.2vw}}
 @media(max-width:540px){.hero-floral-left{width:36.8vw;bottom:-22.4vw;left:-12vw}}
 @media(prefers-reduced-motion:reduce){.hero-sunlight::before{animation:none}}
+
+/* Hero composition refinement: balanced right gallery, smaller florals, text-only booking link. */
+@media(min-width:1121px){
+  .film-column-right{right:15%}
+  .hero-floral-left{width:min(15vw,246px)}
+  .hero-floral-right{width:min(18.75vw,308px)}
+}
+.masthead nav .nav-book,
+.masthead:not(.scrolled) nav .nav-book,
+.masthead.scrolled nav .nav-book{
+  position:relative;
+  display:inline-block;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:#b69b72;
+  font:500 16px/1.3 Inter,sans-serif;
+  letter-spacing:0;
+  white-space:nowrap;
+  box-shadow:none;
+  transition:color .3s ease;
+}
+.masthead nav .nav-book::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-8px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#e7d3a4,transparent);
+  transform:scaleX(0);
+  transform-origin:center;
+  transition:transform .3s cubic-bezier(.22,1,.36,1);
+}
+.masthead nav .nav-book:hover,
+.masthead nav .nav-book:focus-visible{color:#e7d3a4}
+.masthead nav .nav-book:hover::after,
+.masthead nav .nav-book:focus-visible::after{transform:scaleX(1)}
+.hero-copy .hero-actions{display:none}
+.portal-golden-leaf{top:11.5%}
+@media(max-width:1120px) and (min-width:801px){
+  .film-column-right{right:9.5%}
+  .hero-floral-left{width:15vw}
+  .hero-floral-right{width:18.75vw}
+}
+@media(max-width:800px){
+  .masthead nav .nav-book{font-size:15px}
+  .hero-floral-left{width:28vw}
+  .hero-floral-right{width:28vw}
+}
+@media(max-width:540px){
+  .hero-floral-left{width:34vw}
+  .hero-floral-right{width:34vw}
+}
