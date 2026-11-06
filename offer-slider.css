@@ -24,7 +24,8 @@
 .offer-villa-label,.offer-title,.offer-invitation-divider,.offer-description{position:relative;z-index:1}
 .offer-villa-label{min-height:31px;color:#84663d;font:500 11px/1.45 Inter,sans-serif;letter-spacing:.11em;text-transform:uppercase}
 .offer-title{display:-webkit-box;min-height:86px;margin:6px 0 4px;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;color:#17431f;font:400 clamp(39px,3.3vw,51px)/.8 Allura,cursive}
-.offer-invitation-divider{width:64%;height:18px;margin:0 auto 12px;background:linear-gradient(90deg,transparent,#b69b72 22%,#b69b72 43%,transparent 43%,transparent 57%,#b69b72 57%,#b69b72 78%,transparent)}
+.offer-invitation-divider{position:relative;width:64%;height:18px;margin:0 auto 12px;background:none}
+.offer-invitation-divider::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,transparent 0,#b69b72 16%,#b69b72 40%,transparent 40%,transparent 60%,#b69b72 60%,#b69b72 84%,transparent 100%)}
 .offer-invitation-divider::after{content:"";position:absolute;left:50%;top:1px;width:14px;height:16px;transform:translateX(-50%) rotate(-12deg);background:url('./assets/leaf-1.svg') center/contain no-repeat;opacity:.72}
 .offer-description{display:-webkit-box;min-height:48px;max-width:315px;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;text-overflow:ellipsis;color:#17431f;font:400 15px/1.6 Inter,sans-serif}
 .offer-binding-rings{position:absolute;z-index:8;top:286px;left:0;right:0;display:flex;justify-content:space-between;padding:0 42px;pointer-events:none}
