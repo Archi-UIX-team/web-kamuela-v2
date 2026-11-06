@@ -263,3 +263,44 @@
   .journal-heading h2 em{font-size:64px}
   .journal-item.is-active .journal-item-title{font-size:21px}
 }
+
+
+/* Journal spacious editorial refinement v9. */
+@media (min-width:1101px){
+  .news{
+    height:auto;
+    min-height:0;
+    padding:clamp(100px,7.5vw,120px) clamp(64px,5vw,80px);
+    overflow:visible;
+  }
+  .journal-inner{
+    display:block;
+    height:auto;
+  }
+  .journal-heading{
+    margin:0 0 clamp(32px,2.7vw,40px);
+  }
+  .journal-showcase{
+    height:550px;
+    min-height:550px;
+    gap:clamp(36px,3vw,48px);
+    align-items:stretch;
+  }
+  .journal-feature,
+  .journal-selector{
+    height:550px;
+    min-height:550px;
+  }
+  .journal-item{
+    padding-top:9px;
+    padding-bottom:9px;
+  }
+  .journal-item.is-active{
+    padding-top:14px;
+    padding-bottom:14px;
+  }
+  .news>.kamuela-section-leaf.kamuela-section-leaf-left{
+    top:calc(clamp(62px,8dvh,82px) - clamp(138px,9.8vw,178px))!important;
+    bottom:auto!important;
+  }
+}
