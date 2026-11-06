@@ -58,43 +58,51 @@
     showImage(item);
   }));
 
-  // A small lerp keeps pointer motion calm; clamping prevents the cursor leaving the photo.
+  // One calm glass cursor follows the pointer over both the photograph and news text.
   if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const showcase = section.querySelector('.journal-showcase');
     const cursor = feature.querySelector('.journal-glass-cursor');
+    showcase.append(cursor);
+    const hoverTargets = [feature, ...items];
     let x = 0, y = 0, targetX = 0, targetY = 0, frame = 0;
     const move = () => {
       x += (targetX - x) * .28;
       y += (targetY - y) * .28;
-      feature.style.setProperty('--journal-x', x.toFixed(1) + 'px');
-      feature.style.setProperty('--journal-y', y.toFixed(1) + 'px');
+      showcase.style.setProperty('--journal-x', x.toFixed(1) + 'px');
+      showcase.style.setProperty('--journal-y', y.toFixed(1) + 'px');
       if (Math.abs(x - targetX) > .35 || Math.abs(y - targetY) > .35) frame = requestAnimationFrame(move);
       else frame = 0;
     };
-    feature.addEventListener('pointerenter', event => {
+    const setTarget = event => {
       if (event.pointerType !== 'mouse') return;
-      const rect = feature.getBoundingClientRect();
-      x = targetX = Math.max(54, Math.min(rect.width - 54, event.clientX - rect.left));
-      y = targetY = Math.max(54, Math.min(rect.height - 54, event.clientY - rect.top));
-      feature.style.setProperty('--journal-x', x + 'px');
-      feature.style.setProperty('--journal-y', y + 'px');
-      feature.classList.add('is-hovering');
-    });
-    feature.addEventListener('pointermove', event => {
-      if (event.pointerType !== 'mouse') return;
-      const rect = feature.getBoundingClientRect();
+      const rect = showcase.getBoundingClientRect();
       const pad = Math.min(54, rect.width / 2, rect.height / 2);
       targetX = Math.max(pad, Math.min(rect.width - pad, event.clientX - rect.left));
       targetY = Math.max(pad, Math.min(rect.height - pad, event.clientY - rect.top));
       if (!frame && !reducedMotion.matches) frame = requestAnimationFrame(move);
       if (reducedMotion.matches) {
-        cursor.style.left = targetX + 'px';
-        cursor.style.top = targetY + 'px';
+        x = targetX; y = targetY;
+        showcase.style.setProperty('--journal-x', x + 'px');
+        showcase.style.setProperty('--journal-y', y + 'px');
       }
-    });
-    feature.addEventListener('pointerleave', () => {
-      feature.classList.remove('is-hovering');
-      cancelAnimationFrame(frame);
-      frame = 0;
+    };
+    hoverTargets.forEach(target => {
+      target.addEventListener('pointerenter', event => {
+        if (event.pointerType !== 'mouse') return;
+        const rect = showcase.getBoundingClientRect();
+        x = targetX = Math.max(54, Math.min(rect.width - 54, event.clientX - rect.left));
+        y = targetY = Math.max(54, Math.min(rect.height - 54, event.clientY - rect.top));
+        showcase.style.setProperty('--journal-x', x + 'px');
+        showcase.style.setProperty('--journal-y', y + 'px');
+        showcase.classList.add('is-cursor-visible');
+      });
+      target.addEventListener('pointermove', setTarget);
+      target.addEventListener('pointerleave', event => {
+        if (showcase.contains(event.relatedTarget)) return;
+        showcase.classList.remove('is-cursor-visible');
+        cancelAnimationFrame(frame);
+        frame = 0;
+      });
     });
   }
 })();
