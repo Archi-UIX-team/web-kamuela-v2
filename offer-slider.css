@@ -2,7 +2,7 @@
 .offers-invitation-section{position:relative;isolation:isolate;overflow:visible;margin-top:-1px;padding:clamp(64px,5vw,82px) clamp(64px,5vw,80px) clamp(72px,6vw,96px)!important;background:radial-gradient(ellipse at 86% 22%,rgba(60,19,81,.25),transparent 44%),radial-gradient(ellipse at 14% 82%,rgba(23,67,31,.58),transparent 54%),linear-gradient(180deg,#102018 0%,#0b281b 14%,#061a12 34%,#0b281b 70%,#061a12 88%,#061a12 100%)!important;border:0!important;color:#f3f0e7}
 .offers-invitation-section::before{content:"";position:absolute;inset:-2px 0 0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(16,32,24,.96) 0,rgba(16,32,24,.42) 8%,transparent 20%),linear-gradient(0deg,#061a12 0%,rgba(6,26,18,.78) 10%,transparent 24%),linear-gradient(118deg,transparent 52%,rgba(182,155,114,.08) 67%,transparent 78%),radial-gradient(circle at 76% 4%,rgba(231,211,164,.12),transparent 24%)}
 .offers-invitation-section::after{content:"";position:absolute;right:-7%;bottom:-18%;z-index:3;width:clamp(250px,28vw,470px);aspect-ratio:1239/2370;background:url('./assets/leaf-1.svg') center/contain no-repeat;opacity:.08;transform:rotate(-56deg);transform-origin:68% 92%;pointer-events:none;will-change:transform;animation:offers-leaf-right-sway 10.8s ease-in-out infinite alternate}
-.offers-invitation-section>.kamuela-section-leaf{left:clamp(-170px,-10vw,-132px)!important;right:auto!important;top:clamp(-158px,-10vw,-126px)!important;bottom:auto!important;z-index:3!important;width:clamp(220px,21vw,340px)!important;opacity:1!important;transform:rotate(24deg);transform-origin:45% 18%;filter:drop-shadow(0 18px 30px rgba(6,26,18,.22));pointer-events:none;will-change:transform;animation:offers-leaf-sway 8.5s ease-in-out infinite alternate}
+.offers-invitation-section>.kamuela-section-leaf{left:clamp(-80px,-4vw,-52px)!important;right:auto!important;top:clamp(-158px,-10vw,-126px)!important;bottom:auto!important;z-index:3!important;width:clamp(220px,21vw,340px)!important;opacity:1!important;transform:rotate(24deg);transform-origin:45% 18%;filter:drop-shadow(0 18px 30px rgba(6,26,18,.22));pointer-events:none;will-change:transform;animation:offers-leaf-sway 8.5s ease-in-out infinite alternate}
 .offers-invitation-inner{position:relative;z-index:2;max-width:1440px;margin:auto}
 .offers-invitation-heading{text-align:center;margin:0 auto clamp(28px,3vw,40px)}
 .offers-invitation-kicker{display:flex;align-items:center;justify-content:center;gap:18px;color:#e7d3a4!important;font:500 11px/1 Inter,sans-serif;letter-spacing:.42em}
@@ -48,7 +48,8 @@
 .offer-binding-rings{top:calc(clamp(236px,29dvh,260px) - 17px)}
 .offer-paper-panel{min-height:clamp(198px,22dvh,214px);padding:clamp(16px,2dvh,20px) 28px clamp(14px,1.8dvh,18px)}
 .offer-villa-label{min-height:20px;font-size:10px}
-.offer-title{min-height:clamp(38px,4.7dvh,43px);margin-top:2px;font-size:clamp(17px,2.35dvh,22px)}
+.offer-title{min-height:clamp(36px,4.4dvh,40px);margin-top:2px;font-size:clamp(16px,2dvh,19px)}
+.offer-title-accent{font-size:1.5em}
 .offer-invitation-divider{margin-bottom:4px}
 .offer-description{min-height:42px;font-size:clamp(13px,1.65dvh,15px);line-height:1.52}
 .offers-pagination{margin-top:clamp(16px,2.2dvh,24px)}
