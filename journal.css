@@ -178,3 +178,13 @@
   filter:drop-shadow(0 14px 28px rgba(6,26,18,.28));
 }
 .social{display:none!important}
+
+
+/* Journal spacing refinement: restore generous breathing room while preserving the one-viewport composition. */
+@media(min-width:1101px) and (min-height:720px){
+  .news{
+    padding-top:clamp(36px,4.6dvh,48px);
+    padding-bottom:clamp(28px,3.6dvh,38px);
+  }
+  .journal-inner{row-gap:clamp(16px,2.1dvh,22px)}
+}
