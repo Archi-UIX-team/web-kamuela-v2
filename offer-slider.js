@@ -33,7 +33,7 @@
     pageCount = Math.ceil(cards.length / visible);
     page = Math.max(0, Math.min(page, pageCount - 1));
     const gap = innerWidth <= 700 ? 22 : innerWidth <= 1100 ? 30 : 40;
-    const safeInline = innerWidth <= 700 ? 0 : 56;
+    const safeInline = innerWidth <= 700 ? 0 : 96;
     const usableWidth = Math.max(0, viewport.clientWidth - safeInline);
     const cardWidth = innerWidth <= 700 ? viewport.clientWidth * .86 : (usableWidth - gap * (visible - 1)) / visible;
     cards.forEach(card => { card.style.flexBasis = cardWidth + 'px'; });
