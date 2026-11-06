@@ -48,8 +48,8 @@
 .offer-binding-rings{top:calc(clamp(236px,29dvh,260px) - 17px)}
 .offer-paper-panel{min-height:clamp(198px,22dvh,214px);padding:clamp(16px,2dvh,20px) 28px clamp(14px,1.8dvh,18px)}
 .offer-villa-label{min-height:20px;font-size:10px}
-.offer-title{min-height:clamp(36px,4.4dvh,40px);margin-top:2px;font-size:clamp(16px,2dvh,19px)}
-.offer-title-accent{font-size:1.5em}
+.offer-title{min-height:clamp(36px,4.4dvh,40px);margin-top:2px;font-size:clamp(16px,1.9dvh,18px)}
+.offer-title-accent{font-size:1.4em}
 .offer-invitation-divider{margin-bottom:4px}
 .offer-description{min-height:42px;font-size:clamp(13px,1.65dvh,15px);line-height:1.52}
 .offers-pagination{margin-top:clamp(16px,2.2dvh,24px)}
