@@ -69,4 +69,4 @@
 .journal-selector:has(.journal-item:hover) .journal-item.is-active:not(:hover) .journal-item-arrow{opacity:1;transform:translateY(-50%)}
 .journal-showcase.is-cursor-visible .journal-glass-cursor{opacity:1;transform:translate(-50%,-50%) scale(1)}
 }
-.news>.kamuela-section-leaf{left:clamp(-105px,-5.5vw,-72px)!important;right:auto!important;top:auto!important;bottom:clamp(28px,4.5dvh,52px)!important;z-index:5!important;width:clamp(220px,16vw,290px)!important;opacity:1!important;pointer-events:none;filter:drop-shadow(0 14px 28px rgba(6,26,18,.28))}
+.news>.kamuela-section-leaf{left:clamp(-145px,-7vw,-110px)!important;right:auto!important;top:auto!important;bottom:clamp(28px,4.5dvh,52px)!important;z-index:5!important;width:clamp(220px,16vw,290px)!important;opacity:1!important;pointer-events:none;filter:drop-shadow(0 14px 28px rgba(6,26,18,.28))}
