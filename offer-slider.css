@@ -11,7 +11,7 @@
 .offers-invitation-heading h2{margin:26px 0 0;color:#f3f0e7;font:400 clamp(52px,5.3vw,76px)/.94 Inter,sans-serif;letter-spacing:-.055em}
 .offers-invitation-heading h2 em{display:inline-block;margin-left:.1em;color:#b69b72;font:400 1.28em/.7 Allura,cursive;letter-spacing:0;text-shadow:0 0 28px rgba(182,155,114,.12)}
 .offers-carousel{position:relative}
-.offers-carousel-viewport{overflow:hidden;padding:54px 28px 80px;margin:-54px -28px -80px}
+.offers-carousel-viewport{overflow:hidden;padding:54px 48px 80px;margin:-54px -48px -80px}
 .offers-carousel-track{display:flex;align-items:stretch;gap:40px;transition:transform .78s cubic-bezier(.22,1,.36,1);will-change:transform}
 .offer-invitation-card{--cursor-x:50%;--cursor-y:50%;position:relative;display:flex;flex:0 0 calc((100% - 80px)/3);min-width:0;min-height:620px;flex-direction:column;color:#061a12;text-decoration:none;transform:translateY(0) scale(1);transform-origin:center;opacity:1;filter:brightness(1);transition:transform .68s cubic-bezier(.22,1,.36,1),opacity .45s ease,filter .45s ease,box-shadow .55s ease;outline:none}
 .offer-photo-frame{position:relative;display:block;height:306px;padding:13px 13px 20px;background:#f3f0e7;border-radius:48% 48% 3px 3px / 10% 10% 3px 3px;box-shadow:0 22px 45px rgba(0,0,0,.2)}
