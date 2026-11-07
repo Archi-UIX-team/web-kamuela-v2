@@ -23,7 +23,7 @@
       const link = card.querySelector('a');
       link.tabIndex = selected ? 0 : -1;
       const embed = card.querySelector('iframe');
-      embed.tabIndex = selected ? 0 : -1;
+      if (embed) embed.tabIndex = selected ? 0 : -1;
     });
   }
   function select(index) {
