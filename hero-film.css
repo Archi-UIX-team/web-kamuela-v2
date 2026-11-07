@@ -319,3 +319,11 @@
   .secret-garden-curtain-left{left:-12%}
   .secret-garden-curtain-right{right:-12%}
 }
+
+
+/* Final resting balance: visible lower-quarter wings without entering the headline area. */
+.secret-garden-curtain{width:clamp(190px,19vw,300px);bottom:-9%}
+.secret-garden-curtain-left{left:-3%}
+.secret-garden-curtain-right{right:-3%}
+@media(max-width:1120px){.secret-garden-curtain{width:clamp(165px,21vw,245px);bottom:-7%}}
+@media(max-width:800px){.secret-garden-curtain{width:clamp(135px,29vw,205px);bottom:-4%}}
