@@ -68,7 +68,6 @@ function initSecretGarden() {
 
   gsap.registerPlugin(ScrollTrigger);
   gsap.set([leftCurtain, rightCurtain], { xPercent: 0, yPercent: 0, rotation: 0, scale: 1, force3D: true });
-  gsap.set(reveal, { opacity: 0 });
   gsap.set(light, { opacity: .48, scale: .82, xPercent: -50 });
 
   const timeline = gsap.timeline({
@@ -95,13 +94,11 @@ function initSecretGarden() {
     // 30–60%: widen the negative space and begin a boundary-free crossfade.
     .to(leftCurtain, { xPercent: -48, yPercent: 7, rotation: -4, scale: 1.055, duration: .30 }, .30)
     .to(rightCurtain, { xPercent: 48, yPercent: 7, rotation: 4, scale: 1.055, duration: .30 }, .30)
-    .to(reveal, { opacity: .72, duration: .30 }, .30)
     .to(copy, { opacity: .38, y: -16, duration: .30 }, .30)
     .to(gallery, { opacity: .42, scale: 1.02, duration: .30 }, .30)
     // 60–85%: clear the frame and complete the atmospheric background blend.
     .to(leftCurtain, { xPercent: -112, yPercent: 13, rotation: -5, scale: 1.07, duration: .25 }, .60)
     .to(rightCurtain, { xPercent: 112, yPercent: 13, rotation: 5, scale: 1.07, duration: .25 }, .60)
-    .to(reveal, { opacity: 1, duration: .25 }, .60)
     .to(copy, { opacity: 0, y: -28, duration: .22 }, .60)
     .to(gallery, { opacity: 0, scale: 1.035, duration: .22 }, .60)
     .to(light, { opacity: .28, scale: 1.25, duration: .25 }, .60)

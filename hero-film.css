@@ -449,13 +449,14 @@
   width:100%;
   height:100%;
   z-index:1;
-  opacity:0;
+  opacity:1;
   clip-path:none;
   background:
-    linear-gradient(180deg,rgba(23,67,31,.35),rgba(6,26,18,.98)),
+    radial-gradient(ellipse 34% 48% at 18% 72%,rgba(60,19,81,.34),transparent 72%),
+    radial-gradient(ellipse 28% 42% at 84% 28%,rgba(60,19,81,.22),transparent 74%),
+    radial-gradient(ellipse 55% 62% at 50% 55%,#17431f 0%,transparent 76%),
     #061a12;
   pointer-events:none;
-  will-change:opacity;
 }
 .secret-garden-opening-light{
   z-index:4;
@@ -479,7 +480,9 @@
   filter:drop-shadow(0 16px 22px rgba(0,10,6,.48));
   backface-visibility:hidden;
 }
-.secret-garden-curtain img{display:block;width:100%;height:auto;pointer-events:none;user-select:none}
+.secret-garden-curtain img{display:block;width:80%;height:auto;pointer-events:none;user-select:none;transform:scaleX(-1)}
+.secret-garden-curtain-left img{margin-right:auto}
+.secret-garden-curtain-right img{margin-left:auto}
 .secret-garden-curtain-left{left:0;transform-origin:0% 100%}
 .secret-garden-curtain-right{right:0;transform-origin:100% 100%}
 @media(max-width:1120px){.secret-garden-curtain{bottom:0}}
@@ -495,5 +498,5 @@
   .secret-garden-curtain-right{right:-35vw}
 }
 @media(prefers-reduced-motion:reduce){
-  .secret-garden-reveal{opacity:0}
+  .secret-garden-reveal{opacity:1}
 }
