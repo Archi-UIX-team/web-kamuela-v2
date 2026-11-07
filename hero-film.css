@@ -338,3 +338,37 @@
     radial-gradient(ellipse at 18% 100%,rgba(3,31,18,.98) 0%,rgba(12,62,35,.72) 39%,transparent 71%),
     radial-gradient(ellipse at 78% 110%,rgba(25,78,39,.78),transparent 56%);
 }
+
+
+/* Secret Garden v12 — official Kamuela leaf geometry, aligned to the approved portal. */
+.secret-garden-wing{opacity:0!important}
+.secret-garden-official-wrap{
+  transform-box:view-box;
+  transform-origin:center;
+  will-change:translate,opacity;
+  opacity:.96;
+  filter:drop-shadow(0 0 2px rgba(243,226,183,.42)) drop-shadow(0 9px 18px rgba(2,20,12,.48));
+}
+.secret-garden-official-leaf{
+  filter:invert(73%) sepia(37%) saturate(653%) hue-rotate(8deg) brightness(101%) contrast(91%);
+  opacity:.98;
+  will-change:transform;
+}
+.secret-garden-official-left .secret-garden-official-leaf,
+.secret-garden-official-right .secret-garden-official-leaf{
+  transform-box:fill-box;
+  transform-origin:50% 100%;
+  transform:translate3d(calc(var(--garden-open,0) * -58vw),calc(var(--garden-pass,0) * 7vh),0) rotate(calc(var(--garden-open,0) * -5deg));
+}
+.secret-garden-official-wrap{animation:secret-official-breathe 12s ease-in-out infinite alternate}
+.secret-garden-official-right{animation-delay:-5.5s;animation-duration:14s}
+@keyframes secret-official-breathe{
+  from{opacity:.91}
+  to{opacity:1}
+}
+@media(max-width:800px){
+  .secret-garden-official-wrap{opacity:.88}
+}
+@media(prefers-reduced-motion:reduce){
+  .secret-garden-official-wrap{animation:none!important}
+}
