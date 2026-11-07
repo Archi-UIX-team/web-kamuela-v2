@@ -12,7 +12,7 @@ document.querySelectorAll('main > section:not(.hero)').forEach((section, index) 
 const header = document.querySelector('.masthead');
 const hero = document.querySelector('.hero');
 const offersSection = document.querySelector('.offers');
-const portal = document.querySelector('.ornamental-portal-transition');
+const secretGardenPortal = document.querySelector('.secret-garden-portal');
 const villasSection = document.querySelector('.villas');
 const progress = document.querySelector('.scroll-progress');
 
@@ -42,35 +42,30 @@ function updateScroll() {
   header.classList.toggle('scrolled', y >= Math.max(72, window.innerHeight * .12));
   const total = document.documentElement.scrollHeight - window.innerHeight;
   progress.style.width = (total > 0 ? y / total * 100 : 0) + '%';
+
   const travel = Math.max(1, hero.offsetHeight - window.innerHeight);
   const p = motion.matches ? 0 : Math.max(0, Math.min(1, -hero.getBoundingClientRect().top / travel));
   const stage = hero.querySelector('.hero-sticky');
   const ease = t => t * t * (3 - 2 * t);
   const clamp = value => Math.max(0, Math.min(1, value));
-  // Stage A occupies 75% of the pinned scroll. Only the cartouche transforms.
-  const zoom = ease(clamp((p - .18) / .57));
-  const openingWidth = portal.offsetWidth * 1006 / 1200;
-  const openingHeight = portal.offsetHeight * 702 / 850;
-  const coverScale = Math.max(window.innerWidth / openingWidth, window.innerHeight / openingHeight) * 1.16;
-  // At rest, only the upper edge of the SVG cartouche is visible at the
-  // viewport bottom. Its first painted point is y=70 in the 850-unit viewBox.
-  const restingExposure = 95;
-  const startingTop = stage.clientHeight - restingExposure + portal.offsetHeight * (0.5 - 95 / 850);
-  stage.style.setProperty('--portal-scale', (1 + (coverScale - 1) * zoom).toFixed(4));
-  stage.style.setProperty('--portal-top', (startingTop + (stage.clientHeight / 2 - startingTop) * zoom).toFixed(2) + 'px');
-  stage.style.setProperty('--copy-opacity', (1 - ease(clamp((p - .04) / .16))).toFixed(3));
-  stage.style.setProperty('--gallery-opacity', (1 - ease(clamp((p - .28) / .38))).toFixed(3));
-  // Stage B occupies the remaining 25%. The real Villas section pins over the
-  // emerald opening, then resumes in normal flow at precisely the same top edge.
-  const heading = ease(clamp((p - .75) / .11));
-  const cards = ease(clamp((p - .85) / .15));
-  villasSection.style.setProperty('--villa-heading-reveal', heading.toFixed(3));
-  villasSection.style.setProperty('--villa-cards-reveal', cards.toFixed(3));
-  const controlled = !motion.matches && p < 1;
-  villasSection.classList.toggle('portal-controlled', controlled);
-  villasSection.classList.toggle('portal-pin', controlled && p >= .75);
-  villasSection.classList.toggle('portal-complete', !controlled);
-  if (!controlled) villasSection.querySelectorAll('.smart-reveal').forEach(el => el.classList.add('is-visible'));
+
+  // Secret Garden Reveal: only the botanical curtain layers animate.
+  // The Villas section and every following section remain in normal document flow.
+  const awaken = ease(clamp((p - .04) / .16));
+  const opening = ease(clamp((p - .14) / .60));
+  const passing = ease(clamp((p - .58) / .34));
+  stage.style.setProperty('--garden-awake', awaken.toFixed(4));
+  stage.style.setProperty('--garden-open', opening.toFixed(4));
+  stage.style.setProperty('--garden-pass', passing.toFixed(4));
+  stage.style.setProperty('--copy-opacity', (1 - ease(clamp((p - .47) / .27))).toFixed(3));
+  stage.style.setProperty('--gallery-opacity', (1 - ease(clamp((p - .54) / .28))).toFixed(3));
+
+  // Clear legacy portal state defensively so no section can become fixed or hidden.
+  villasSection.classList.remove('portal-controlled', 'portal-pin');
+  villasSection.classList.toggle('portal-complete', p >= .9 || motion.matches);
+  if (p >= .82 || motion.matches) {
+    villasSection.querySelectorAll('.smart-reveal').forEach(el => el.classList.add('is-visible'));
+  }
 }
 function scheduleScroll() { if (!frame) frame = requestAnimationFrame(updateScroll); }
 addEventListener('scroll', scheduleScroll, { passive: true });
