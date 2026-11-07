@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="./editorial.css?v=hero-1">
   <link rel="stylesheet" href="./correction.css?v=gold-2">
   <link rel="stylesheet" href="./fidelity.css?v=kamuela-gold-5">
-  <link rel="stylesheet" href="./hero-film.css?v=secret-garden-4">
+  <link rel="stylesheet" href="./hero-film.css?v=secret-garden-5">
   <link rel="stylesheet" href="./villas-cinematic.css?v=kamuela-gold-6">
   <link rel="stylesheet" href="./journal.css?v=spacing-10">
   <link rel="stylesheet" href="./leaf-patterns.css?v=1">
@@ -104,11 +104,103 @@
           </div>
         </div>
         <div class="secret-garden-portal" aria-hidden="true">
-          <div class="secret-garden-atmosphere"></div>
-          <div class="secret-garden-curtain secret-garden-curtain-left"><img src="./assets/leaf-1.svg" alt=""></div>
-          <div class="secret-garden-curtain secret-garden-curtain-right"><img src="./assets/leaf-1.svg" alt=""></div>
-          <div class="secret-garden-foliage secret-garden-foliage-left"></div>
-          <div class="secret-garden-foliage secret-garden-foliage-right"></div>
+          <div class="secret-garden-reveal"></div>
+          <div class="secret-garden-opening-light"></div>
+          <svg class="secret-garden-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="secretGardenGold" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#84663D"/>
+                <stop offset=".28" stop-color="#B69B72"/>
+                <stop offset=".52" stop-color="#E7D3A4"/>
+                <stop offset=".78" stop-color="#B69B72"/>
+                <stop offset="1" stop-color="#84663D"/>
+              </linearGradient>
+              <filter id="secretGardenGlow" x="-25%" y="-25%" width="150%" height="150%">
+                <feGaussianBlur stdDeviation="2.6" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <g class="secret-garden-wing secret-garden-wing-left">
+              <path class="botanical-edge botanical-highlight" d="M-110 910 C135 742 410 724 632 760 C668 726 690 651 688 590"/>
+              <path class="botanical-edge" d="M-90 938 C170 814 410 844 600 842 C651 826 681 704 688 590"/>
+              <path class="botanical-spine botanical-highlight" d="M-70 863 C182 744 414 759 638 784 C668 744 686 667 688 590"/>
+              <path class="botanical-strand botanical-highlight" d="M-95.0 916.0 C170.0 790.0 500.0 854.0 688.0 590.0"/>
+              <path class="botanical-strand" d="M-89.8 911.5 C173.6 791.2 503.1 848.2 686.4 595.9"/>
+              <path class="botanical-strand" d="M-84.7 906.9 C177.3 792.4 506.2 842.5 684.8 601.8"/>
+              <path class="botanical-strand botanical-secondary" d="M-79.5 902.4 C180.9 793.5 509.3 836.7 683.3 607.6"/>
+              <path class="botanical-strand" d="M-74.4 897.8 C184.5 794.6 512.4 831.0 681.7 613.5"/>
+              <path class="botanical-strand" d="M-69.2 893.3 C188.2 795.5 515.5 825.2 680.1 619.4"/>
+              <path class="botanical-strand botanical-secondary" d="M-64.1 888.7 C191.8 796.4 518.5 819.5 678.5 625.3"/>
+              <path class="botanical-strand botanical-highlight" d="M-58.9 884.2 C195.5 797.2 521.6 813.7 677.0 631.2"/>
+              <path class="botanical-strand" d="M-53.8 879.6 C199.1 797.8 524.7 807.9 675.4 637.0"/>
+              <path class="botanical-strand botanical-secondary" d="M-48.6 875.1 C202.7 798.3 527.8 802.2 673.8 642.9"/>
+              <path class="botanical-strand" d="M-43.5 870.5 C206.4 798.6 530.9 796.4 672.2 648.8"/>
+              <path class="botanical-strand" d="M-38.3 866.0 C210.0 798.8 534.0 790.7 670.7 654.7"/>
+              <path class="botanical-strand botanical-secondary" d="M-33.2 861.5 C213.6 798.7 537.1 784.9 669.1 660.5"/>
+              <path class="botanical-strand" d="M-28.0 856.9 C217.3 798.5 540.2 779.2 667.5 666.4"/>
+              <path class="botanical-strand botanical-highlight" d="M-22.9 852.4 C220.9 798.1 543.3 773.4 665.9 672.3"/>
+              <path class="botanical-strand botanical-secondary" d="M-17.7 847.8 C224.5 797.4 546.4 767.6 664.4 678.2"/>
+              <path class="botanical-strand" d="M-12.6 843.3 C228.2 796.5 549.5 761.9 662.8 684.1"/>
+              <path class="botanical-strand" d="M-7.4 838.7 C231.8 795.4 552.5 756.1 661.2 689.9"/>
+              <path class="botanical-strand botanical-secondary" d="M-2.3 834.2 C235.5 794.1 555.6 750.4 659.6 695.8"/>
+              <path class="botanical-strand" d="M2.9 829.6 C239.1 792.6 558.7 744.6 658.1 701.7"/>
+              <path class="botanical-strand" d="M8.0 825.1 C242.7 790.9 561.8 738.8 656.5 707.6"/>
+              <path class="botanical-strand botanical-highlight" d="M13.2 820.5 C246.4 788.9 564.9 733.1 654.9 713.5"/>
+              <path class="botanical-strand" d="M18.3 816.0 C250.0 786.8 568.0 727.3 653.3 719.3"/>
+              <path class="botanical-strand" d="M23.5 811.5 C253.6 784.5 571.1 721.6 651.8 725.2"/>
+              <path class="botanical-strand botanical-secondary" d="M28.6 806.9 C257.3 782.0 574.2 715.8 650.2 731.1"/>
+              <path class="botanical-strand" d="M33.8 802.4 C260.9 779.3 577.3 710.1 648.6 737.0"/>
+              <path class="botanical-strand" d="M38.9 797.8 C264.5 776.5 580.4 704.3 647.0 742.8"/>
+              <path class="botanical-strand botanical-secondary" d="M44.1 793.3 C268.2 773.5 583.5 698.5 645.5 748.7"/>
+              <path class="botanical-strand botanical-highlight" d="M49.2 788.7 C271.8 770.5 586.5 692.8 643.9 754.6"/>
+              <path class="botanical-strand" d="M54.4 784.2 C275.5 767.3 589.6 687.0 642.3 760.5"/>
+              <path class="botanical-strand botanical-secondary" d="M59.5 779.6 C279.1 764.0 592.7 681.3 640.7 766.4"/>
+              <path class="botanical-strand" d="M64.7 775.1 C282.7 760.7 595.8 675.5 639.2 772.2"/>
+              <path class="botanical-strand" d="M69.8 770.5 C286.4 757.4 598.9 669.8 637.6 778.1"/>
+              <path class="botanical-strand botanical-secondary" d="M75.0 766.0 C290.0 754.0 602.0 664.0 636.0 784.0"/>
+            </g>
+            <g class="secret-garden-wing secret-garden-wing-right" transform="translate(1440 0) scale(-1 1)">
+              <path class="botanical-edge botanical-highlight" d="M-110 910 C135 742 410 724 632 760 C668 726 690 651 688 590"/>
+              <path class="botanical-edge" d="M-90 938 C170 814 410 844 600 842 C651 826 681 704 688 590"/>
+              <path class="botanical-spine botanical-highlight" d="M-70 863 C182 744 414 759 638 784 C668 744 686 667 688 590"/>
+              <path class="botanical-strand botanical-highlight" d="M-95.0 916.0 C170.0 790.0 500.0 854.0 688.0 590.0"/>
+              <path class="botanical-strand" d="M-89.8 911.5 C173.6 791.2 503.1 848.2 686.4 595.9"/>
+              <path class="botanical-strand" d="M-84.7 906.9 C177.3 792.4 506.2 842.5 684.8 601.8"/>
+              <path class="botanical-strand botanical-secondary" d="M-79.5 902.4 C180.9 793.5 509.3 836.7 683.3 607.6"/>
+              <path class="botanical-strand" d="M-74.4 897.8 C184.5 794.6 512.4 831.0 681.7 613.5"/>
+              <path class="botanical-strand" d="M-69.2 893.3 C188.2 795.5 515.5 825.2 680.1 619.4"/>
+              <path class="botanical-strand botanical-secondary" d="M-64.1 888.7 C191.8 796.4 518.5 819.5 678.5 625.3"/>
+              <path class="botanical-strand botanical-highlight" d="M-58.9 884.2 C195.5 797.2 521.6 813.7 677.0 631.2"/>
+              <path class="botanical-strand" d="M-53.8 879.6 C199.1 797.8 524.7 807.9 675.4 637.0"/>
+              <path class="botanical-strand botanical-secondary" d="M-48.6 875.1 C202.7 798.3 527.8 802.2 673.8 642.9"/>
+              <path class="botanical-strand" d="M-43.5 870.5 C206.4 798.6 530.9 796.4 672.2 648.8"/>
+              <path class="botanical-strand" d="M-38.3 866.0 C210.0 798.8 534.0 790.7 670.7 654.7"/>
+              <path class="botanical-strand botanical-secondary" d="M-33.2 861.5 C213.6 798.7 537.1 784.9 669.1 660.5"/>
+              <path class="botanical-strand" d="M-28.0 856.9 C217.3 798.5 540.2 779.2 667.5 666.4"/>
+              <path class="botanical-strand botanical-highlight" d="M-22.9 852.4 C220.9 798.1 543.3 773.4 665.9 672.3"/>
+              <path class="botanical-strand botanical-secondary" d="M-17.7 847.8 C224.5 797.4 546.4 767.6 664.4 678.2"/>
+              <path class="botanical-strand" d="M-12.6 843.3 C228.2 796.5 549.5 761.9 662.8 684.1"/>
+              <path class="botanical-strand" d="M-7.4 838.7 C231.8 795.4 552.5 756.1 661.2 689.9"/>
+              <path class="botanical-strand botanical-secondary" d="M-2.3 834.2 C235.5 794.1 555.6 750.4 659.6 695.8"/>
+              <path class="botanical-strand" d="M2.9 829.6 C239.1 792.6 558.7 744.6 658.1 701.7"/>
+              <path class="botanical-strand" d="M8.0 825.1 C242.7 790.9 561.8 738.8 656.5 707.6"/>
+              <path class="botanical-strand botanical-highlight" d="M13.2 820.5 C246.4 788.9 564.9 733.1 654.9 713.5"/>
+              <path class="botanical-strand" d="M18.3 816.0 C250.0 786.8 568.0 727.3 653.3 719.3"/>
+              <path class="botanical-strand" d="M23.5 811.5 C253.6 784.5 571.1 721.6 651.8 725.2"/>
+              <path class="botanical-strand botanical-secondary" d="M28.6 806.9 C257.3 782.0 574.2 715.8 650.2 731.1"/>
+              <path class="botanical-strand" d="M33.8 802.4 C260.9 779.3 577.3 710.1 648.6 737.0"/>
+              <path class="botanical-strand" d="M38.9 797.8 C264.5 776.5 580.4 704.3 647.0 742.8"/>
+              <path class="botanical-strand botanical-secondary" d="M44.1 793.3 C268.2 773.5 583.5 698.5 645.5 748.7"/>
+              <path class="botanical-strand botanical-highlight" d="M49.2 788.7 C271.8 770.5 586.5 692.8 643.9 754.6"/>
+              <path class="botanical-strand" d="M54.4 784.2 C275.5 767.3 589.6 687.0 642.3 760.5"/>
+              <path class="botanical-strand botanical-secondary" d="M59.5 779.6 C279.1 764.0 592.7 681.3 640.7 766.4"/>
+              <path class="botanical-strand" d="M64.7 775.1 C282.7 760.7 595.8 675.5 639.2 772.2"/>
+              <path class="botanical-strand" d="M69.8 770.5 C286.4 757.4 598.9 669.8 637.6 778.1"/>
+              <path class="botanical-strand botanical-secondary" d="M75.0 766.0 C290.0 754.0 602.0 664.0 636.0 784.0"/>
+            </g>
+          </svg>
+          <div class="secret-garden-foreground secret-garden-foreground-left"></div>
+          <div class="secret-garden-foreground secret-garden-foreground-right"></div>
         </div>
       </div>
     </section>
