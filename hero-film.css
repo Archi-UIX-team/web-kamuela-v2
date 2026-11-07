@@ -327,3 +327,10 @@
 .secret-garden-curtain-right{right:-3%}
 @media(max-width:1120px){.secret-garden-curtain{width:clamp(165px,21vw,245px);bottom:-7%}}
 @media(max-width:800px){.secret-garden-curtain{width:clamp(135px,29vw,205px);bottom:-4%}}
+
+
+/* Keep the botanical tips separated: the negative space itself is the entrance. */
+.secret-garden-curtain-left{left:-9%}
+.secret-garden-curtain-right{right:-9%}
+@media(max-width:1120px){.secret-garden-curtain-left{left:-11%}.secret-garden-curtain-right{right:-11%}}
+@media(max-width:800px){.secret-garden-curtain-left{left:-15%}.secret-garden-curtain-right{right:-15%}}
