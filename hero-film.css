@@ -290,3 +290,8 @@
   .secret-garden-wing{animation:none!important}
   .secret-garden-reveal{opacity:0}
 }
+
+/* Metallic visibility calibration against the approved reference. */
+.botanical-strand{opacity:.88}
+.botanical-secondary{opacity:.68}
+.botanical-edge{opacity:.96}
