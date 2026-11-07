@@ -372,3 +372,7 @@
 @media(prefers-reduced-motion:reduce){
   .secret-garden-official-wrap{animation:none!important}
 }
+
+
+/* Secret Garden v13 — remove the superseded generated ribbons completely. */
+.secret-garden-wing{display:none!important}
