@@ -68,7 +68,7 @@ function initSecretGarden() {
 
   gsap.registerPlugin(ScrollTrigger);
   gsap.set([leftCurtain, rightCurtain], { xPercent: 0, yPercent: 0, rotation: 0, scale: 1, force3D: true });
-  gsap.set(reveal, { opacity: 0, scale: .98 });
+  gsap.set(reveal, { opacity: 0 });
   gsap.set(light, { opacity: .48, scale: .82, xPercent: -50 });
 
   const timeline = gsap.timeline({
@@ -87,29 +87,33 @@ function initSecretGarden() {
     }
   });
 
-  // 0–15%: the entrance wakes without losing its resting silhouette.
+  // 0–30%: the curtains begin opening while all hero content stays readable.
   timeline
-    .to(light, { opacity: .78, scale: 1.04, duration: .15 }, 0)
-    .to(leftCurtain, { xPercent: -1.8, yPercent: 1.2, rotation: -.7, duration: .15 }, 0)
-    .to(rightCurtain, { xPercent: 1.8, yPercent: 1.2, rotation: .7, duration: .15 }, 0)
-    // 15–45%: both complete artworks hinge from their outer attachment points.
-    .to(leftCurtain, { xPercent: -29, yPercent: 6, rotation: -4, scale: 1.06, duration: .30 }, .15)
-    .to(rightCurtain, { xPercent: 29, yPercent: 6, rotation: 4, scale: 1.06, duration: .30 }, .15)
-    .to(reveal, { opacity: .56, clipPath: 'inset(28% 22% 0 22% round 48% 48% 0 0)', scale: 1.015, duration: .30 }, .15)
-    // 45–75%: the emerald garden expands while the viewer advances through it.
-    .to(leftCurtain, { xPercent: -67, yPercent: 12, rotation: -5, scale: 1.085, duration: .30 }, .45)
-    .to(rightCurtain, { xPercent: 67, yPercent: 12, rotation: 5, scale: 1.085, duration: .30 }, .45)
-    .to(reveal, { opacity: .98, clipPath: 'inset(0% 2% 0 2% round 8% 8% 0 0)', scale: 1.06, duration: .30 }, .45)
-    .to(light, { opacity: .5, scale: 1.35, duration: .30 }, .45)
-    .to(copy, { opacity: 0, y: -28, duration: .28 }, .47)
-    .to(gallery, { opacity: 0, scale: 1.035, duration: .25 }, .50)
-    // 75–90%: foreground foliage clears the frame with a final parallax drift.
-    .to(leftCurtain, { xPercent: -126, yPercent: 17, rotation: -5.5, scale: 1.1, opacity: .7, duration: .15 }, .75)
-    .to(rightCurtain, { xPercent: 126, yPercent: 17, rotation: 5.5, scale: 1.1, opacity: .7, duration: .15 }, .75)
-    .to(reveal, { clipPath: 'inset(0% 0% 0 0%)', scale: 1.1, duration: .15 }, .75)
-    // 90–100%: the curtains clear completely and the Villas scene takes over.
-    .to([leftCurtain, rightCurtain], { opacity: 0, duration: .10 }, .90)
-    .to(light, { opacity: 0, duration: .10 }, .90);
+    .to(light, { opacity: .76, scale: 1.03, duration: .30 }, 0)
+    .to(leftCurtain, { xPercent: -14, yPercent: 2.5, rotation: -2, scale: 1.025, duration: .30 }, 0)
+    .to(rightCurtain, { xPercent: 14, yPercent: 2.5, rotation: 2, scale: 1.025, duration: .30 }, 0)
+    // 30–60%: widen the negative space and begin a boundary-free crossfade.
+    .to(leftCurtain, { xPercent: -48, yPercent: 7, rotation: -4, scale: 1.055, duration: .30 }, .30)
+    .to(rightCurtain, { xPercent: 48, yPercent: 7, rotation: 4, scale: 1.055, duration: .30 }, .30)
+    .to(reveal, { opacity: .72, duration: .30 }, .30)
+    .to(copy, { opacity: .38, y: -16, duration: .30 }, .30)
+    .to(gallery, { opacity: .42, scale: 1.02, duration: .30 }, .30)
+    // 60–85%: clear the frame and complete the atmospheric background blend.
+    .to(leftCurtain, { xPercent: -112, yPercent: 13, rotation: -5, scale: 1.07, duration: .25 }, .60)
+    .to(rightCurtain, { xPercent: 112, yPercent: 13, rotation: 5, scale: 1.07, duration: .25 }, .60)
+    .to(reveal, { opacity: 1, duration: .25 }, .60)
+    .to(copy, { opacity: 0, y: -28, duration: .22 }, .60)
+    .to(gallery, { opacity: 0, scale: 1.035, duration: .22 }, .60)
+    .to(light, { opacity: .28, scale: 1.25, duration: .25 }, .60)
+    // 85–100%: finish the handoff, reveal Villas, and release the sticky scene.
+    .to(leftCurtain, { xPercent: -138, opacity: 0, duration: .15 }, .85)
+    .to(rightCurtain, { xPercent: 138, opacity: 0, duration: .15 }, .85)
+    .to(light, { opacity: 0, duration: .15 }, .85);
+
+  addEventListener('pagehide', () => {
+    timeline.scrollTrigger?.kill();
+    timeline.kill();
+  }, { once: true });
 }
 
 initSecretGarden();

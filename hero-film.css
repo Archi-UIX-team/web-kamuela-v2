@@ -442,17 +442,23 @@
 .secret-garden-svg,
 .secret-garden-foreground,
 .hero-floral{display:none!important}
-.secret-garden-portal{z-index:6;overflow:hidden;perspective:1200px}
+.secret-garden-portal{z-index:auto;overflow:hidden;perspective:none;isolation:auto}
 .secret-garden-reveal{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:1;
   opacity:0;
-  clip-path:inset(68% 46% 0 46% round 50% 50% 0 0);
+  clip-path:none;
   background:
-    radial-gradient(ellipse at 50% 76%,rgba(60,19,81,.18),transparent 40%),
-    radial-gradient(ellipse at 50% 72%,#17431f 0%,#0a2b1d 50%,#061a12 100%);
-  will-change:clip-path,opacity,transform;
+    linear-gradient(180deg,rgba(23,67,31,.35),rgba(6,26,18,.98)),
+    #061a12;
+  pointer-events:none;
+  will-change:opacity;
 }
 .secret-garden-opening-light{
-  z-index:1;
+  z-index:4;
   bottom:-10%;
   width:min(48vw,720px);
   height:46vh;
@@ -464,9 +470,9 @@
 }
 .secret-garden-curtain{
   position:absolute;
-  z-index:3;
+  z-index:8;
   bottom:-1.5vw;
-  width:52vw;
+  width:85%;
   max-width:none;
   pointer-events:none;
   will-change:transform,opacity;
@@ -476,18 +482,18 @@
 .secret-garden-curtain img{display:block;width:100%;height:auto;pointer-events:none;user-select:none}
 .secret-garden-curtain-left{left:0;transform-origin:0% 100%}
 .secret-garden-curtain-right{right:0;transform-origin:100% 100%}
-@media(max-width:1120px){.secret-garden-curtain{width:61vw;bottom:0}}
+@media(max-width:1120px){.secret-garden-curtain{bottom:0}}
 @media(max-width:800px){
-  .secret-garden-curtain{width:82vw;bottom:0}
+  .secret-garden-curtain{bottom:0}
   .secret-garden-curtain-left{left:-22vw}
   .secret-garden-curtain-right{right:-22vw}
   .secret-garden-opening-light{width:68vw;height:34vh}
 }
 @media(max-width:540px){
-  .secret-garden-curtain{width:96vw;bottom:0}
+  .secret-garden-curtain{bottom:0}
   .secret-garden-curtain-left{left:-35vw}
   .secret-garden-curtain-right{right:-35vw}
 }
 @media(prefers-reduced-motion:reduce){
-  .secret-garden-reveal{opacity:.18;clip-path:inset(65% 34% 0 34% round 50% 50% 0 0)}
+  .secret-garden-reveal{opacity:0}
 }
