@@ -376,3 +376,33 @@
 
 /* Secret Garden v13 — remove the superseded generated ribbons completely. */
 .secret-garden-wing{display:none!important}
+
+
+/* Secret Garden v16 — purpose-built low leaf ribbons matching the approved composition. */
+.secret-garden-sculpted{
+  fill:none;
+  stroke:url(#secretGardenGold);
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  transform-box:view-box;
+  will-change:transform,opacity;
+}
+.secret-garden-sculpted-left{
+  transform-origin:0% 100%;
+  transform:translate3d(calc(var(--garden-open,0) * -58vw),calc(var(--garden-pass,0) * 7vh),0) rotate(calc(var(--garden-open,0) * -5deg));
+}
+.secret-garden-sculpted-right{
+  transform-origin:100% 100%;
+  transform:translate3d(calc(var(--garden-open,0) * 58vw),calc(var(--garden-pass,0) * 7vh),0) rotate(calc(var(--garden-open,0) * 5deg));
+}
+.secret-leaf-body{
+  fill:rgba(4,34,21,.56);
+  stroke:url(#secretGardenGold);
+  stroke-width:1.05;
+  filter:drop-shadow(0 10px 18px rgba(2,20,12,.52));
+}
+.secret-leaf-rim{stroke-width:1.35;opacity:.98;filter:url(#secretGardenGlow)}
+.secret-leaf-midrib{stroke-width:1.12;opacity:.88}
+.secret-leaf-vein{stroke-width:.68;opacity:.76;vector-effect:non-scaling-stroke}
+.secret-leaf-vein-soft{stroke-width:.42;opacity:.49}
+.secret-leaf-vein-bright{stroke-width:1.02;opacity:.96;filter:url(#secretGardenGlow)}
