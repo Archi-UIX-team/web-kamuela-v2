@@ -42,36 +42,77 @@ function updateScroll() {
   header.classList.toggle('scrolled', y >= Math.max(72, window.innerHeight * .12));
   const total = document.documentElement.scrollHeight - window.innerHeight;
   progress.style.width = (total > 0 ? y / total * 100 : 0) + '%';
-
-  const travel = Math.max(1, hero.offsetHeight - window.innerHeight);
-  const p = motion.matches ? 0 : Math.max(0, Math.min(1, -hero.getBoundingClientRect().top / travel));
-  const stage = hero.querySelector('.hero-sticky');
-  const ease = t => t * t * (3 - 2 * t);
-  const clamp = value => Math.max(0, Math.min(1, value));
-
-  // Secret Garden Reveal: only the botanical curtain layers animate.
-  // The Villas section and every following section remain in normal document flow.
-  const awaken = ease(clamp((p - .04) / .16));
-  const opening = ease(clamp((p - .14) / .60));
-  const passing = ease(clamp((p - .58) / .34));
-  stage.style.setProperty('--garden-awake', awaken.toFixed(4));
-  stage.style.setProperty('--garden-open', opening.toFixed(4));
-  stage.style.setProperty('--garden-pass', passing.toFixed(4));
-  stage.style.setProperty('--copy-opacity', (1 - ease(clamp((p - .47) / .27))).toFixed(3));
-  stage.style.setProperty('--gallery-opacity', (1 - ease(clamp((p - .54) / .28))).toFixed(3));
-
-  // Clear legacy portal state defensively so no section can become fixed or hidden.
-  villasSection.classList.remove('portal-controlled', 'portal-pin');
-  villasSection.classList.toggle('portal-complete', p >= .9 || motion.matches);
-  if (p >= .82 || motion.matches) {
-    villasSection.querySelectorAll('.smart-reveal').forEach(el => el.classList.add('is-visible'));
-  }
 }
 function scheduleScroll() { if (!frame) frame = requestAnimationFrame(updateScroll); }
 addEventListener('scroll', scheduleScroll, { passive: true });
 addEventListener('resize', scheduleScroll);
 motion.addEventListener('change', scheduleScroll);
 updateScroll();
+
+function initSecretGarden() {
+  const stage = hero?.querySelector('.hero-sticky');
+  const leftCurtain = secretGardenPortal?.querySelector('.secret-garden-curtain-left');
+  const rightCurtain = secretGardenPortal?.querySelector('.secret-garden-curtain-right');
+  const reveal = secretGardenPortal?.querySelector('.secret-garden-reveal');
+  const light = secretGardenPortal?.querySelector('.secret-garden-opening-light');
+  const copy = stage?.querySelector('.hero-copy');
+  const gallery = stage?.querySelector('.film-gallery');
+  if (!stage || !leftCurtain || !rightCurtain || !reveal || !light) return;
+
+  villasSection.classList.remove('portal-controlled', 'portal-pin');
+  if (motion.matches || !window.gsap || !window.ScrollTrigger) {
+    villasSection.classList.add('portal-complete');
+    villasSection.querySelectorAll('.smart-reveal').forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.set([leftCurtain, rightCurtain], { xPercent: 0, yPercent: 0, rotation: 0, scale: 1, force3D: true });
+  gsap.set(reveal, { opacity: 0, scale: .98 });
+  gsap.set(light, { opacity: .48, scale: .82, xPercent: -50 });
+
+  const timeline = gsap.timeline({
+    defaults: { ease: 'none' },
+    scrollTrigger: {
+      trigger: hero,
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: 1.1,
+      invalidateOnRefresh: true,
+      onUpdate: self => {
+        const complete = self.progress >= .9;
+        villasSection.classList.toggle('portal-complete', complete);
+        if (self.progress >= .82) villasSection.querySelectorAll('.smart-reveal').forEach(el => el.classList.add('is-visible'));
+      }
+    }
+  });
+
+  // 0–15%: the entrance wakes without losing its resting silhouette.
+  timeline
+    .to(light, { opacity: .78, scale: 1.04, duration: .15 }, 0)
+    .to(leftCurtain, { xPercent: -1.8, yPercent: 1.2, rotation: -.7, duration: .15 }, 0)
+    .to(rightCurtain, { xPercent: 1.8, yPercent: 1.2, rotation: .7, duration: .15 }, 0)
+    // 15–45%: both complete artworks hinge from their outer attachment points.
+    .to(leftCurtain, { xPercent: -29, yPercent: 6, rotation: -4, scale: 1.06, duration: .30 }, .15)
+    .to(rightCurtain, { xPercent: 29, yPercent: 6, rotation: 4, scale: 1.06, duration: .30 }, .15)
+    .to(reveal, { opacity: .56, clipPath: 'inset(28% 22% 0 22% round 48% 48% 0 0)', scale: 1.015, duration: .30 }, .15)
+    // 45–75%: the emerald garden expands while the viewer advances through it.
+    .to(leftCurtain, { xPercent: -67, yPercent: 12, rotation: -5, scale: 1.085, duration: .30 }, .45)
+    .to(rightCurtain, { xPercent: 67, yPercent: 12, rotation: 5, scale: 1.085, duration: .30 }, .45)
+    .to(reveal, { opacity: .98, clipPath: 'inset(0% 2% 0 2% round 8% 8% 0 0)', scale: 1.06, duration: .30 }, .45)
+    .to(light, { opacity: .5, scale: 1.35, duration: .30 }, .45)
+    .to(copy, { opacity: 0, y: -28, duration: .28 }, .47)
+    .to(gallery, { opacity: 0, scale: 1.035, duration: .25 }, .50)
+    // 75–90%: foreground foliage clears the frame with a final parallax drift.
+    .to(leftCurtain, { xPercent: -126, yPercent: 17, rotation: -5.5, scale: 1.1, opacity: .7, duration: .15 }, .75)
+    .to(rightCurtain, { xPercent: 126, yPercent: 17, rotation: 5.5, scale: 1.1, opacity: .7, duration: .15 }, .75)
+    .to(reveal, { clipPath: 'inset(0% 0% 0 0%)', scale: 1.1, duration: .15 }, .75)
+    // 90–100%: the curtains clear completely and the Villas scene takes over.
+    .to([leftCurtain, rightCurtain], { opacity: 0, duration: .10 }, .90)
+    .to(light, { opacity: 0, duration: .10 }, .90);
+}
+
+initSecretGarden();
 
 const revealObserver = 'IntersectionObserver' in window && !motion.matches
   ? new IntersectionObserver(entries => {
