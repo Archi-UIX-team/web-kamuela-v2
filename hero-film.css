@@ -182,155 +182,111 @@
 }
 
 
-/* Secret Garden Reveal — two official Kamuela botanical curtains; negative space is the portal. */
+
+/* Secret Garden Reveal — shared architectural SVG, calibrated to the approved 1440 × 900 reference. */
 .ornamental-portal-transition{display:none!important}
 .secret-garden-portal{
   position:absolute;
   inset:0;
-  z-index:6;
+  z-index:4;
   overflow:hidden;
   pointer-events:none;
   isolation:isolate;
 }
-.secret-garden-atmosphere{
+.secret-garden-reveal{
   position:absolute;
-  inset:auto 17% -8% 17%;
-  height:38%;
-  opacity:calc(.42 + var(--garden-awake,0) * .34);
+  inset:0;
+  z-index:0;
+  opacity:calc(var(--garden-open,0) * .98);
+  background:radial-gradient(ellipse at 50% 70%,#17431f 0%,#0a2b1d 52%,#061a12 100%);
+  clip-path:polygon(
+    calc(50% - 3.2vw - var(--garden-open,0) * 47vw) calc(65% - var(--garden-open,0) * 65%),
+    calc(50% + 3.2vw + var(--garden-open,0) * 47vw) calc(65% - var(--garden-open,0) * 65%),
+    100% 100%,0 100%
+  );
+}
+.secret-garden-opening-light{
+  position:absolute;
+  z-index:1;
+  left:50%;
+  bottom:-3%;
+  width:min(38vw,550px);
+  height:39vh;
+  transform:translateX(-50%);
+  opacity:calc(.62 + var(--garden-awake,0) * .30);
   background:
-    radial-gradient(ellipse at 50% 100%,rgba(231,211,164,.18) 0%,rgba(182,155,114,.07) 31%,transparent 68%),
-    radial-gradient(ellipse at 50% 92%,rgba(60,19,81,.14),transparent 64%);
-  filter:blur(8px);
-  transition:opacity .15s linear;
+    radial-gradient(ellipse at 50% 100%,rgba(231,211,164,.22) 0%,rgba(182,155,114,.09) 31%,rgba(60,19,81,.045) 50%,transparent 75%);
+  filter:blur(5px);
 }
-.secret-garden-curtain{
+.secret-garden-svg{
   position:absolute;
-  bottom:-13%;
-  width:clamp(300px,31vw,585px);
-  aspect-ratio:1239/2370;
-  opacity:calc(.78 + var(--garden-awake,0) * .22);
-  will-change:transform,opacity;
-  filter:drop-shadow(0 7px 14px rgba(0,0,0,.42)) drop-shadow(0 0 7px rgba(231,211,164,.16));
-}
-.secret-garden-curtain img{
-  display:block;
+  z-index:2;
+  inset:0;
   width:100%;
   height:100%;
-  object-fit:contain;
-  animation:secret-garden-sway-left 11s ease-in-out infinite alternate;
-  transform-origin:50% 92%;
+  overflow:visible;
 }
-.secret-garden-curtain-left{
-  left:-2.5%;
-  transform-origin:24% 100%;
-  transform:
-    translate3d(calc(var(--garden-open,0) * -48vw),calc(var(--garden-pass,0) * 8vh),0)
-    rotate(calc(67deg + var(--garden-open,0) * -9deg))
-    scale(calc(1 + var(--garden-open,0) * .18));
+.secret-garden-wing{
+  fill:none;
+  stroke:url(#secretGardenGold);
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  transform-box:view-box;
+  will-change:transform,opacity;
 }
-.secret-garden-curtain-right{
-  right:-2.5%;
-  transform-origin:76% 100%;
-  transform:
-    translate3d(calc(var(--garden-open,0) * 48vw),calc(var(--garden-pass,0) * 8vh),0)
-    rotate(calc(-67deg + var(--garden-open,0) * 9deg))
-    scaleX(-1)
-    scale(calc(1 + var(--garden-open,0) * .18));
+.secret-garden-wing-left{
+  transform-origin:0% 96%;
+  transform:translate3d(calc(var(--garden-open,0) * -58vw),calc(var(--garden-pass,0) * 7vh),0) rotate(calc(var(--garden-open,0) * -6deg));
+  animation:secret-left-breathe 11.5s ease-in-out infinite alternate;
 }
-.secret-garden-curtain-right img{animation-name:secret-garden-sway-right;animation-duration:13.5s}
-@keyframes secret-garden-sway-left{
-  from{transform:rotate(-1.15deg) translate3d(-2px,1px,0)}
-  to{transform:rotate(1.2deg) translate3d(4px,-3px,0)}
+.secret-garden-wing-right{
+  transform-origin:100% 96%;
+  transform:translate3d(calc(var(--garden-open,0) * 58vw),calc(var(--garden-pass,0) * 7vh),0) rotate(calc(var(--garden-open,0) * 6deg));
+  animation:secret-right-breathe 13.5s ease-in-out infinite alternate;
 }
-@keyframes secret-garden-sway-right{
-  from{transform:rotate(.9deg) translate3d(2px,-2px,0)}
-  to{transform:rotate(-1.35deg) translate3d(-3px,3px,0)}
+.botanical-strand{stroke-width:.82;opacity:.76}
+.botanical-secondary{stroke-width:.55;opacity:.53}
+.botanical-highlight{stroke-width:1.28;opacity:.96;filter:url(#secretGardenGlow)}
+.botanical-edge{stroke-width:1.05;opacity:.88}
+.botanical-spine{stroke-width:1.34}
+@keyframes secret-left-breathe{
+  from{translate:0 1px}
+  to{translate:3px -2px}
 }
-.secret-garden-foliage{
+@keyframes secret-right-breathe{
+  from{translate:0 -1px}
+  to{translate:-3px 2px}
+}
+.secret-garden-foreground{
   position:absolute;
-  bottom:-7%;
-  width:31%;
-  height:25%;
-  opacity:calc(.30 - var(--garden-pass,0) * .24);
-  filter:blur(2.2px);
+  z-index:3;
+  bottom:-10%;
+  width:34%;
+  height:27%;
+  opacity:calc(.58 - var(--garden-pass,0) * .42);
+  filter:blur(2.5px) saturate(.85);
   background:
-    radial-gradient(ellipse at 22% 95%,rgba(7,43,27,.88),transparent 42%),
-    radial-gradient(ellipse at 66% 100%,rgba(19,67,31,.72),transparent 48%);
+    radial-gradient(ellipse at 20% 100%,rgba(4,38,23,.96) 0%,rgba(13,63,36,.65) 38%,transparent 70%),
+    radial-gradient(ellipse at 78% 112%,rgba(25,78,39,.72),transparent 54%);
+  will-change:transform,opacity;
 }
-.secret-garden-foliage-left{left:-4%;transform:translateX(calc(var(--garden-open,0) * -28vw))}
-.secret-garden-foliage-right{right:-4%;transform:translateX(calc(var(--garden-open,0) * 28vw)) scaleX(-1)}
+.secret-garden-foreground-left{left:-5%;transform:translateX(calc(var(--garden-open,0) * -34vw))}
+.secret-garden-foreground-right{right:-5%;transform:translateX(calc(var(--garden-open,0) * 34vw)) scaleX(-1)}
+.hero-floral{z-index:5}
+.hero-copy{z-index:7}
 @media(max-width:1120px){
-  .secret-garden-curtain{width:clamp(270px,34vw,440px);bottom:-9%}
-  .secret-garden-curtain-left{left:-5%}
-  .secret-garden-curtain-right{right:-5%}
+  .secret-garden-svg{width:116%;left:-8%}
+  .secret-garden-opening-light{width:48vw}
 }
 @media(max-width:800px){
-  .secret-garden-curtain{width:clamp(210px,48vw,330px);bottom:-3%;opacity:.86}
-  .secret-garden-curtain-left{left:-19%;transform:translate3d(calc(var(--garden-open,0) * -55vw),calc(var(--garden-pass,0) * 7vh),0) rotate(calc(63deg + var(--garden-open,0) * -7deg)) scale(calc(.86 + var(--garden-open,0) * .14))}
-  .secret-garden-curtain-right{right:-19%;transform:translate3d(calc(var(--garden-open,0) * 55vw),calc(var(--garden-pass,0) * 7vh),0) rotate(calc(-63deg + var(--garden-open,0) * 7deg)) scaleX(-1) scale(calc(.86 + var(--garden-open,0) * .14))}
-  .secret-garden-atmosphere{inset:auto 8% -3% 8%;height:27%}
-  .secret-garden-foliage{width:44%;height:18%}
+  .secret-garden-svg{width:145%;left:-22.5%;height:92%;top:8%}
+  .secret-garden-opening-light{width:60vw;height:28vh}
+  .secret-garden-foreground{width:48%;height:19%}
 }
 @media(max-width:540px){
-  .secret-garden-curtain{width:58vw;bottom:0}
-  .secret-garden-curtain-left{left:-29%}
-  .secret-garden-curtain-right{right:-29%}
+  .secret-garden-svg{width:175%;left:-37.5%;height:82%;top:18%}
 }
 @media(prefers-reduced-motion:reduce){
-  .secret-garden-curtain img{animation:none!important}
-  .secret-garden-curtain-left{transform:rotate(67deg)}
-  .secret-garden-curtain-right{transform:rotate(-67deg) scaleX(-1)}
+  .secret-garden-wing{animation:none!important}
+  .secret-garden-reveal{opacity:0}
 }
-
-
-/* Secret Garden proportion calibration: low, separated curtains with a clear central entrance. */
-.secret-garden-curtain{
-  width:clamp(165px,15.5vw,255px);
-  bottom:-16%;
-}
-.secret-garden-curtain-left{
-  left:-1%;
-  transform:
-    translate3d(calc(var(--garden-open,0) * -46vw),calc(var(--garden-pass,0) * 9vh),0)
-    rotate(calc(71deg + var(--garden-open,0) * -8deg))
-    scale(calc(1 + var(--garden-open,0) * .14));
-}
-.secret-garden-curtain-right{
-  right:-1%;
-  transform:
-    translate3d(calc(var(--garden-open,0) * 46vw),calc(var(--garden-pass,0) * 9vh),0)
-    rotate(calc(-71deg + var(--garden-open,0) * 8deg))
-    scaleX(-1)
-    scale(calc(1 + var(--garden-open,0) * .14));
-}
-.secret-garden-foliage{height:18%;width:25%;bottom:-8%;opacity:calc(.22 - var(--garden-pass,0) * .18)}
-@media(max-width:1120px){
-  .secret-garden-curtain{width:clamp(150px,18vw,215px);bottom:-13%}
-  .secret-garden-curtain-left{left:-3%}
-  .secret-garden-curtain-right{right:-3%}
-}
-@media(max-width:800px){
-  .secret-garden-curtain{width:clamp(125px,25vw,185px);bottom:-7%}
-  .secret-garden-curtain-left{left:-10%;transform:translate3d(calc(var(--garden-open,0) * -52vw),calc(var(--garden-pass,0) * 7vh),0) rotate(calc(68deg + var(--garden-open,0) * -7deg)) scale(calc(.92 + var(--garden-open,0) * .12))}
-  .secret-garden-curtain-right{right:-10%;transform:translate3d(calc(var(--garden-open,0) * 52vw),calc(var(--garden-pass,0) * 7vh),0) rotate(calc(-68deg + var(--garden-open,0) * 7deg)) scaleX(-1) scale(calc(.92 + var(--garden-open,0) * .12))}
-}
-@media(max-width:540px){
-  .secret-garden-curtain{width:30vw;bottom:-4%}
-  .secret-garden-curtain-left{left:-12%}
-  .secret-garden-curtain-right{right:-12%}
-}
-
-
-/* Final resting balance: visible lower-quarter wings without entering the headline area. */
-.secret-garden-curtain{width:clamp(190px,19vw,300px);bottom:-9%}
-.secret-garden-curtain-left{left:-3%}
-.secret-garden-curtain-right{right:-3%}
-@media(max-width:1120px){.secret-garden-curtain{width:clamp(165px,21vw,245px);bottom:-7%}}
-@media(max-width:800px){.secret-garden-curtain{width:clamp(135px,29vw,205px);bottom:-4%}}
-
-
-/* Keep the botanical tips separated: the negative space itself is the entrance. */
-.secret-garden-curtain-left{left:-9%}
-.secret-garden-curtain-right{right:-9%}
-@media(max-width:1120px){.secret-garden-curtain-left{left:-11%}.secret-garden-curtain-right{right:-11%}}
-@media(max-width:800px){.secret-garden-curtain-left{left:-15%}.secret-garden-curtain-right{right:-15%}}
