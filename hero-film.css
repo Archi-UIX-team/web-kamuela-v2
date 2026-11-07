@@ -281,3 +281,41 @@
   .secret-garden-curtain-left{transform:rotate(67deg)}
   .secret-garden-curtain-right{transform:rotate(-67deg) scaleX(-1)}
 }
+
+
+/* Secret Garden proportion calibration: low, separated curtains with a clear central entrance. */
+.secret-garden-curtain{
+  width:clamp(165px,15.5vw,255px);
+  bottom:-16%;
+}
+.secret-garden-curtain-left{
+  left:-1%;
+  transform:
+    translate3d(calc(var(--garden-open,0) * -46vw),calc(var(--garden-pass,0) * 9vh),0)
+    rotate(calc(71deg + var(--garden-open,0) * -8deg))
+    scale(calc(1 + var(--garden-open,0) * .14));
+}
+.secret-garden-curtain-right{
+  right:-1%;
+  transform:
+    translate3d(calc(var(--garden-open,0) * 46vw),calc(var(--garden-pass,0) * 9vh),0)
+    rotate(calc(-71deg + var(--garden-open,0) * 8deg))
+    scaleX(-1)
+    scale(calc(1 + var(--garden-open,0) * .14));
+}
+.secret-garden-foliage{height:18%;width:25%;bottom:-8%;opacity:calc(.22 - var(--garden-pass,0) * .18)}
+@media(max-width:1120px){
+  .secret-garden-curtain{width:clamp(150px,18vw,215px);bottom:-13%}
+  .secret-garden-curtain-left{left:-3%}
+  .secret-garden-curtain-right{right:-3%}
+}
+@media(max-width:800px){
+  .secret-garden-curtain{width:clamp(125px,25vw,185px);bottom:-7%}
+  .secret-garden-curtain-left{left:-10%;transform:translate3d(calc(var(--garden-open,0) * -52vw),calc(var(--garden-pass,0) * 7vh),0) rotate(calc(68deg + var(--garden-open,0) * -7deg)) scale(calc(.92 + var(--garden-open,0) * .12))}
+  .secret-garden-curtain-right{right:-10%;transform:translate3d(calc(var(--garden-open,0) * 52vw),calc(var(--garden-pass,0) * 7vh),0) rotate(calc(-68deg + var(--garden-open,0) * 7deg)) scaleX(-1) scale(calc(.92 + var(--garden-open,0) * .12))}
+}
+@media(max-width:540px){
+  .secret-garden-curtain{width:30vw;bottom:-4%}
+  .secret-garden-curtain-left{left:-12%}
+  .secret-garden-curtain-right{right:-12%}
+}
