@@ -6,7 +6,7 @@
   let active = 2;
   let pointerStart = null;
 
-  const positionClasses = ['is-active', 'is-prev', 'is-next', 'is-far-prev', 'is-far-next'];
+  const positionClasses = ['is-active', 'is-prev', 'is-next', 'is-far-prev', 'is-far-next', 'is-hidden'];
   function render() {
     cards.forEach((card, index) => {
       card.classList.remove(...positionClasses);
@@ -15,12 +15,15 @@
         : difference === 1 ? 'is-next'
         : difference === 2 ? 'is-far-next'
         : difference === cards.length - 1 ? 'is-prev'
-        : 'is-far-prev';
+        : difference === cards.length - 2 ? 'is-far-prev'
+        : 'is-hidden';
       card.classList.add(position);
       const selected = difference === 0;
       card.setAttribute('aria-current', selected ? 'true' : 'false');
       const link = card.querySelector('a');
       link.tabIndex = selected ? 0 : -1;
+      const embed = card.querySelector('iframe');
+      embed.tabIndex = selected ? 0 : -1;
     });
   }
   function select(index) {
