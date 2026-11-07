@@ -473,7 +473,7 @@
   position:absolute;
   z-index:8;
   bottom:-1.5vw;
-  width:85%;
+  width:40%;
   max-width:none;
   pointer-events:none;
   will-change:transform,opacity;
@@ -485,17 +485,17 @@
 .secret-garden-curtain-right img{margin-left:auto}
 .secret-garden-curtain-left{left:0;transform-origin:0% 100%}
 .secret-garden-curtain-right{right:0;transform-origin:100% 100%}
-@media(max-width:1120px){.secret-garden-curtain{bottom:0}}
+@media(max-width:1120px){.secret-garden-curtain{width:50%;bottom:0}}
 @media(max-width:800px){
-  .secret-garden-curtain{bottom:0}
-  .secret-garden-curtain-left{left:-22vw}
-  .secret-garden-curtain-right{right:-22vw}
+  .secret-garden-curtain{width:64%;bottom:0}
+  .secret-garden-curtain-left{left:-10vw}
+  .secret-garden-curtain-right{right:-10vw}
   .secret-garden-opening-light{width:68vw;height:34vh}
 }
 @media(max-width:540px){
-  .secret-garden-curtain{bottom:0}
-  .secret-garden-curtain-left{left:-35vw}
-  .secret-garden-curtain-right{right:-35vw}
+  .secret-garden-curtain{width:76%;bottom:0}
+  .secret-garden-curtain-left{left:-16vw}
+  .secret-garden-curtain-right{right:-16vw}
 }
 @media(prefers-reduced-motion:reduce){
   .secret-garden-reveal{opacity:1}
