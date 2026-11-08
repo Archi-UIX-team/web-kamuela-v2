@@ -1,0 +1,94 @@
+/* Targeted Offers, Journal, and navbar refinements. */
+
+/* Navbar: preserve layout and content while keeping every header state transparent. */
+.masthead,
+.masthead.scrolled,
+.masthead:not(.scrolled),
+.masthead.over-offers,
+.masthead.over-moments,
+.masthead.scrolled.over-moments{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  box-shadow:none!important;
+}
+.masthead::before{background:transparent!important}
+
+/* Offers: 3:2 rectangular photography and bottom-rounded stationery panels. */
+.offer-invitation-card,
+.offer-invitation-card *{font-family:Inter,sans-serif}
+.offer-photo-frame{
+  width:100%;
+  height:auto!important;
+  aspect-ratio:3/2;
+  border-radius:0!important;
+  overflow:visible;
+}
+.offer-photo-frame::before,
+.offer-photo-frame img{border-radius:0!important}
+.offer-photo-frame img{width:100%;height:100%;object-fit:cover;overflow:hidden}
+.offer-photo-frame>.offer-binding-rings{
+  top:auto!important;
+  right:0;
+  bottom:-26px;
+  left:0;
+}
+.offer-paper-panel{
+  border-radius:0 0 20px 20px!important;
+}
+.offer-paper-panel::before{
+  border-radius:0 0 12px 12px;
+}
+.offer-title{
+  min-height:0!important;
+  margin:5px 0 8px;
+  font:500 clamp(20px,1.5vw,24px)/1.25 Inter,sans-serif!important;
+  color:#17431f!important;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+.offer-title-main,
+.offer-title-accent{
+  display:inline;
+  font:inherit!important;
+  color:inherit!important;
+  vertical-align:baseline;
+}
+
+/* Journal: mirror the existing animated asset on a separate right-side wrapper. */
+.news>.journal-leaf-flip{
+  position:absolute;
+  z-index:2;
+  top:clamp(62px,8dvh,82px);
+  right:clamp(-128px,-6.5vw,-96px);
+  width:clamp(240px,17vw,310px);
+  aspect-ratio:1239/2370;
+  pointer-events:none;
+  transform:scaleX(-1);
+  filter:drop-shadow(0 14px 28px rgba(6,26,18,.28));
+}
+.news>.journal-leaf-flip>.kamuela-section-leaf{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  opacity:1!important;
+}
+.journal-item-arrow,
+.journal-item.is-active .journal-item-arrow,
+.journal-item:is(.is-active,:hover,:focus-visible) .journal-item-arrow,
+.journal-selector:has(.journal-item:hover) .journal-item.is-active:not(:hover) .journal-item-arrow{
+  opacity:1;
+  transform:translateY(-50%);
+}
+.journal-item-arrow iconify-icon{display:block;font-size:20px;color:#c2b33a;transition:color .3s ease,transform .3s ease}
+.journal-item:hover .journal-item-arrow,
+.journal-item:focus-visible .journal-item-arrow{transform:translate(3px,calc(-50% - 3px))}
+.journal-item:hover .journal-item-arrow iconify-icon,
+.journal-item:focus-visible .journal-item-arrow iconify-icon{color:#e7d3a4}
+
+@media(max-width:800px){
+  .news>.journal-leaf-flip{top:72px;right:-72px;width:clamp(105px,28vw,180px)}
+}

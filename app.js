@@ -6,7 +6,15 @@ document.querySelectorAll('main > section:not(.hero)').forEach((section, index) 
   const leaf = document.createElement('span');
   leaf.className = `kamuela-section-leaf kamuela-section-leaf-${index % 2 ? 'left' : 'right'}`;
   leaf.setAttribute('aria-hidden', 'true');
-  section.prepend(leaf);
+  if (section.classList.contains('news')) {
+    const flip = document.createElement('span');
+    flip.className = 'journal-leaf-flip';
+    flip.setAttribute('aria-hidden', 'true');
+    flip.append(leaf);
+    section.prepend(flip);
+  } else {
+    section.prepend(leaf);
+  }
 });
 
 const header = document.querySelector('.masthead');
