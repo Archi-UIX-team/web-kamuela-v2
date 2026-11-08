@@ -15,10 +15,20 @@
   box-shadow:none!important;
 }
 .masthead::before{background:transparent!important}
+.masthead.scrolled{
+  background:rgba(7,25,15,.02)!important;
+  background-color:rgba(7,25,15,.02)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(115%)!important;
+  backdrop-filter:blur(18px) saturate(115%)!important;
+}
 
 /* Offers: 3:2 rectangular photography and bottom-rounded stationery panels. */
 .offer-invitation-card,
 .offer-invitation-card *{font-family:Inter,sans-serif}
+.offer-invitation-card{
+  flex-basis:calc((105% - 84px)/3);
+  min-height:0!important;
+}
 .offer-photo-frame{
   width:100%;
   height:auto!important;
@@ -36,6 +46,9 @@
   left:0;
 }
 .offer-paper-panel{
+  flex:0 0 auto;
+  min-height:0!important;
+  padding-bottom:24px!important;
   border-radius:0 0 20px 20px!important;
 }
 .offer-paper-panel::before{
@@ -91,4 +104,11 @@
 
 @media(max-width:800px){
   .news>.journal-leaf-flip{top:72px;right:-72px;width:clamp(105px,28vw,180px)}
+}
+@media(min-width:701px) and (max-width:1100px){
+  .offer-invitation-card{flex-basis:calc((105% - 31.5px)/2)}
+}
+@media(max-width:700px){
+  .offer-invitation-card{flex-basis:90.3%}
+  .offer-paper-panel{min-height:0!important;padding-bottom:24px!important}
 }
