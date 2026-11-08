@@ -1,0 +1,56 @@
+/* Final content, editorial sizing, and footer continuity refinements. */
+.villas-intro h2{
+  display:flex;
+  width:100%;
+  align-items:baseline;
+  justify-content:center;
+  gap:.12em;
+  text-align:center;
+}
+
+@media(min-width:801px){
+  .journal-showcase{grid-template-columns:minmax(0,1fr) 400px!important}
+  .journal-selector{width:400px}
+  .journal-feature{min-width:0}
+  .journal-feature-image{width:100%;height:100%;object-fit:cover}
+}
+
+.membership-copy p{font-size:16px!important}
+.membership>.kamuela-section-leaf.kamuela-section-leaf-right{opacity:1!important}
+
+.footer-reservation{background:#17271c!important}
+.footer-reservation::before{opacity:.5!important}
+.footer-reservation::after{right:50%!important}
+
+.footer-brands{
+  display:block;
+  min-height:62px;
+  padding:0;
+  overflow:hidden;
+}
+.footer-brands-marquee{
+  display:flex;
+  width:max-content;
+  min-height:62px;
+  animation:footer-brands-right 32s linear infinite;
+  will-change:transform;
+}
+.footer-brands-track{
+  display:flex;
+  flex:0 0 auto;
+  align-items:center;
+  gap:clamp(26px,3.4vw,58px);
+  padding:0 clamp(18px,1.7vw,30px);
+}
+.footer-brands:hover .footer-brands-marquee{animation-play-state:paused}
+@keyframes footer-brands-right{
+  from{transform:translateX(-50%)}
+  to{transform:translateX(0)}
+}
+
+@media(max-width:540px){
+  .villas-intro h2{flex-wrap:wrap;gap:0 .12em}
+}
+@media(prefers-reduced-motion:reduce){
+  .footer-brands-marquee{animation:none;transform:none}
+}
