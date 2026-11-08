@@ -1,11 +1,11 @@
 (() => {
   const stage = document.querySelector('[data-membership-stage]');
   const device = stage?.querySelector('[data-membership-device]');
-  const toggle = stage?.querySelector('[data-membership-motion]');
-  if (!stage || !device || !toggle) return;
+  const section = stage?.closest('.membership');
+  if (!stage || !device || !section) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let enabled = !reducedMotion.matches;
+  const enabled = !reducedMotion.matches;
   let dragging = false;
   let moved = false;
   let startX = 0;
@@ -27,23 +27,13 @@
     setPose();
   };
 
-  const updateToggle = () => {
-    toggle.setAttribute('aria-pressed', String(enabled));
-    toggle.lastChild.textContent = enabled ? 'Motion on' : 'Motion off';
-    if (!enabled) resetPose();
-  };
-
   const wakeObserver = new IntersectionObserver(([entry]) => {
-    if (!entry.isIntersecting) return;
-    stage.classList.add('is-awake');
-    wakeObserver.disconnect();
-  }, { threshold: .28 });
+    const visible = entry.isIntersecting && entry.intersectionRatio > .16;
+    stage.classList.toggle('is-awake', visible);
+    section.classList.toggle('is-in-view', visible);
+    if (!visible) resetPose();
+  }, { threshold: [0, .16, .42] });
   wakeObserver.observe(stage);
-
-  toggle.addEventListener('click', () => {
-    enabled = !enabled && !reducedMotion.matches;
-    updateToggle();
-  });
 
   device.addEventListener('pointerenter', () => {
     if (enabled && !dragging) setPose(-2, 4, currentX, currentY);
@@ -104,6 +94,4 @@
     setPose(0, direction * 8, direction * 18, 0);
     nudgeTimer = setTimeout(resetPose, 360);
   });
-
-  updateToggle();
 })();
