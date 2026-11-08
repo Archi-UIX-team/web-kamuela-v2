@@ -17,10 +17,18 @@
 
 .membership-copy p{font-size:16px!important}
 .membership>.kamuela-section-leaf.kamuela-section-leaf-right{opacity:1!important}
+.membership.is-in-view .membership-leaf-curtain-left{
+  transform:translate3d(-70%,-10%,0) rotate(14deg) scale(.84);
+  opacity:.3;
+}
+.membership.is-in-view .membership-leaf-curtain-right{
+  transform:translate3d(94%,-14%,0) rotate(-12deg) scaleX(-1) scale(.82);
+  opacity:0;
+}
 
-.footer-reservation{background:#17271c!important}
-.footer-reservation::before{opacity:.5!important}
-.footer-reservation::after{right:50%!important}
+.footer-reservation{background:#0d2511!important}
+.footer-reservation::before{opacity:.1!important}
+.footer-reservation::after{right:-8%!important}
 
 .footer-brands{
   display:block;
