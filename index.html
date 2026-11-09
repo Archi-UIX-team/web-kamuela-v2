@@ -23,9 +23,10 @@
   <link rel="stylesheet" href="./refinements.css?v=offers-journal-navbar-2">
   <link rel="stylesheet" href="./membership-refinement.css?v=botanical-reveal-2">
   <link rel="stylesheet" href="./final-refinements.css?v=journal-spacing-3">
-  <link rel="stylesheet" href="./splash.css?v=botanical-genesis-2">
+  <link rel="stylesheet" href="./splash.css?v=grand-unveiling-1">
   <link rel="preload" href="./assets/kamuela-leaf-official.svg" as="image" type="image/svg+xml">
-  <link rel="preload" href="./assets/kamuela-vein-network.json" as="fetch" crossorigin>
+  <link rel="preload" href="./assets/logo-white.png" as="image" type="image/png">
+  <link rel="preload" href="./assets/kamuela-logo-network.json" as="fetch" crossorigin>
   <script>
     try {
       if (!sessionStorage.getItem('kamuela-splash-seen') && (!location.hash || location.hash === '#home')) {
@@ -52,24 +53,38 @@
   <div class="kamuela-splash" id="kamuela-splash" role="dialog" aria-modal="true" aria-label="Kamuela Villas introduction" aria-hidden="true">
     <div class="splash-atmosphere" aria-hidden="true"></div>
     <div class="splash-plum-haze" aria-hidden="true"></div>
-    <div class="splash-botanical-shadows" aria-hidden="true">
-      <img class="splash-shadow splash-shadow-one" src="./assets/kamuela-leaf-official.svg" alt="">
-      <img class="splash-shadow splash-shadow-two" src="./assets/kamuela-leaf-official.svg" alt="">
-      <img class="splash-shadow splash-shadow-three" src="./assets/kamuela-leaf-official.svg" alt="">
-    </div>
     <div class="splash-sunlight" aria-hidden="true">
       <span class="splash-ray splash-ray-one"></span>
       <span class="splash-ray splash-ray-two"></span>
       <span class="splash-ray splash-ray-three"></span>
       <span class="splash-ray splash-ray-four"></span>
     </div>
-    <div class="splash-leaf-stage" aria-hidden="true">
-      <div class="splash-origin-light"></div>
-      <canvas class="splash-vein-canvas" width="620" height="1185"></canvas>
-      <img class="splash-leaf-final" src="./assets/kamuela-leaf-official.svg" alt="">
-      <img class="splash-leaf-highlight" src="./assets/kamuela-leaf-official.svg" alt="">
+    <div class="splash-canopy splash-canopy-background" aria-hidden="true">
+      <div class="splash-leaf splash-leaf-background leaf-bg-one" data-depth="background" data-exit-x="-12vw" data-exit-y="-8vh" data-exit-rotation="-5"><img src="./assets/kamuela-leaf-official.svg" alt=""></div>
+      <div class="splash-leaf splash-leaf-background leaf-bg-two" data-depth="background" data-exit-x="11vw" data-exit-y="7vh" data-exit-rotation="4"><img src="./assets/kamuela-leaf-official.svg" alt=""></div>
+      <div class="splash-leaf splash-leaf-background leaf-bg-three" data-depth="background" data-exit-x="8vw" data-exit-y="-10vh" data-exit-rotation="6"><img src="./assets/kamuela-leaf-official.svg" alt=""></div>
     </div>
-    <img class="splash-logo" src="./assets/logo-white.png" alt="Kamuela Villas" width="2313" height="978">
+    <div class="splash-canopy splash-canopy-midground" aria-hidden="true">
+      <div class="splash-leaf splash-leaf-midground leaf-mid-left-upper" data-depth="midground" data-exit-x="-52vw" data-exit-y="-31vh" data-exit-rotation="-13"><img src="./assets/kamuela-leaf-official.svg" alt=""></div>
+      <div class="splash-leaf splash-leaf-midground leaf-mid-left-center" data-depth="midground" data-exit-x="-58vw" data-exit-y="3vh" data-exit-rotation="-10"><img src="./assets/kamuela-leaf-official.svg" alt=""></div>
+      <div class="splash-leaf splash-leaf-midground leaf-mid-right-upper" data-depth="midground" data-exit-x="51vw" data-exit-y="-35vh" data-exit-rotation="12"><img src="./assets/kamuela-leaf-official.svg" alt=""></div>
+      <div class="splash-leaf splash-leaf-midground leaf-mid-right-lower" data-depth="midground" data-exit-x="57vw" data-exit-y="18vh" data-exit-rotation="9"><img src="./assets/kamuela-leaf-official.svg" alt=""></div>
+    </div>
+    <div class="splash-canopy splash-canopy-foreground" aria-hidden="true">
+      <div class="splash-leaf splash-leaf-foreground leaf-front-left-top" data-depth="foreground" data-exit-x="-66vw" data-exit-y="-44vh" data-exit-rotation="-17"><img src="./assets/kamuela-leaf-official.svg" alt=""></div>
+      <div class="splash-leaf splash-leaf-foreground leaf-front-left-bottom" data-depth="foreground" data-exit-x="-68vw" data-exit-y="43vh" data-exit-rotation="-14"><img src="./assets/kamuela-leaf-official.svg" alt=""></div>
+      <div class="splash-leaf splash-leaf-foreground leaf-front-center" data-depth="foreground" data-exit-x="-9vw" data-exit-y="76vh" data-exit-rotation="7"><img src="./assets/kamuela-leaf-official.svg" alt=""></div>
+      <div class="splash-leaf splash-leaf-foreground leaf-front-right-top" data-depth="foreground" data-exit-x="64vw" data-exit-y="-46vh" data-exit-rotation="16"><img src="./assets/kamuela-leaf-official.svg" alt=""></div>
+      <div class="splash-leaf splash-leaf-foreground leaf-front-right-bottom" data-depth="foreground" data-exit-x="68vw" data-exit-y="48vh" data-exit-rotation="14"><img src="./assets/kamuela-leaf-official.svg" alt=""></div>
+    </div>
+    <div class="splash-logo-stage" aria-hidden="true">
+      <canvas class="splash-logo-canvas" width="771" height="326"></canvas>
+      <img class="splash-logo-final" src="./assets/logo-white.png" alt="">
+    </div>
+    <div class="splash-flowers" aria-hidden="true">
+      <img class="splash-flower splash-flower-left" src="./assets/flowers-left.svg" alt="">
+      <img class="splash-flower splash-flower-right" src="./assets/flowers-right.svg" alt="">
+    </div>
     <button class="splash-skip" type="button">Skip intro</button>
   </div>
   <a class="skip" href="#main">Skip to content</a>
@@ -463,7 +478,7 @@
   <dialog id="booking" aria-labelledby="booking-title"><div class="booking-shell"><button class="close" aria-label="Close booking form">x</button><span class="eyebrow">YOUR PRIVATE ESCAPE</span><h2 id="booking-title">Find your <em>sanctuary.</em></h2><form id="booking-form"><label for="booking-villa">Choose your villa</label><select id="booking-villa" name="villa" required><option value="">Select a villa</option><option value="ubud">Royal Kamuela Ubud</option><option value="bintan">Kamuela Lagoi Bay Bintan</option><option value="canggu">Seahaven by Kamuela Canggu</option></select><button type="submit" class="booking-submit">Continue to official booking <iconify-icon icon="solar:arrow-right-up-linear" aria-hidden="true"></iconify-icon></button><small>Choose your dates, guests and availability on Kamuela's official website.</small></form></div></dialog>
   <script src="./assets/vendor/gsap.min.js"></script>
   <script src="./assets/vendor/ScrollTrigger.min.js"></script>
-  <script src="./app.js?v=offers-journal-navbar-1"></script><script src="./hero.js?v=portal-3"></script><script src="./journal.js?v=hover-preview-3"></script><script src="./offer-slider.js?v=refinement-9"></script><script src="./moments-slider.js?v=reel-links-1"></script><script src="./membership-motion.js?v=botanical-reveal-2"></script><script src="./splash.js?v=botanical-genesis-2"></script>
+  <script src="./app.js?v=offers-journal-navbar-1"></script><script src="./hero.js?v=portal-3"></script><script src="./journal.js?v=hover-preview-3"></script><script src="./offer-slider.js?v=refinement-9"></script><script src="./moments-slider.js?v=reel-links-1"></script><script src="./membership-motion.js?v=botanical-reveal-2"></script><script src="./splash.js?v=grand-unveiling-1"></script>
 </body>
 </html>
 
