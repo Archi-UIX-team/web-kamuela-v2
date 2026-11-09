@@ -23,8 +23,9 @@
   <link rel="stylesheet" href="./refinements.css?v=offers-journal-navbar-2">
   <link rel="stylesheet" href="./membership-refinement.css?v=botanical-reveal-2">
   <link rel="stylesheet" href="./final-refinements.css?v=journal-spacing-3">
-  <link rel="stylesheet" href="./splash.css?v=botanical-genesis-1">
+  <link rel="stylesheet" href="./splash.css?v=botanical-genesis-2">
   <link rel="preload" href="./assets/kamuela-leaf-official.svg" as="image" type="image/svg+xml">
+  <link rel="preload" href="./assets/kamuela-vein-network.json" as="fetch" crossorigin>
   <script>
     try {
       if (!sessionStorage.getItem('kamuela-splash-seen') && (!location.hash || location.hash === '#home')) {
@@ -50,23 +51,24 @@
 <body>
   <div class="kamuela-splash" id="kamuela-splash" role="dialog" aria-modal="true" aria-label="Kamuela Villas introduction" aria-hidden="true">
     <div class="splash-atmosphere" aria-hidden="true"></div>
-    <svg class="splash-leaf" viewBox="0 0 1239 2370" preserveAspectRatio="xMidYMid meet" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="kamuela-reveal-main" x1="0" y1="-350" x2="0" y2="60" gradientUnits="userSpaceOnUse"><stop stop-color="white"/><stop offset="1" stop-color="black"/></linearGradient>
-        <linearGradient id="kamuela-reveal-left" x1="0" y1="-380" x2="0" y2="40" gradientUnits="userSpaceOnUse"><stop stop-color="white"/><stop offset="1" stop-color="black"/></linearGradient>
-        <linearGradient id="kamuela-reveal-right" x1="0" y1="-460" x2="0" y2="-30" gradientUnits="userSpaceOnUse"><stop stop-color="white"/><stop offset="1" stop-color="black"/></linearGradient>
-        <filter id="kamuela-reveal-soft" x="-30%" y="-10%" width="160%" height="120%"><feGaussianBlur stdDeviation="70"/></filter>
-        <mask id="kamuela-leaf-mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="0" width="1239" height="2370" style="mask-type:luminance">
-          <rect width="1239" height="2370" fill="url(#kamuela-reveal-main)"/>
-          <rect x="-70" width="660" height="2370" fill="url(#kamuela-reveal-left)" opacity=".7" filter="url(#kamuela-reveal-soft)"/>
-          <rect x="650" width="660" height="2370" fill="url(#kamuela-reveal-right)" opacity=".65" filter="url(#kamuela-reveal-soft)"/>
-        </mask>
-        <linearGradient id="kamuela-light-band"><stop stop-color="black"/><stop offset=".38" stop-color="black"/><stop offset=".5" stop-color="white"/><stop offset=".62" stop-color="black"/><stop offset="1" stop-color="black"/></linearGradient>
-        <mask id="kamuela-light-mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="0" width="1239" height="2370" style="mask-type:luminance"><rect class="splash-light-band" x="-1600" y="-250" width="1650" height="2900" fill="url(#kamuela-light-band)" transform="skewX(-12)"/></mask>
-      </defs>
-      <image class="splash-leaf-art" href="./assets/kamuela-leaf-official.svg" width="1239" height="2370" mask="url(#kamuela-leaf-mask)"/>
-      <image class="splash-leaf-highlight" href="./assets/kamuela-leaf-official.svg" width="1239" height="2370" mask="url(#kamuela-light-mask)"/>
-    </svg>
+    <div class="splash-plum-haze" aria-hidden="true"></div>
+    <div class="splash-botanical-shadows" aria-hidden="true">
+      <img class="splash-shadow splash-shadow-one" src="./assets/kamuela-leaf-official.svg" alt="">
+      <img class="splash-shadow splash-shadow-two" src="./assets/kamuela-leaf-official.svg" alt="">
+      <img class="splash-shadow splash-shadow-three" src="./assets/kamuela-leaf-official.svg" alt="">
+    </div>
+    <div class="splash-sunlight" aria-hidden="true">
+      <span class="splash-ray splash-ray-one"></span>
+      <span class="splash-ray splash-ray-two"></span>
+      <span class="splash-ray splash-ray-three"></span>
+      <span class="splash-ray splash-ray-four"></span>
+    </div>
+    <div class="splash-leaf-stage" aria-hidden="true">
+      <div class="splash-origin-light"></div>
+      <canvas class="splash-vein-canvas" width="620" height="1185"></canvas>
+      <img class="splash-leaf-final" src="./assets/kamuela-leaf-official.svg" alt="">
+      <img class="splash-leaf-highlight" src="./assets/kamuela-leaf-official.svg" alt="">
+    </div>
     <img class="splash-logo" src="./assets/logo-white.png" alt="Kamuela Villas" width="2313" height="978">
     <button class="splash-skip" type="button">Skip intro</button>
   </div>
@@ -459,9 +461,9 @@
     </div>
   </footer>
   <dialog id="booking" aria-labelledby="booking-title"><div class="booking-shell"><button class="close" aria-label="Close booking form">x</button><span class="eyebrow">YOUR PRIVATE ESCAPE</span><h2 id="booking-title">Find your <em>sanctuary.</em></h2><form id="booking-form"><label for="booking-villa">Choose your villa</label><select id="booking-villa" name="villa" required><option value="">Select a villa</option><option value="ubud">Royal Kamuela Ubud</option><option value="bintan">Kamuela Lagoi Bay Bintan</option><option value="canggu">Seahaven by Kamuela Canggu</option></select><button type="submit" class="booking-submit">Continue to official booking <iconify-icon icon="solar:arrow-right-up-linear" aria-hidden="true"></iconify-icon></button><small>Choose your dates, guests and availability on Kamuela's official website.</small></form></div></dialog>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="./app.js?v=offers-journal-navbar-1"></script><script src="./hero.js?v=portal-3"></script><script src="./journal.js?v=hover-preview-3"></script><script src="./offer-slider.js?v=refinement-9"></script><script src="./moments-slider.js?v=reel-links-1"></script><script src="./membership-motion.js?v=botanical-reveal-2"></script><script src="./splash.js?v=botanical-genesis-1"></script>
+  <script src="./assets/vendor/gsap.min.js"></script>
+  <script src="./assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="./app.js?v=offers-journal-navbar-1"></script><script src="./hero.js?v=portal-3"></script><script src="./journal.js?v=hover-preview-3"></script><script src="./offer-slider.js?v=refinement-9"></script><script src="./moments-slider.js?v=reel-links-1"></script><script src="./membership-motion.js?v=botanical-reveal-2"></script><script src="./splash.js?v=botanical-genesis-2"></script>
 </body>
 </html>
 
