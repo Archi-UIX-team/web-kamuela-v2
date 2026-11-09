@@ -23,9 +23,11 @@
   <link rel="stylesheet" href="./refinements.css?v=offers-journal-navbar-2">
   <link rel="stylesheet" href="./membership-refinement.css?v=botanical-reveal-2">
   <link rel="stylesheet" href="./final-refinements.css?v=journal-spacing-3">
-  <link rel="stylesheet" href="./splash.css?v=grand-unveiling-2">
+  <link rel="stylesheet" href="./splash.css?v=grand-unveiling-3">
   <link rel="preload" href="./assets/kamuela-leaf-official.svg" as="image" type="image/svg+xml">
-  <link rel="preload" href="./assets/splash-botanical-sanctuary.webp" as="image" type="image/webp">
+  <link rel="preload" href="./assets/splash-generated/emerald-gold-leaf.webp" as="image" type="image/webp">
+  <link rel="preload" href="./assets/splash-generated/emerald-foliage-fan.webp" as="image" type="image/webp">
+  <link rel="preload" href="./assets/splash-generated/purple-hibiscus.webp" as="image" type="image/webp">
   <link rel="preload" href="./assets/logo-white.png" as="image" type="image/png">
   <link rel="preload" href="./assets/kamuela-logo-network.json" as="fetch" crossorigin>
   <script>
@@ -52,9 +54,13 @@
 </head>
 <body>
   <div class="kamuela-splash" id="kamuela-splash" role="dialog" aria-modal="true" aria-label="Kamuela Villas introduction" aria-hidden="true">
-    <div class="splash-environment-plate" aria-hidden="true"><img src="./assets/splash-botanical-sanctuary.webp" alt=""></div>
     <div class="splash-atmosphere" aria-hidden="true"></div>
     <div class="splash-plum-haze" aria-hidden="true"></div>
+    <div class="splash-generated-layer splash-generated-background" aria-hidden="true">
+      <div class="splash-generated gen-fan-left" data-opacity="0.42" data-exit-x="-42vw" data-exit-y="-18vh" data-exit-rotation="-9"><img src="./assets/splash-generated/emerald-foliage-fan.webp" alt=""></div>
+      <div class="splash-generated gen-fan-right" data-opacity="0.5" data-exit-x="43vw" data-exit-y="-22vh" data-exit-rotation="10"><img src="./assets/splash-generated/emerald-foliage-fan.webp" alt=""></div>
+      <div class="splash-generated gen-sprig-left" data-opacity="0.56" data-exit-x="-38vw" data-exit-y="15vh" data-exit-rotation="-8"><img src="./assets/splash-generated/gold-botanical-sprig.webp" alt=""></div>
+    </div>
     <div class="splash-sunlight" aria-hidden="true">
       <span class="splash-ray splash-ray-one"></span>
       <span class="splash-ray splash-ray-two"></span>
@@ -72,6 +78,11 @@
       <div class="splash-leaf splash-leaf-midground leaf-mid-right-upper" data-depth="midground" data-exit-x="51vw" data-exit-y="-35vh" data-exit-rotation="12"><img src="./assets/kamuela-leaf-official.svg" alt=""></div>
       <div class="splash-leaf splash-leaf-midground leaf-mid-right-lower" data-depth="midground" data-exit-x="57vw" data-exit-y="18vh" data-exit-rotation="9"><img src="./assets/kamuela-leaf-official.svg" alt=""></div>
     </div>
+    <div class="splash-generated-layer splash-generated-midground" aria-hidden="true">
+      <div class="splash-generated gen-emerald-left" data-opacity="0.88" data-exit-x="-56vw" data-exit-y="12vh" data-exit-rotation="-12"><img src="./assets/splash-generated/emerald-gold-leaf.webp" alt=""></div>
+      <div class="splash-generated gen-emerald-right" data-opacity="0.78" data-exit-x="57vw" data-exit-y="-18vh" data-exit-rotation="13"><img src="./assets/splash-generated/emerald-gold-leaf.webp" alt=""></div>
+      <div class="splash-generated gen-champagne-top" data-opacity="0.72" data-exit-x="9vw" data-exit-y="-55vh" data-exit-rotation="7"><img src="./assets/splash-generated/champagne-filament-leaf.webp" alt=""></div>
+    </div>
     <div class="splash-canopy splash-canopy-foreground" aria-hidden="true">
       <div class="splash-leaf splash-leaf-foreground leaf-front-left-top" data-depth="foreground" data-exit-x="-66vw" data-exit-y="-44vh" data-exit-rotation="-17"><img src="./assets/kamuela-leaf-official.svg" alt=""></div>
       <div class="splash-leaf splash-leaf-foreground leaf-front-left-bottom" data-depth="foreground" data-exit-x="-68vw" data-exit-y="43vh" data-exit-rotation="-14"><img src="./assets/kamuela-leaf-official.svg" alt=""></div>
@@ -84,8 +95,8 @@
       <img class="splash-logo-final" src="./assets/logo-white.png" alt="">
     </div>
     <div class="splash-flowers" aria-hidden="true">
-      <img class="splash-flower splash-flower-left" src="./assets/flowers-left.svg" alt="">
-      <img class="splash-flower splash-flower-right" src="./assets/flowers-right.svg" alt="">
+      <div class="splash-generated gen-orchids" data-opacity="0.9" data-exit-x="-42vw" data-exit-y="24vh" data-exit-rotation="-7"><img src="./assets/splash-generated/purple-orchids.webp" alt=""></div>
+      <div class="splash-generated gen-hibiscus" data-opacity="0.88" data-exit-x="43vw" data-exit-y="25vh" data-exit-rotation="8"><img src="./assets/splash-generated/purple-hibiscus.webp" alt=""></div>
     </div>
     <button class="splash-skip" type="button">Skip intro</button>
   </div>
@@ -480,7 +491,7 @@
   <dialog id="booking" aria-labelledby="booking-title"><div class="booking-shell"><button class="close" aria-label="Close booking form">x</button><span class="eyebrow">YOUR PRIVATE ESCAPE</span><h2 id="booking-title">Find your <em>sanctuary.</em></h2><form id="booking-form"><label for="booking-villa">Choose your villa</label><select id="booking-villa" name="villa" required><option value="">Select a villa</option><option value="ubud">Royal Kamuela Ubud</option><option value="bintan">Kamuela Lagoi Bay Bintan</option><option value="canggu">Seahaven by Kamuela Canggu</option></select><button type="submit" class="booking-submit">Continue to official booking <iconify-icon icon="solar:arrow-right-up-linear" aria-hidden="true"></iconify-icon></button><small>Choose your dates, guests and availability on Kamuela's official website.</small></form></div></dialog>
   <script src="./assets/vendor/gsap.min.js"></script>
   <script src="./assets/vendor/ScrollTrigger.min.js"></script>
-  <script src="./app.js?v=offers-journal-navbar-1"></script><script src="./hero.js?v=portal-3"></script><script src="./journal.js?v=hover-preview-3"></script><script src="./offer-slider.js?v=refinement-9"></script><script src="./moments-slider.js?v=reel-links-1"></script><script src="./membership-motion.js?v=botanical-reveal-2"></script><script src="./splash.js?v=grand-unveiling-2"></script>
+  <script src="./app.js?v=offers-journal-navbar-1"></script><script src="./hero.js?v=portal-3"></script><script src="./journal.js?v=hover-preview-3"></script><script src="./offer-slider.js?v=refinement-9"></script><script src="./moments-slider.js?v=reel-links-1"></script><script src="./membership-motion.js?v=botanical-reveal-2"></script><script src="./splash.js?v=grand-unveiling-3"></script>
 </body>
 </html>
 

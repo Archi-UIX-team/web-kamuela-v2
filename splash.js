@@ -6,12 +6,12 @@
   if (!splash || !root.classList.contains('splash-pending')) return;
 
   const atmosphere = splash.querySelector('.splash-atmosphere');
-  const environmentPlate = splash.querySelector('.splash-environment-plate img');
   const plumHaze = splash.querySelector('.splash-plum-haze');
   const sunlight = splash.querySelector('.splash-sunlight');
   const leaves = [...splash.querySelectorAll('.splash-leaf')];
   const leafArtwork = [...splash.querySelectorAll('.splash-leaf img')];
-  const flowers = [...splash.querySelectorAll('.splash-flower')];
+  const generatedAssets = [...splash.querySelectorAll('.splash-generated')];
+  const generatedArtwork = generatedAssets.map(asset => asset.querySelector('img'));
   const logoStage = splash.querySelector('.splash-logo-stage');
   const logoCanvas = splash.querySelector('.splash-logo-canvas');
   const logoFinal = splash.querySelector('.splash-logo-final');
@@ -156,7 +156,8 @@
 
     renderLogoWriting();
     gsap.set(leaves, { force3D: true });
-    gsap.set(flowers, { force3D: true });
+    gsap.set(generatedAssets, { force3D: true });
+    gsap.set(generatedArtwork, { force3D: true });
     timeline = gsap.timeline({
       paused: true,
       defaults: { ease: 'power2.inOut' },
@@ -171,10 +172,35 @@
     timeline.addLabel('brandHold', 3.35);
     timeline.addLabel('heroHandoff', 3.75);
 
-    timeline.to(environmentPlate, { scale: 1.065, xPercent: .8, yPercent: .4, duration: 4.65, ease: 'none' }, 'garden');
     timeline.to(atmosphere, { opacity: 1, scale: 1, duration: .62, ease: 'power2.out' }, 'garden');
     timeline.to(plumHaze, { opacity: .68, yPercent: -2, duration: 1.1 }, 'garden+=.08');
     timeline.to(sunlight, { opacity: .38, xPercent: 2, yPercent: 2, duration: 1.7 }, 'garden+=.18');
+
+    const arrivals = [0, .13, .28, .38, .52, .2, .34, .47];
+    generatedAssets.forEach((asset, index) => {
+      const artwork = generatedArtwork[index];
+      const fromLeft = asset.className.includes('left') || asset.className.includes('orchids');
+      const fromTop = asset.className.includes('top') || asset.className.includes('fan');
+      timeline.to(asset, {
+        opacity: Number(asset.dataset.opacity),
+        duration: .5,
+        ease: 'power2.out',
+      }, arrivals[index]);
+      timeline.fromTo(artwork, {
+        xPercent: fromLeft ? -8 : 8,
+        yPercent: fromTop ? -7 : 7,
+        scale: .9,
+        rotation: fromLeft ? -2.5 : 2.5,
+      }, {
+        xPercent: 0,
+        yPercent: 0,
+        scale: 1,
+        rotation: 0,
+        duration: .76,
+        ease: 'power3.out',
+      }, arrivals[index]);
+    });
+
     timeline.to(leafArtwork, {
       xPercent: index => (index % 3 - 1) * 1.2,
       yPercent: index => (index % 2 ? 1 : -1) * 1.1,
@@ -183,13 +209,13 @@
       stagger: { each: .045, from: 'edges' },
       ease: 'power2.inOut',
     }, 'awakening');
-    timeline.to(flowers, {
-      rotation: index => index ? 1.2 : -1.2,
-      y: -5,
-      duration: 1.05,
-      stagger: .12,
+    timeline.to(generatedArtwork, {
+      yPercent: index => index % 2 ? 1.4 : -1.2,
+      rotation: index => index % 2 ? .7 : -.7,
+      duration: .72,
+      stagger: { each: .035, from: 'edges' },
       ease: 'sine.inOut',
-    }, 'awakening+=.08');
+    }, 'awakening+=.22');
 
     const offsets = [0, .11, .05, .17, .09, .14, .03, .13, .18, .07, .16, .12];
     leaves.forEach((leaf, index) => {
@@ -207,19 +233,25 @@
       }, 1.1 + offsets[index]);
     });
 
+    const generatedDepartures = [.04, .12, .18, .09, .2, 0, .23, .15];
+    generatedAssets.forEach((asset, index) => {
+      timeline.to(asset, {
+        x: asset.dataset.exitX,
+        y: asset.dataset.exitY,
+        rotation: `+=${asset.dataset.exitRotation}`,
+        scale: index > 5 ? 1.05 : 1.025,
+        opacity: 0,
+        duration: index > 5 ? 1.42 : 1.55,
+        ease: 'power3.inOut',
+      }, 1.1 + generatedDepartures[index]);
+    });
+
     timeline.to(writing, { value: 1, duration: 1.3, ease: 'power2.inOut', onUpdate: renderLogoWriting }, 'logoWriting');
     timeline.to(logoFinal, { opacity: 1, duration: .18, ease: 'power2.out' }, 'logoWriting+=1.12');
     timeline.to(logoCanvas, { opacity: 0, duration: .18 }, 'logoWriting+=1.14');
     timeline.to(sunlight, { opacity: .5, xPercent: 4, yPercent: 3, duration: .75 }, 'logoWriting+=.25');
     timeline.to([atmosphere, plumHaze], { opacity: .76, duration: .4 }, 'brandHold');
     timeline.to(logoStage, { opacity: 0, duration: .62, ease: 'power2.inOut' }, 'heroHandoff+=.12');
-    timeline.to(flowers, {
-      x: index => index ? '24vw' : '-24vw',
-      y: '18vh',
-      opacity: 0,
-      duration: .8,
-      ease: 'power3.inOut',
-    }, 'heroHandoff');
     timeline.to(sunlight, { opacity: .18, duration: .92 }, 'heroHandoff');
     timeline.to(splash, { opacity: 0, duration: 1.05, ease: 'power2.inOut' }, 'heroHandoff');
 

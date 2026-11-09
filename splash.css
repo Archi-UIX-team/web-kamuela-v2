@@ -19,35 +19,6 @@ html.splash-pending,
 html.splash-pending body { overflow: hidden; }
 html.splash-pending .kamuela-splash { display: block; }
 
-.splash-environment-plate {
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  overflow: hidden;
-  opacity: .86;
-  pointer-events: none;
-}
-
-.splash-environment-plate img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  filter: brightness(.78) saturate(.9) contrast(1.03);
-  transform: scale(1.035);
-  will-change: transform, opacity;
-}
-
-.splash-environment-plate::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 46%, transparent 18%, rgba(6, 26, 18, .05) 52%, rgba(3, 12, 8, .4) 100%),
-    linear-gradient(180deg, rgba(6, 26, 18, .05), transparent 45%, rgba(6, 26, 18, .2));
-}
-
 .splash-atmosphere,
 .splash-plum-haze {
   position: absolute;
@@ -57,7 +28,7 @@ html.splash-pending .kamuela-splash { display: block; }
 .splash-atmosphere {
   z-index: 1;
   inset: -12%;
-  opacity: .58;
+  opacity: .78;
   background:
     radial-gradient(ellipse at 50% 48%, rgba(42, 104, 58, .2), rgba(16, 32, 24, .05) 47%, transparent 73%),
     radial-gradient(ellipse at 16% 85%, rgba(60, 19, 81, .2), transparent 42%),
@@ -132,37 +103,72 @@ html.splash-pending .kamuela-splash { display: block; }
 }
 
 .splash-leaf-background {
-  opacity: .09;
-  filter: brightness(.48) saturate(.72) drop-shadow(0 18px 32px rgba(0, 0, 0, .2));
+  opacity: .055;
+  filter: brightness(.42) saturate(.68) drop-shadow(0 18px 32px rgba(0, 0, 0, .2));
 }
 
 .splash-leaf-midground {
-  opacity: .42;
-  filter: brightness(.72) saturate(.85) drop-shadow(0 18px 34px rgba(0, 0, 0, .3));
+  opacity: .25;
+  filter: brightness(.6) saturate(.76) drop-shadow(0 18px 34px rgba(0, 0, 0, .3));
 }
 
 .splash-leaf-foreground {
-  opacity: .94;
-  filter: drop-shadow(0 20px 34px rgba(0, 0, 0, .42));
+  opacity: .7;
+  filter: brightness(.76) saturate(.82) drop-shadow(0 20px 34px rgba(0, 0, 0, .42));
 }
 
 .leaf-bg-one { width: 34vw; left: -9vw; top: -36vh; transform: rotate(22deg) scale(1.08); }
 .leaf-bg-two { width: 32vw; right: -7vw; top: -27vh; transform: rotate(-24deg) scale(1.03); }
 .leaf-bg-three { width: 30vw; left: 36vw; bottom: -48vh; transform: rotate(7deg) scale(1.05); }
 
-.leaf-mid-left-upper { width: 21vw; left: 4vw; top: -22vh; transform: rotate(31deg); }
-.leaf-mid-left-center { width: 24vw; left: -6vw; top: 22vh; transform: rotate(-18deg); }
-.leaf-mid-right-upper { width: 22vw; right: 5vw; top: -23vh; transform: rotate(-32deg); }
-.leaf-mid-right-lower { width: 25vw; right: -5vw; top: 24vh; transform: rotate(19deg); }
+.leaf-mid-left-upper { width: 17vw; left: 7vw; top: -18vh; transform: rotate(31deg); }
+.leaf-mid-left-center { width: 19vw; left: -6vw; top: 27vh; transform: rotate(-18deg); }
+.leaf-mid-right-upper { width: 18vw; right: 8vw; top: -19vh; transform: rotate(-32deg); }
+.leaf-mid-right-lower { width: 20vw; right: -5vw; top: 29vh; transform: rotate(19deg); }
 
-.leaf-front-left-top { width: 29vw; left: 9vw; top: -30vh; transform: rotate(35deg) scale(1.03); }
-.leaf-front-left-bottom { width: 35vw; left: -15vw; bottom: -33vh; transform: rotate(-35deg) scale(1.05); }
-.leaf-front-center { width: 24vw; left: 38vw; bottom: -38vh; transform: rotate(5deg) scale(1.04); }
-.leaf-front-right-top { width: 29vw; right: 9vw; top: -31vh; transform: rotate(-34deg) scale(1.03); }
-.leaf-front-right-bottom { width: 35vw; right: -15vw; bottom: -34vh; transform: rotate(34deg) scale(1.06); }
+.leaf-front-left-top { width: 23vw; left: 9vw; top: -22vh; transform: rotate(35deg) scale(1.03); }
+.leaf-front-left-bottom { width: 28vw; left: -13vw; bottom: -27vh; transform: rotate(-35deg) scale(1.05); }
+.leaf-front-center { width: 18vw; left: 41vw; bottom: -27vh; transform: rotate(5deg) scale(1.04); }
+.leaf-front-right-top { width: 23vw; right: 9vw; top: -23vh; transform: rotate(-34deg) scale(1.03); }
+.leaf-front-right-bottom { width: 28vw; right: -13vw; bottom: -28vh; transform: rotate(34deg) scale(1.06); }
 
 .leaf-front-left-top img,
 .leaf-front-right-bottom img { filter: drop-shadow(0 0 12px rgba(231, 211, 164, .18)); }
+
+.splash-generated-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.splash-generated-background { z-index: 2; }
+.splash-generated-midground { z-index: 5; }
+
+.splash-generated {
+  position: absolute;
+  opacity: 0;
+  transform-origin: 50% 72%;
+  will-change: transform, opacity;
+}
+
+.splash-generated img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 34px rgba(0, 0, 0, .36));
+  will-change: transform;
+}
+
+.gen-fan-left { width: min(34vw, 540px); left: -8vw; top: -12vh; transform: rotate(20deg); }
+.gen-fan-right { width: min(37vw, 590px); right: -10vw; top: -14vh; transform: rotate(-19deg); }
+.gen-sprig-left { width: min(25vw, 390px); left: 1vw; top: 24vh; transform: rotate(-18deg); }
+.gen-emerald-left { width: min(35vw, 560px); left: -10vw; bottom: -29vh; transform: rotate(17deg); }
+.gen-emerald-right { width: min(31vw, 500px); right: -8vw; top: 15vh; transform: rotate(-22deg); }
+.gen-champagne-top { width: min(23vw, 365px); left: 39vw; top: -19vh; transform: rotate(14deg); }
+.gen-orchids { width: min(22vw, 350px); left: -3vw; bottom: -10vh; transform: rotate(-4deg); }
+.gen-hibiscus { width: min(24vw, 390px); right: -4vw; bottom: -12vh; transform: rotate(4deg); }
 
 .splash-logo-stage {
   position: absolute;
@@ -197,19 +203,6 @@ html.splash-pending .kamuela-splash { display: block; }
   pointer-events: none;
 }
 
-.splash-flower {
-  position: absolute;
-  bottom: -18%;
-  width: min(21vw, 340px);
-  height: auto;
-  opacity: .68;
-  filter: saturate(.9) brightness(.8) drop-shadow(0 18px 30px rgba(0, 0, 0, .38));
-  will-change: transform, opacity;
-}
-
-.splash-flower-left { left: -4%; transform: rotate(-4deg); transform-origin: 20% 100%; }
-.splash-flower-right { right: -4%; transform: rotate(4deg); transform-origin: 80% 100%; }
-
 .splash-skip {
   position: absolute;
   z-index: 10;
@@ -234,36 +227,45 @@ html.splash-pending .kamuela-splash { display: block; }
 
 @media (max-width: 1100px) {
   .splash-logo-stage { width: clamp(250px, 27vw, 320px); }
-  .leaf-front-left-top, .leaf-front-right-top { width: 34vw; }
-  .leaf-front-left-bottom, .leaf-front-right-bottom { width: 40vw; }
+  .leaf-front-left-top, .leaf-front-right-top { width: 29vw; }
+  .leaf-front-left-bottom, .leaf-front-right-bottom { width: 34vw; }
 }
 
 @media (min-width: 761px) and (max-width: 1100px) {
   .splash-logo-stage { width: clamp(280px, 34vw, 320px); }
-  .splash-flower { width: min(30vw, 310px); bottom: -9%; }
-  .splash-flower-left { left: -10%; }
-  .splash-flower-right { right: -10%; }
+  .gen-fan-left { width: 52vw; left: -24vw; top: -7vh; }
+  .gen-fan-right { width: 54vw; right: -25vw; top: -8vh; }
+  .gen-sprig-left { width: 37vw; left: -4vw; top: 29vh; }
+  .gen-emerald-left { width: 50vw; left: -27vw; bottom: -12vh; }
+  .gen-emerald-right { width: 46vw; right: -24vw; top: 29vh; }
+  .gen-champagne-top { width: 34vw; left: 33vw; top: -9vh; }
+  .gen-orchids { width: 34vw; left: -10vw; bottom: -3vh; }
+  .gen-hibiscus { width: 36vw; right: -12vw; bottom: -4vh; }
   .leaf-bg-one { width: 60vw; left: -27vw; top: -29vh; }
   .leaf-bg-two { width: 56vw; right: -24vw; top: -26vh; }
   .leaf-bg-three { width: 46vw; left: 27vw; bottom: -43vh; }
-  .leaf-mid-left-upper { width: 38vw; left: -3vw; top: -22vh; }
-  .leaf-mid-left-center { width: 42vw; left: -20vw; top: 27vh; }
-  .leaf-mid-right-upper { width: 38vw; right: -3vw; top: -23vh; }
-  .leaf-mid-right-lower { width: 43vw; right: -21vw; top: 29vh; }
-  .leaf-front-left-top { width: 50vw; left: -15vw; top: -27vh; }
-  .leaf-front-left-bottom { width: 57vw; left: -32vw; bottom: -24vh; }
-  .leaf-front-center { width: 39vw; left: 30vw; bottom: -30vh; }
-  .leaf-front-right-top { width: 50vw; right: -15vw; top: -28vh; }
-  .leaf-front-right-bottom { width: 57vw; right: -32vw; bottom: -25vh; }
+  .leaf-mid-left-upper { width: 30vw; left: -3vw; top: -18vh; }
+  .leaf-mid-left-center { width: 33vw; left: -16vw; top: 31vh; }
+  .leaf-mid-right-upper { width: 30vw; right: -3vw; top: -19vh; }
+  .leaf-mid-right-lower { width: 34vw; right: -17vw; top: 33vh; }
+  .leaf-front-left-top { width: 37vw; left: -12vw; top: -21vh; }
+  .leaf-front-left-bottom { width: 42vw; left: -25vw; bottom: -18vh; }
+  .leaf-front-center { width: 30vw; left: 35vw; bottom: -23vh; }
+  .leaf-front-right-top { width: 37vw; right: -12vw; top: -22vh; }
+  .leaf-front-right-bottom { width: 42vw; right: -25vw; bottom: -19vh; }
 }
 
 @media (max-width: 760px) {
   .splash-logo-stage { top: 47%; width: min(55vw, 280px); }
   .splash-sunlight { inset: -16% -18% -12% -35%; opacity: .2; }
   .splash-ray-four { display: none; }
-  .splash-flower { width: min(42vw, 210px); bottom: -8%; }
-  .splash-flower-left { left: -15%; }
-  .splash-flower-right { right: -15%; }
+  .gen-fan-left, .gen-emerald-right { display: none; }
+  .gen-fan-right { width: 76vw; right: -46vw; top: -3vh; }
+  .gen-sprig-left { width: 54vw; left: -25vw; top: 21vh; }
+  .gen-emerald-left { width: 78vw; left: -43vw; bottom: -4vh; }
+  .gen-champagne-top { width: 48vw; left: 26vw; top: -7vh; }
+  .gen-orchids { width: 52vw; left: -24vw; bottom: -2vh; }
+  .gen-hibiscus { width: 56vw; right: -27vw; bottom: -3vh; }
 
   .leaf-bg-three,
   .leaf-mid-left-center,
@@ -271,17 +273,16 @@ html.splash-pending .kamuela-splash { display: block; }
   .leaf-front-left-top,
   .leaf-front-right-bottom { display: none; }
 
-  .leaf-bg-one { width: 72vw; left: -38vw; top: -20vh; transform: rotate(24deg); }
-  .leaf-bg-two { width: 68vw; right: -34vw; top: -17vh; transform: rotate(-27deg); }
-  .leaf-mid-left-upper { width: 48vw; left: -11vw; top: -16vh; transform: rotate(34deg); }
-  .leaf-mid-right-lower { width: 52vw; right: -21vw; top: 33vh; transform: rotate(23deg); }
-  .leaf-front-left-bottom { width: 76vw; left: -42vw; bottom: -18vh; transform: rotate(-36deg); }
-  .leaf-front-center { width: 46vw; left: 27vw; bottom: -22vh; transform: rotate(6deg); }
-  .leaf-front-right-top { width: 64vw; right: -25vw; top: -22vh; transform: rotate(-34deg); }
+  .leaf-bg-one { width: 60vw; left: -36vw; top: -15vh; transform: rotate(24deg); }
+  .leaf-bg-two { width: 58vw; right: -34vw; top: -13vh; transform: rotate(-27deg); }
+  .leaf-mid-left-upper { width: 38vw; left: -16vw; top: -12vh; transform: rotate(34deg); }
+  .leaf-mid-right-lower { width: 42vw; right: -25vw; top: 38vh; transform: rotate(23deg); }
+  .leaf-front-left-bottom { width: 56vw; left: -37vw; bottom: -12vh; transform: rotate(-36deg); }
+  .leaf-front-center { width: 34vw; left: 33vw; bottom: -17vh; transform: rotate(6deg); }
+  .leaf-front-right-top { width: 48vw; right: -27vw; top: -15vh; transform: rotate(-34deg); }
   .splash-skip { right: 20px; bottom: max(20px, env(safe-area-inset-bottom)); }
 }
 
 @media (max-width: 420px) {
   .splash-logo-stage { width: 58vw; }
-  .splash-flower { width: 46vw; bottom: -6%; }
 }
