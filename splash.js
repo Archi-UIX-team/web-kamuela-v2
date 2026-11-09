@@ -6,6 +6,7 @@
   if (!splash || !root.classList.contains('splash-pending')) return;
 
   const atmosphere = splash.querySelector('.splash-atmosphere');
+  const environmentPlate = splash.querySelector('.splash-environment-plate img');
   const plumHaze = splash.querySelector('.splash-plum-haze');
   const sunlight = splash.querySelector('.splash-sunlight');
   const leaves = [...splash.querySelectorAll('.splash-leaf')];
@@ -170,9 +171,10 @@
     timeline.addLabel('brandHold', 3.35);
     timeline.addLabel('heroHandoff', 3.75);
 
+    timeline.to(environmentPlate, { scale: 1.065, xPercent: .8, yPercent: .4, duration: 4.65, ease: 'none' }, 'garden');
     timeline.to(atmosphere, { opacity: 1, scale: 1, duration: .62, ease: 'power2.out' }, 'garden');
     timeline.to(plumHaze, { opacity: .68, yPercent: -2, duration: 1.1 }, 'garden+=.08');
-    timeline.to(sunlight, { opacity: .5, xPercent: 2, yPercent: 2, duration: 1.7 }, 'garden+=.18');
+    timeline.to(sunlight, { opacity: .38, xPercent: 2, yPercent: 2, duration: 1.7 }, 'garden+=.18');
     timeline.to(leafArtwork, {
       xPercent: index => (index % 3 - 1) * 1.2,
       yPercent: index => (index % 2 ? 1 : -1) * 1.1,
@@ -208,7 +210,7 @@
     timeline.to(writing, { value: 1, duration: 1.3, ease: 'power2.inOut', onUpdate: renderLogoWriting }, 'logoWriting');
     timeline.to(logoFinal, { opacity: 1, duration: .18, ease: 'power2.out' }, 'logoWriting+=1.12');
     timeline.to(logoCanvas, { opacity: 0, duration: .18 }, 'logoWriting+=1.14');
-    timeline.to(sunlight, { opacity: .62, xPercent: 4, yPercent: 3, duration: .75 }, 'logoWriting+=.25');
+    timeline.to(sunlight, { opacity: .5, xPercent: 4, yPercent: 3, duration: .75 }, 'logoWriting+=.25');
     timeline.to([atmosphere, plumHaze], { opacity: .76, duration: .4 }, 'brandHold');
     timeline.to(logoStage, { opacity: 0, duration: .62, ease: 'power2.inOut' }, 'heroHandoff+=.12');
     timeline.to(flowers, {

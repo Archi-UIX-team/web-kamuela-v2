@@ -19,6 +19,35 @@ html.splash-pending,
 html.splash-pending body { overflow: hidden; }
 html.splash-pending .kamuela-splash { display: block; }
 
+.splash-environment-plate {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  opacity: .86;
+  pointer-events: none;
+}
+
+.splash-environment-plate img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(.78) saturate(.9) contrast(1.03);
+  transform: scale(1.035);
+  will-change: transform, opacity;
+}
+
+.splash-environment-plate::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 46%, transparent 18%, rgba(6, 26, 18, .05) 52%, rgba(3, 12, 8, .4) 100%),
+    linear-gradient(180deg, rgba(6, 26, 18, .05), transparent 45%, rgba(6, 26, 18, .2));
+}
+
 .splash-atmosphere,
 .splash-plum-haze {
   position: absolute;
@@ -26,9 +55,9 @@ html.splash-pending .kamuela-splash { display: block; }
 }
 
 .splash-atmosphere {
-  z-index: 0;
+  z-index: 1;
   inset: -12%;
-  opacity: .78;
+  opacity: .58;
   background:
     radial-gradient(ellipse at 50% 48%, rgba(42, 104, 58, .2), rgba(16, 32, 24, .05) 47%, transparent 73%),
     radial-gradient(ellipse at 16% 85%, rgba(60, 19, 81, .2), transparent 42%),
@@ -55,7 +84,7 @@ html.splash-pending .kamuela-splash { display: block; }
   z-index: 3;
   inset: -20% 26% -18% -18%;
   overflow: hidden;
-  opacity: .24;
+  opacity: .15;
   pointer-events: none;
   transform: translate3d(-2%, -1%, 0);
   mix-blend-mode: screen;
@@ -171,9 +200,9 @@ html.splash-pending .kamuela-splash { display: block; }
 .splash-flower {
   position: absolute;
   bottom: -18%;
-  width: min(24vw, 380px);
+  width: min(21vw, 340px);
   height: auto;
-  opacity: .9;
+  opacity: .68;
   filter: saturate(.9) brightness(.8) drop-shadow(0 18px 30px rgba(0, 0, 0, .38));
   will-change: transform, opacity;
 }
