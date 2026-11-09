@@ -9,7 +9,7 @@
 }
 
 @media(min-width:801px){
-  .news{padding-left:2vw!important;padding-right:2vw!important}
+  .news{padding-left:66.745px!important;padding-right:66.745px!important}
   .journal-inner{width:100%;max-width:1728px}
   .journal-heading{margin-bottom:clamp(40px,3.5vw,48px)!important}
   .journal-showcase{grid-template-columns:minmax(0,1.76fr) minmax(400px,1fr)!important}
@@ -25,15 +25,6 @@
 }
 
 .membership-copy p{font-size:16px!important}
-.membership>.kamuela-section-leaf.kamuela-section-leaf-right{opacity:1!important}
-.membership.is-in-view .membership-leaf-curtain-left{
-  transform:translate3d(-70%,-10%,0) rotate(14deg) scale(.84);
-  opacity:.3;
-}
-.membership.is-in-view .membership-leaf-curtain-right{
-  transform:translate3d(94%,-14%,0) rotate(-12deg) scaleX(-1) scale(.82);
-  opacity:0;
-}
 
 .footer-reservation{background:#0d2511!important}
 .footer-reservation::before{opacity:.1!important}
