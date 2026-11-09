@@ -1,0 +1,114 @@
+.kamuela-splash {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+  background: #061a12;
+  opacity: 1;
+}
+
+html.splash-pending,
+html.splash-pending body {
+  overflow: hidden;
+}
+
+html.splash-pending .kamuela-splash {
+  display: block;
+}
+
+.splash-atmosphere {
+  position: absolute;
+  inset: -12%;
+  z-index: 0;
+  background: radial-gradient(ellipse at 50% 48%, rgba(23, 67, 31, .32) 0%, rgba(6, 26, 18, 0) 62%);
+  opacity: 0;
+  transform: scale(.94);
+  pointer-events: none;
+}
+
+.splash-leaf {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  display: block;
+  width: min(clamp(130px, 15vw, 250px), 30.3dvh);
+  height: auto;
+  aspect-ratio: 1239 / 2370;
+  opacity: 0;
+  transform-origin: center center;
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+.splash-leaf-highlight {
+  opacity: .38;
+  filter: brightness(1.2) sepia(.12) drop-shadow(0 0 8px rgba(231, 211, 164, .25));
+}
+
+.splash-logo {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  display: block;
+  width: clamp(310px, 39vw, 610px);
+  max-width: 78vw;
+  height: auto;
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(6px);
+  transform-origin: center center;
+  object-fit: contain;
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+.splash-skip {
+  position: absolute;
+  z-index: 6;
+  right: clamp(24px, 4vw, 64px);
+  bottom: max(24px, env(safe-area-inset-bottom));
+  padding: 9px 2px;
+  border: 0;
+  border-bottom: 1px solid rgba(218, 205, 161, .35);
+  border-radius: 0;
+  background: transparent;
+  color: rgba(240, 231, 206, .72);
+  opacity: 0;
+  font: 500 11px/1.2 Inter, sans-serif;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color .2s ease, border-color .2s ease;
+}
+
+.splash-skip:hover,
+.splash-skip:focus-visible {
+  opacity: 1 !important;
+  color: #fff5dd;
+  border-color: #fff5dd;
+}
+
+.splash-skip:focus-visible {
+  outline: 2px solid #fff5dd;
+  outline-offset: 5px;
+}
+
+@media (max-width: 900px) {
+  .splash-leaf { width: min(clamp(130px, 20vw, 200px), 30.3dvh); }
+  .splash-logo { width: min(72vw, 470px); }
+}
+
+@media (max-width: 600px) {
+  .splash-leaf { width: min(clamp(126px, 31vw, 175px), 30.3dvh); }
+  .splash-logo { width: min(78vw, 365px); }
+  .splash-skip { right: 22px; bottom: max(22px, env(safe-area-inset-bottom)); }
+}
