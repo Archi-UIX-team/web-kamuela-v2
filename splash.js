@@ -58,8 +58,6 @@
 
     timeline
       .to('.splash-rays', { opacity: .24, x: 7, scale: 1.018, duration: 1.5, ease: 'sine.inOut' }, 'awakening')
-      .to('.splash-cluster-back-left .splash-sway', { rotation: -1.2, y: -5, duration: .72, ease: 'sine.inOut' }, 'awakening')
-      .to('.splash-cluster-back-right .splash-sway', { rotation: 1.1, y: -4, duration: .78, ease: 'sine.inOut' }, 'awakening+=.08')
       .to('.splash-cluster-center-low .splash-sway', { rotation: .8, x: 4, duration: .72, ease: 'sine.inOut' }, 'awakening+=.05')
       .to('.splash-cluster-center .splash-sway', { rotation: -1.4, x: -5, duration: .66, ease: 'sine.inOut' }, 'awakening+=.1')
       .to('.splash-cluster-upper-left .splash-sway', { rotation: -2, x: -7, duration: .68, ease: 'sine.inOut' }, 'awakening+=.12')
@@ -76,8 +74,6 @@
       .to('.splash-cluster-mid-right', { x: '30vw', y: '1vh', rotation: '+=6', scale: 1.025, opacity: .44, duration: 1.22 }, 'gardenOpening+=.25')
       .to('.splash-cluster-lower-left', { x: '-22vw', y: '20vh', rotation: '-=5', scale: 1.025, opacity: .8, duration: 1.15 }, 'gardenOpening+=.34')
       .to('.splash-cluster-lower-right', { x: '24vw', y: '22vh', rotation: '+=5', scale: 1.025, opacity: .78, duration: 1.12 }, 'gardenOpening+=.5')
-      .to('.splash-cluster-back-left', { x: '-8vw', y: '-4vh', opacity: .17, duration: 1.35 }, 'gardenOpening+=.2')
-      .to('.splash-cluster-back-right', { x: '9vw', y: '-3vh', opacity: .15, duration: 1.35 }, 'gardenOpening+=.34')
       .to('.splash-brand-leaf-one', { x: '5vw', y: '-4vh', opacity: .06, duration: 1.2 }, 'gardenOpening+=.28')
       .to('.splash-brand-leaf-two', { x: '-5vw', y: '4vh', opacity: .06, duration: 1.2 }, 'gardenOpening+=.4')
       .to('.splash-brand-leaf-three', { opacity: .025, duration: 1 }, 'gardenOpening+=.2')
