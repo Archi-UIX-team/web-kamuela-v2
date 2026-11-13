@@ -20,12 +20,11 @@
       card.classList.add(position);
       const selected = difference === 0;
       card.setAttribute('aria-current', selected ? 'true' : 'false');
-      const link = card.querySelector('.moment-reel-link');
-      if (link) link.tabIndex = selected ? 0 : -1;
-      const embed = card.querySelector('iframe');
-      const isNearby = difference <= 1 || difference === cards.length - 1;
-      if (embed && isNearby && !embed.hasAttribute('src')) embed.src = embed.dataset.src;
-      if (embed) embed.tabIndex = selected ? 0 : -1;
+      const video = card.querySelector('video');
+      if (video) {
+        if (selected) video.play().catch(() => {});
+        else video.pause();
+      }
     });
   }
   function select(index) {
@@ -33,7 +32,6 @@
     render();
   }
   cards.forEach((card, index) => card.addEventListener('click', event => {
-    if (event.target.closest('.moment-reel-link')) return;
     if (index === active) return;
     event.preventDefault();
     select(index);

@@ -1,8 +1,8 @@
 .kamuela-splash{display:none}
 html.splash-pending{overflow:hidden}
 html.splash-pending .kamuela-splash{position:fixed;display:block;inset:0;z-index:10000;overflow:hidden;color:#f3f0e7;background:radial-gradient(ellipse at 52% 49%,#17431f 0%,#0d3021 34%,#061b14 78%,#04150f 100%);isolation:isolate}
-html.splash-pending .kamuela-splash:before{content:"";position:absolute;inset:-8%;z-index:8;pointer-events:none;background:radial-gradient(ellipse at 50% 48%,transparent 34%,rgba(1,9,6,.7) 100%);mix-blend-mode:multiply}
-.splash-atmosphere{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 78% 31%,#3c13514a,transparent 43%),radial-gradient(ellipse at 47% 77%,#17431f60,transparent 56%);opacity:1}
+html.splash-pending .kamuela-splash:before{content:"";position:absolute;inset:-8%;z-index:8;pointer-events:none;background:radial-gradient(ellipse at 50% 48%,transparent 40%,rgba(1,9,6,.38) 100%);mix-blend-mode:multiply}
+.splash-atmosphere{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 50% 49%,rgba(194,179,58,.32) 0%,rgba(194,179,58,.14) 30%,transparent 64%),radial-gradient(ellipse 49% 64% at 0% 0%,rgba(194,179,58,.22),transparent 74%),radial-gradient(ellipse at 78% 31%,#3c13514a,transparent 43%),radial-gradient(ellipse at 47% 77%,#17431f60,transparent 56%);opacity:1}
 .splash-rays{position:absolute;z-index:2;inset:-12% -8% -8% -10%;opacity:.12;transform-origin:0 0;mix-blend-mode:screen;pointer-events:none;will-change:transform,opacity}
 .splash-rays:after{content:"";position:absolute;left:-4%;top:-5%;width:45%;height:40%;border-radius:50%;background:radial-gradient(ellipse,rgba(243,226,187,.16),rgba(182,155,114,.045) 45%,transparent 72%);filter:blur(24px)}
 .splash-rays i{position:absolute;left:-6%;top:-8%;height:126%;background:linear-gradient(118deg,rgba(243,226,187,.24) 0,rgba(231,211,164,.12) 28%,rgba(182,155,114,.04) 56%,transparent 78%);clip-path:polygon(0 0,12% 0,52% 100%,28% 100%);filter:blur(20px);-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 13%,#000 70%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 13%,#000 70%,transparent 100%);opacity:.62}
