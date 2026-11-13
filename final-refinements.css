@@ -22,9 +22,23 @@
   outline-offset:3px;
 }
 
+/* The in-card booking action keeps its purple fill with a clear gold edge. */
+.villa-book{border:1px solid #c2b33a!important}
+.villa-book:hover,
+.villa-book:focus-visible{
+  outline:1px solid #c2b33a;
+  outline-offset:3px;
+}
+
 /* The bridge retains its location and sway, with its artwork turned vertically. */
 .offers-botanical-bridge>.kamuela-section-leaf-left{
   animation-name:offers-leaf-sway-flipped!important;
+}
+@media(min-width:701px){
+  .offers-botanical-bridge>.kamuela-section-leaf-left{
+    left:clamp(-300px,-14vw,-240px)!important;
+    top:clamp(150px,10vw,190px)!important;
+  }
 }
 @keyframes offers-leaf-sway-flipped{
   0%{transform:rotate(22.5deg) translate3d(0,0,0) scaleY(-1)}
@@ -54,12 +68,35 @@
   }
 }
 
-/* Mirror the right Journal ornament without changing its measured box. */
-.news>.journal-leaf-flip{transform:scaleX(-1)!important}
+/* Keep the right Journal ornament mirrored and turn it vertically. */
+.news>.journal-leaf-flip{transform:scale(-1,-1)!important}
 
 /* Lift the first two mockup leaves by 15% while preserving their motion/sizing. */
 .membership-pattern-leaf-one{top:-12%}
 .membership-pattern-leaf-two{bottom:19%}
+
+/* Compact membership copy so the controls clear the lower botanical curtain. */
+.membership-copy h2{
+  display:flex;
+  align-items:baseline;
+  gap:.22em;
+  margin-bottom:20px;
+  font-size:clamp(30px,3vw,36px)!important;
+  line-height:1!important;
+  white-space:nowrap;
+}
+.membership-copy h2 br{display:none}
+.membership-copy h2 em{font-size:1.18em;line-height:1}
+
+/* Simplify the device framing and vertically mirror the right ornaments. */
+.membership-pattern-leaf-one{display:none}
+.membership-pattern-leaf-three{
+  transform:translate3d(38px,24px,0) rotate(29deg) scale(.76,-.76)
+}
+.membership.is-in-view .membership-pattern-leaf-three{
+  transform:translate3d(0,0,0) rotate(29deg) scale(1,-1)
+}
+.membership>.kamuela-section-leaf-right{--leaf-scale-y:-1}
 
 /* Use the supplied official store artwork as the complete download controls. */
 .download-links{align-items:center;gap:14px}
@@ -122,4 +159,6 @@
   .footer-brands-marquee{animation:none;transform:none}
   .villas>.kamuela-section-leaf-right{transform:scale(-1,-1)}
   .offers-botanical-bridge>.kamuela-section-leaf-left{transform:rotate(24deg) scaleY(-1)}
+  .membership>.kamuela-section-leaf-right{transform:scaleY(-1)}
+  .membership-pattern-leaf-three{transform:rotate(29deg) scaleY(-1)}
 }
