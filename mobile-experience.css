@@ -1,4 +1,5 @@
 /* Mobile experience pass — loaded last to resolve the legacy responsive layers. */
+.hero-mobile-book{display:none}
 @media(max-width:800px){
   html,body{max-width:100%;overflow-x:clip;scroll-padding-top:72px}
   body{-webkit-text-size-adjust:100%;text-size-adjust:100%}
@@ -13,35 +14,49 @@
   .masthead nav .nav-book{color:#c2b33a!important}
   .hero-masthead-brand{display:none!important}
 
-  .hero-sticky .hero-copy{left:6%!important;right:6%!important;top:14%!important;width:auto!important;max-width:none!important;transform:none!important;text-align:center!important}
-  .hero-copy h1{font-size:clamp(42px,11vw,62px)!important;line-height:1!important;margin:20px 0 15px!important}
-  .hero-copy h1 em{font-size:clamp(76px,20vw,112px)!important;margin:7px 0 18px!important;white-space:normal!important}
-  .hero-copy p{max-width:32rem!important;font-size:13px!important;line-height:1.55!important}
-  .film-gallery{inset:54% 0 5%!important}
-  .film-column{width:28vw!important}
-  .film-column-left{left:4%!important}.film-column-center{left:36%!important}.film-column-right{right:4%!important}
-  .film-card{height:clamp(155px,24vh,220px)!important}
+  .hero-sticky .hero-copy{left:20px!important;right:20px!important;top:11.5%!important;width:auto!important;max-width:none!important;transform:none!important;text-align:center!important}
+  .hero-copy h1{font-size:clamp(38px,10.4vw,56px)!important;line-height:1!important;margin:14px 0 10px!important}
+  .hero-copy h1 em{font-size:clamp(66px,18.5vw,98px)!important;margin:5px 0 12px!important;white-space:normal!important}
+  .hero-copy p{max-width:32rem!important;margin-inline:auto!important;font-size:13px!important;line-height:1.5!important}
+  .hero-copy p br{display:none}
+  .hero-mobile-book{display:inline-flex;min-width:154px;height:50px;margin:22px auto 0;padding:0 25px;align-items:center;justify-content:center;gap:10px;border:1px solid rgba(243,226,187,.72);border-radius:999px;background:linear-gradient(135deg,#f3e2bb 0%,#e7d3a4 46%,#b69b72 100%);box-shadow:0 12px 30px rgba(6,26,18,.3),inset 0 1px rgba(255,255,255,.65);color:#061a12;font:500 15px/1 Inter,sans-serif;letter-spacing:.02em}
+  .hero-mobile-book iconify-icon{font-size:18px}
+  .film-gallery{inset:45% 0 4%!important}
+  .film-column{overflow:hidden!important}
+  .film-column-left{left:4%!important;top:12%!important;width:26vw!important;height:78%!important}
+  .film-column-center{left:35%!important;top:0!important;width:31vw!important;height:96%!important}
+  .film-column-right{right:3%!important;top:8%!important;width:27vw!important;height:84%!important}
+  .film-card{height:clamp(155px,23vh,218px)!important}
+  .film-column-center .film-card{height:clamp(178px,26vh,244px)!important}
 
   .villas-intro{padding:82px 6% 42px!important}
   .villas-intro h2{font-size:clamp(40px,11vw,58px)!important;line-height:.98!important}
   .villas-intro p{font-size:14px!important;line-height:1.6!important}
-  .villa-showcase{height:72svh!important;min-height:540px!important;overflow:hidden!important}
-  .villa-gallery{overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;gap:12px!important;padding:0 6% 18px!important;scroll-padding-inline:6%;box-sizing:border-box}
-  .villa-panel,.villa-panel.is-active{flex:0 0 86vw!important;width:86vw!important;height:100%!important;scroll-snap-align:center;scroll-snap-stop:always}
-  .villa-panel-copy,.villa-panel.is-active .villa-panel-copy{left:16px!important;right:16px!important;bottom:20px!important;padding:18px!important;background:linear-gradient(135deg,rgba(6,26,18,.93),rgba(13,48,33,.84))!important}
+  .villa-showcase{position:relative!important;z-index:3!important;height:78svh!important;min-height:560px!important;overflow:hidden!important}
+  .villa-showcase::after{content:"Swipe to explore";position:absolute;z-index:6;top:16px;right:20px;padding:8px 12px;border:1px solid rgba(231,211,164,.48);border-radius:999px;background:rgba(6,26,18,.48);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:#e7d3a4;font:500 9px/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;pointer-events:none}
+  .villa-gallery{overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x;gap:0!important;padding:0!important;scroll-padding-inline:0;box-sizing:border-box}
+  .villa-panel,.villa-panel.is-active{flex:0 0 100vw!important;width:100vw!important;height:100%!important;scroll-snap-align:start;scroll-snap-stop:always}
+  .villa-panel>img{width:100%!important;height:100%!important;object-fit:cover!important}
+  .villa-panel-copy,.villa-panel.is-active .villa-panel-copy{left:20px!important;right:20px!important;bottom:24px!important;max-width:calc(100vw - 40px);padding:22px!important;border:1px solid rgba(231,211,164,.24)!important;background:linear-gradient(135deg,rgba(6,26,18,.88),rgba(13,48,33,.76))!important;-webkit-backdrop-filter:blur(20px) saturate(115%)!important;backdrop-filter:blur(20px) saturate(115%)!important;box-shadow:0 20px 48px rgba(0,0,0,.28)!important}
   .villa-panel h3,.villa-panel.is-active h3,.villa-panel:not(.is-active) h3{font-size:clamp(22px,6vw,30px)!important;line-height:1.1!important;white-space:normal!important}
   .villa-location,.villa-panel:not(.is-active) .villa-location{font-size:9px!important;letter-spacing:.08em!important}
-  .villa-expanded{display:flex!important;opacity:1!important;max-height:none!important;transform:none!important}
+  .villa-expanded{display:flex!important;opacity:1!important;max-height:none!important;transform:none!important;align-items:flex-end!important;gap:14px!important}
   .villa-services span{font-size:10px!important}.villa-book{min-height:44px!important;padding:11px 16px!important}
+  .villas>.kamuela-section-leaf-right{right:-66px!important;top:38%!important;width:140px!important;opacity:.34!important;z-index:0!important;pointer-events:none!important}
+  .offers-botanical-bridge{z-index:1!important}
+  .offers-botanical-bridge>.kamuela-section-leaf{left:-58px!important;top:-30px!important;width:142px!important;opacity:.48!important}
 
   .offers-invitation-section{padding:76px 6% 84px!important}
   .offers-invitation-heading h2{font-size:clamp(42px,12vw,58px)!important}
   .offers-carousel-viewport{overflow:hidden!important;margin-inline:-6vw!important;padding-inline:6vw!important}
   .offer-invitation-card{flex-basis:88%!important;min-height:0!important;scroll-snap-align:center}
   .offers-carousel-track{scroll-snap-type:x mandatory}
-  .offer-photo-frame{height:245px!important}.offer-binding-rings{top:228px!important}
-  .offer-paper-panel{min-height:208px!important;padding:22px 22px 18px!important}
+  .offer-photo-frame{height:auto!important;aspect-ratio:3/2!important}.offer-binding-rings{top:auto!important;bottom:-17px!important}
+  .offer-paper-panel{min-height:252px!important;padding:22px 22px 20px!important}
   .offer-description{font-size:14px!important}
+  .offer-detail-cursor{display:none!important}
+  .offer-mobile-detail{position:relative;z-index:2;display:inline-flex!important;min-height:44px;margin-top:14px;padding:0 4px;align-items:center;gap:8px;border-bottom:1px solid #b69b72;color:#17431f;font:500 14px/1 Inter,sans-serif}
+  .offer-mobile-detail iconify-icon{font-size:17px;color:#84663d}
 
   .moments{padding:94px 6% 120px!important}
   .moment-copy{max-width:none!important}.moment-copy h2{font-size:clamp(44px,12vw,60px)!important}.moment-copy p{margin-top:28px!important;font-size:15px!important}
@@ -66,9 +81,9 @@
   .membership-visual{width:100%!important;min-height:480px!important}
   .membership-device{width:min(86vw,390px)!important}
   .membership-copy{width:100%!important;padding:0 2%!important;text-align:center}
-  .membership-copy h2{font-size:clamp(50px,14vw,68px)!important;line-height:.95!important;white-space:normal!important}
-  .membership-copy h2 em{font-size:.72em!important}.membership-copy p{max-width:34rem;margin-inline:auto;font-size:15px!important;line-height:1.6!important}
-  .download-links{justify-content:center!important;gap:10px!important}.download-links a{width:min(44%,185px)!important;min-height:44px}
+  .membership-copy h2,.membership-copy h2 em{color:#f3f0e7!important;font:400 clamp(44px,12vw,54px)/1.05 Allura,cursive!important;letter-spacing:0!important}
+  .membership-copy h2 em{font-style:normal}.membership-copy p{max-width:34rem;margin-inline:auto;font-size:15px!important;line-height:1.6!important}
+  .download-links{display:flex!important;width:min(100%,320px)!important;margin-inline:auto!important;flex-flow:row nowrap!important;justify-content:center!important;align-items:center!important;gap:10px!important}.download-links a{width:calc((100% - 10px)/2)!important;min-height:44px}
 
   .footer-reservation{padding:52px 7% 46px!important}.footer-reservation h2{font-size:clamp(43px,12vw,58px)!important;line-height:1!important}.footer-reservation p{font-size:14px!important;line-height:1.6!important}
   .footer-book{width:100%!important;min-height:50px!important}
@@ -78,15 +93,24 @@
 }
 
 @media(max-width:430px){
-  .hero-sticky .hero-copy{top:12%!important}.hero-copy h1{font-size:clamp(39px,10.8vw,48px)!important}.hero-copy h1 em{font-size:clamp(70px,20vw,88px)!important}
-  .film-gallery{inset:56% 0 4%!important}.film-card{height:clamp(145px,22vh,190px)!important}
-  .villa-panel,.villa-panel.is-active{flex-basis:88vw!important;width:88vw!important}
-  .offer-photo-frame{height:225px!important}.offer-binding-rings{top:208px!important}
+  .hero-sticky .hero-copy{top:11%!important}.hero-copy h1{font-size:clamp(36px,10.2vw,45px)!important}.hero-copy h1 em{font-size:clamp(62px,18vw,78px)!important}
+  .film-gallery{inset:45% 0 4%!important}.film-card{height:clamp(145px,21vh,188px)!important}.film-column-center .film-card{height:clamp(164px,24vh,214px)!important}
+  .villa-expanded{flex-direction:column!important;align-items:stretch!important}.villa-services{width:100%!important}.villa-book{width:100%!important;margin:8px 0 0!important;justify-content:center!important}
   .moment-gallery{height:min(142vw,540px)!important}.moment-card.is-active{left:10%!important;width:80%!important}.moment-card.is-prev{left:-23%!important}.moment-card.is-next{left:79%!important}
   .moment-reel-link span{display:none}.moment-reel-link{width:38px;padding:0;justify-content:center}
   .membership-visual{min-height:430px!important}.membership-device{width:min(88vw,350px)!important}
-  .download-links{flex-direction:column!important}.download-links a{width:min(230px,76vw)!important}
+  .download-links{flex-direction:row!important}.download-links a{width:calc((100% - 10px)/2)!important}
   .footer-link-columns{grid-template-columns:1fr 1fr!important;gap:28px 18px!important}
+}
+
+@media(max-width:430px) and (max-height:650px){
+  .hero-sticky .hero-copy{top:10%!important}
+  .hero-copy h1{margin:9px 0 6px!important;font-size:34px!important}
+  .hero-copy h1 em{margin:3px 0 8px!important;font-size:57px!important}
+  .hero-copy p{font-size:11px!important;line-height:1.4!important}
+  .hero-mobile-book{height:46px;margin-top:16px}
+  .film-gallery{inset:52% 0 3%!important}
+  .film-card{height:136px!important}.film-column-center .film-card{height:154px!important}
 }
 
 @media(prefers-reduced-motion:reduce){

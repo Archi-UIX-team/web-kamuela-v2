@@ -79,11 +79,15 @@
 .membership-copy h2{
   display:block;
   margin-bottom:20px;
-  font-size:69px!important;
-  line-height:1!important;
 }
 .membership-copy h2 br{display:block}
-.membership-copy h2 em{display:block;font-size:49px;line-height:1}
+.membership-copy h2,
+.membership-copy h2 em{
+  color:#f3f0e7!important;
+  font:400 clamp(72px,5.6vw,84px)/1.05 Allura,cursive!important;
+  letter-spacing:0!important;
+}
+.membership-copy h2 em{display:block;font-style:normal}
 
 /* Simplify the device framing and mirror only leaf two behind the mockup. */
 .membership-pattern-leaf-one{display:none}
