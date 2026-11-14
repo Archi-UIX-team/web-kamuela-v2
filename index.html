@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="./membership-secret-garden.css?v=secret-garden-membership-4">
   <link rel="stylesheet" href="./final-refinements.css?v=membership-type-10">
   <link rel="stylesheet" href="./mobile-experience.css?v=mobile-editorial-3">
+  <link rel="stylesheet" href="./navbar-reference.css?v=reference-menu-7">
   <link rel="preload" href="./assets/kamuela-leaf-official.svg" as="image" type="image/svg+xml">
   <link rel="preload" href="./assets/logo-white.png" as="image" type="image/png">
   <link rel="preload" href="./assets/flowers-left.svg" as="image" type="image/svg+xml">
@@ -89,7 +90,22 @@
     <button class="menu-toggle" aria-label="Open navigation" aria-controls="primary-nav" aria-expanded="false"><span></span><span></span><span class="menu-word">Menu</span></button>
     
     <nav id="primary-nav" aria-label="Main navigation">
-      <a href="#home">About</a><a href="#hotels">Locations</a><a href="#offers">Romantic Bliss</a><a href="#offers">Offers</a><a href="#news">News</a><button class="nav-book" type="button" data-book>Book Now</button>
+      <a class="desktop-nav-link" href="#home">About</a><a class="desktop-nav-link" href="#hotels">Locations</a><a class="desktop-nav-link" href="#offers">Romantic Bliss</a><a class="desktop-nav-link" href="#offers">Offers</a><a class="desktop-nav-link" href="#news">News</a><button class="nav-book" type="button" data-book>Book Now</button>
+      <div class="mobile-nav-shell">
+        <div class="mobile-nav-top">
+          <a class="mobile-nav-logo" href="#home" aria-label="Kamuela Villas, back to top"><img src="./assets/logo-white.png" alt="Kamuela Villas"></a>
+          <div class="mobile-nav-controls">
+            <span class="mobile-nav-language" aria-label="Language: English or Indonesian"><strong>EN</strong><i>/</i><span>ID</span></span>
+            <button class="mobile-nav-close" type="button" aria-label="Close navigation"><span></span><span></span></button>
+          </div>
+        </div>
+        <div class="mobile-nav-list">
+          <a href="#hotels"><span>01</span><strong>HOTELS</strong></a>
+          <a href="#offers"><span>02</span><strong>OFFERS</strong></a>
+          <a href="#offers"><span>03</span><strong>MEETINGS</strong></a>
+          <a href="#offers"><span>04</span><strong>WEDDINGS</strong></a>
+        </div>
+      </div>
     </nav>
   </header>
   <main id="main">
@@ -486,7 +502,7 @@
   <dialog id="booking" aria-labelledby="booking-title"><div class="booking-shell"><button class="close" aria-label="Close booking form">x</button><span class="eyebrow">YOUR PRIVATE ESCAPE</span><h2 id="booking-title">Find your <em>sanctuary.</em></h2><form id="booking-form"><label for="booking-villa">Choose your villa</label><select id="booking-villa" name="villa" required><option value="">Select a villa</option><option value="ubud">Royal Kamuela Ubud</option><option value="bintan">Kamuela Lagoi Bay Bintan</option><option value="canggu">Seahaven by Kamuela Canggu</option></select><button type="submit" class="booking-submit">Continue to official booking <iconify-icon icon="solar:arrow-right-up-linear" aria-hidden="true"></iconify-icon></button><small>Choose your dates, guests and availability on Kamuela's official website.</small></form></div></dialog>
   <script src="./assets/vendor/gsap.min.js"></script>
   <script src="./assets/vendor/ScrollTrigger.min.js"></script>
-  <script src="./splash.js?v=living-emerald-3"></script><script src="./app.js?v=offers-journal-navbar-1"></script><script src="./hero.js?v=portal-3"></script><script src="./journal.js?v=hover-preview-3"></script><script src="./offer-slider.js?v=refinement-9"></script><script src="./moments-slider.js?v=kamuela-local-reels-1"></script><script src="./membership-motion.js?v=secret-garden-membership-3"></script>
+  <script src="./splash.js?v=living-emerald-3"></script><script src="./app.js?v=navbar-reference-2"></script><script src="./hero.js?v=portal-3"></script><script src="./journal.js?v=hover-preview-3"></script><script src="./offer-slider.js?v=refinement-9"></script><script src="./moments-slider.js?v=kamuela-local-reels-1"></script><script src="./membership-motion.js?v=secret-garden-membership-3"></script>
 </body>
 </html>
 

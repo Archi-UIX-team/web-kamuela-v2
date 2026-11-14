@@ -142,15 +142,23 @@ motion.addEventListener('change', () => {
 
 const menu = document.querySelector('.menu-toggle');
 const nav = document.querySelector('#primary-nav');
+const mobileMenuClose = nav.querySelector('.mobile-nav-close');
 function closeMenu() {
   nav.classList.remove('open');
+  document.body.classList.remove('nav-open');
   menu.setAttribute('aria-expanded', 'false');
   menu.setAttribute('aria-label', 'Open navigation');
 }
 menu.addEventListener('click', () => {
   const open = nav.classList.toggle('open');
+  document.body.classList.toggle('nav-open', open);
   menu.setAttribute('aria-expanded', String(open));
   menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+  if (open) requestAnimationFrame(() => mobileMenuClose?.focus());
+});
+mobileMenuClose?.addEventListener('click', () => {
+  closeMenu();
+  menu.focus();
 });
 nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
