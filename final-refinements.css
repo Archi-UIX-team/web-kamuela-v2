@@ -169,8 +169,24 @@
   display:flex;
   flex:0 0 auto;
   align-items:center;
-  gap:clamp(26px,3.4vw,58px);
+  gap:clamp(12px,1.4vw,24px);
   padding:0 clamp(18px,1.7vw,30px);
+}
+.footer-brands .footer-brand-logo{
+  flex:0 0 auto;
+  width:clamp(88px,7vw,112px);
+  height:62px;
+  display:grid;
+  place-items:center;
+}
+.footer-brands .footer-brand-logo-wide{width:clamp(122px,10vw,160px)}
+.footer-brand-logo img{
+  display:block;
+  width:auto;
+  max-width:100%;
+  height:auto;
+  max-height:40px;
+  object-fit:contain;
 }
 .footer-brands:hover .footer-brands-marquee{animation-play-state:paused}
 @keyframes footer-brands-right{
