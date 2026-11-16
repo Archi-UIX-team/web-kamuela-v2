@@ -110,18 +110,18 @@
   right:clamp(-145px,-8vw,-82px)!important;
 }
 
-/* Keep the botanical curtain composition, only reduce both sides by 20%. */
+/* Keep both botanical curtains compact and pinned into the bottom corners. */
 .membership-garden-curtain-left{
-  transform:translate3d(8%,18%,0) rotate(3deg) scale(.94)
+  transform:translate3d(-10%,18%,0) rotate(3deg) scale(.94)
 }
 .membership-garden-curtain-right{
-  transform:translate3d(-8%,18%,0) rotate(-3deg) scale(.94)
+  transform:translate3d(10%,18%,0) rotate(-3deg) scale(.94)
 }
 .membership.is-in-view .membership-garden-curtain-left{
-  transform:translate3d(0,0,0) rotate(0) scale(.9)
+  transform:translate3d(-4%,0,0) rotate(0) scale(.96)
 }
 .membership.is-in-view .membership-garden-curtain-right{
-  transform:translate3d(0,0,0) rotate(0) scale(.9)
+  transform:translate3d(4%,0,0) rotate(0) scale(.96)
 }
 
 /* Use the supplied official store artwork as the complete download controls. */
@@ -148,7 +148,9 @@
 
 .membership-copy p{font-size:16px!important}
 
-.footer-reservation{background:#17271c!important}
+.footer-reservation{
+  background:linear-gradient(180deg,#17271c 0%,#13241a 42%,#0d2511 100%)!important
+}
 .footer-reservation::before{opacity:.1!important}
 .footer-reservation::after{right:-8%!important}
 
