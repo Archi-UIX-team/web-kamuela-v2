@@ -8,7 +8,6 @@
   const compactMotion = matchMedia('(max-width: 540px)').matches;
   const skip = splash.querySelector('.splash-skip');
   const clusters = [...splash.querySelectorAll('.splash-cluster')];
-  const writingHighlights = [...splash.querySelectorAll('.splash-writing-highlight path')];
   const heroNav = document.querySelector('.masthead');
   const heroLogo = document.querySelector('.hero-masthead-brand');
   const heroCopy = document.querySelector('.hero-copy');
@@ -39,12 +38,7 @@
   gsap.set(heroColumns, { opacity: 0, y: compactMotion ? 14 : 22 });
   gsap.set(heroCopy, { y: 18 });
   gsap.set(splash, { clipPath: 'circle(150% at 50% 50%)' });
-  gsap.set('.splash-logo-complete', { opacity: 0, scale: .99, filter: 'blur(2px)' });
-  writingHighlights.forEach(path => {
-    const length = path.getTotalLength();
-    gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
-  });
-  gsap.set('.splash-writing-highlight', { opacity: 0 });
+  gsap.set('.splash-logo-complete', { opacity: 0, scale: .985, filter: 'blur(4px)' });
 
   function buildTimeline() {
     if (finished) return;
@@ -66,17 +60,16 @@
       .to('.splash-cluster-mid-right', { x: '9vw', rotation: '+=3', duration: .72 }, 'breath+=.3')
       .to('.splash-rays', { opacity: .4, x: 8, duration: .52, ease: 'sine.inOut' }, 'sunlight')
       .to('.splash-signature', { opacity: 1, duration: .1 }, 'signature')
-      .to('.splash-logo-complete', { opacity: .24, scale: 1, filter: 'blur(0px)', duration: .16, ease: 'power2.out' }, 'signature')
-      .set('.splash-writing-highlight', { opacity: 1 }, 'signature+=.04')
-      .to(writingHighlights, { strokeDashoffset: 0, duration: .72, stagger: .12, ease: 'power2.inOut' }, 'signature+=.04')
-      .to('.splash-logo-complete', { opacity: 1, duration: .24, ease: 'power2.out' }, 'signature+=.82')
-      .to('.splash-writing-highlight', { opacity: 0, duration: .2 }, 'signature+=.86')
-      .to('.splash-cluster-upper-left', { x: '34vw', y: '10vh', scale: 1.28, rotation: '+=10', duration: .24, ease: 'power3.in' }, 'handoff')
-      .to('.splash-cluster-upper-right', { x: '-34vw', y: '10vh', scale: 1.28, rotation: '-=10', duration: .24, ease: 'power3.in' }, 'handoff')
+      .to('.splash-logo-complete', { opacity: 1, scale: 1, filter: 'blur(0px)', duration: .34, ease: 'power3.out' }, 'signature')
+      .to('.splash-gold-dots i', { opacity: .9, scale: 1.35, duration: .18, stagger: .07, ease: 'power2.out' }, 'signature+=.08')
+      .to('.splash-gold-dots i', { opacity: 0, y: -8, duration: .28, stagger: .05, ease: 'power2.in' }, 'signature+=.48')
+      .set(splash, { clipPath: 'inset(0)' }, 'handoff')
+      .to('.splash-signature', { opacity: 0, duration: .14 }, 'handoff')
+      .to('.splash-handoff-light', { opacity: .9, scaleX: 7.5, duration: .28, ease: 'power2.in' }, 'handoff')
       .set(allHeroLayers, { opacity: 1 }, 'handoff+=.2')
       .set(heroColumns, { opacity: 1, y: 0 }, 'handoff+=.2')
       .set(heroCopy, { y: 0 }, 'handoff+=.2')
-      .to(splash, { clipPath: 'circle(0% at 50% 50%)', duration: .42, ease: 'power3.inOut' }, 'handoff+=.22');
+      .to(splash, { clipPath: 'inset(0 50% 0 50%)', duration: .42, ease: 'power3.inOut' }, 'handoff+=.2');
     window.kamuelaSplashTimeline = timeline;
     timeline.play(0);
   }
