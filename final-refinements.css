@@ -8,9 +8,9 @@
   text-align:center;
 }
 
-/* Preserve the Villa leaf's anchor and drift while mirroring both axes. */
+/* Preserve the Villa leaf's anchor and drift while turning it vertically. */
 .villas>.kamuela-section-leaf-right{
-  --leaf-scale-x:-1;
+  --leaf-scale-x:1;
   --leaf-scale-y:-1;
 }
 
@@ -106,20 +106,22 @@
 .membership>.kamuela-section-leaf-right{
   --leaf-scale-y:-1;
   transform-origin:50% 50%;
+  width:clamp(203px,23.8vw,392px)!important;
+  right:clamp(-145px,-8vw,-82px)!important;
 }
 
 /* Keep the botanical curtain composition, only reduce both sides by 20%. */
 .membership-garden-curtain-left{
-  transform:translate3d(18%,18%,0) rotate(3deg) scale(.88)
+  transform:translate3d(8%,18%,0) rotate(3deg) scale(.94)
 }
 .membership-garden-curtain-right{
-  transform:translate3d(-18%,18%,0) rotate(-3deg) scale(.88)
+  transform:translate3d(-8%,18%,0) rotate(-3deg) scale(.94)
 }
 .membership.is-in-view .membership-garden-curtain-left{
-  transform:translate3d(-13%,3%,0) rotate(0) scale(.8)
+  transform:translate3d(0,0,0) rotate(0) scale(.9)
 }
 .membership.is-in-view .membership-garden-curtain-right{
-  transform:translate3d(13%,3%,0) rotate(0) scale(.8)
+  transform:translate3d(0,0,0) rotate(0) scale(.9)
 }
 
 /* Use the supplied official store artwork as the complete download controls. */
@@ -181,7 +183,7 @@
 }
 @media(prefers-reduced-motion:reduce){
   .footer-brands-marquee{animation:none;transform:none}
-  .villas>.kamuela-section-leaf-right{transform:scale(-1,-1)}
+  .villas>.kamuela-section-leaf-right{transform:scaleY(-1)}
   .offers-botanical-bridge>.kamuela-section-leaf-left{transform:rotate(24deg) scaleY(-1)}
   .membership>.kamuela-section-leaf-right{transform:scaleY(-1)}
   .membership-pattern-leaf-two{transform:rotate(-50deg) scale(1.5,-1.5)}
