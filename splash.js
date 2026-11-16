@@ -37,13 +37,8 @@
   gsap.set(allHeroLayers, { opacity: 0 });
   gsap.set(heroColumns, { opacity: 0, y: compactMotion ? 14 : 22 });
   gsap.set(heroCopy, { y: 18 });
-  gsap.set('.splash-logo-complete', { opacity: 0 });
-  const signature = splash.querySelector('.splash-signature');
-  const signatureWidth = signature.offsetWidth;
-  const signatureHeight = signature.offsetHeight;
-  splash.querySelectorAll('.splash-logo-stage img').forEach(image => gsap.set(image, { width: signatureWidth, height: signatureHeight }));
-  gsap.set('.splash-logo-stage-word img', { left: -signatureWidth * .23, top: 0 });
-  gsap.set('.splash-logo-stage-villas img', { left: -signatureWidth * .38, top: -signatureHeight * .67 });
+  gsap.set(splash, { clipPath: 'circle(150% at 50% 50%)' });
+  gsap.set('.splash-logo-complete', { opacity: 0, scale: .985, filter: 'blur(6px)' });
 
   function buildTimeline() {
     if (finished) return;
@@ -55,47 +50,23 @@
         .to(splash, { opacity: 0, duration: .3, ease: 'power1.out' }, '-=.16');
       return;
     }
-    const d = compactMotion ? .72 : 1;
     timeline = gsap.timeline({ paused: true, defaults: { ease: 'power2.inOut' }, onComplete: finishSplash });
-    timeline.addLabel('gardenBreath', 0).addLabel('foliageOpening', .45).addLabel('lightPass', 1.2)
-      .addLabel('heroEmerges', 1.65).addLabel('logoWriting', 2.05).addLabel('galleryWake', 2.55)
-      .addLabel('signatureHold', 4.25).addLabel('handoff', 4.7)
-      .to('.splash-cluster-center .splash-sway', { rotation: -1.6, x: -5, duration: .62, ease: 'sine.inOut' }, 'gardenBreath')
-      .to('.splash-cluster-center-low .splash-sway', { rotation: .9, x: 4, duration: .68, ease: 'sine.inOut' }, 'gardenBreath+=.08')
-      .to('.splash-cluster-upper-left .splash-sway', { rotation: -2, x: -6, duration: .72, ease: 'sine.inOut' }, 'gardenBreath+=.15')
-      .to('.splash-cluster-upper-right .splash-sway', { rotation: 1.7, x: 6, duration: .75, ease: 'sine.inOut' }, 'gardenBreath+=.24')
-      .to('.splash-cluster-mid-left .splash-sway', { rotation: -1.2, duration: .76, ease: 'sine.inOut' }, 'gardenBreath+=.19')
-      .to('.splash-cluster-mid-right .splash-sway', { rotation: 1.15, duration: .79, ease: 'sine.inOut' }, 'gardenBreath+=.31')
-      .to('.splash-depth-near', { z: 160, scale: 1.045, duration: 1.3 }, 'foliageOpening')
-      .to('.splash-depth-mid', { z: 72, scale: 1.02, duration: 1.38 }, 'foliageOpening+=.08')
-      .to('.splash-depth-far', { z: 22, scale: 1.009, duration: 1.5 }, 'foliageOpening+=.14')
-      .to('.splash-cluster-center', { x: `${-15*d}vw`, y: `${-48*d}vh`, rotation: '-=5', scale: 1.1, opacity: .04, duration: 1.2 }, 'foliageOpening')
-      .to('.splash-cluster-upper-left', { x: `${-34*d}vw`, y: `${-23*d}vh`, rotation: '-=8', scale: 1.18, opacity: .18, duration: 1.25 }, 'foliageOpening+=.09')
-      .to('.splash-cluster-upper-right', { x: `${34*d}vw`, y: `${-24*d}vh`, rotation: '+=7', scale: 1.17, opacity: .17, duration: 1.26 }, 'foliageOpening+=.18')
-      .to('.splash-cluster-mid-left', { x: `${-30*d}vw`, y: `${-4*d}vh`, rotation: '-=6', opacity: .12, duration: 1.28 }, 'foliageOpening+=.25')
-      .to('.splash-cluster-mid-right', { x: `${31*d}vw`, y: `${2*d}vh`, rotation: '+=6', opacity: .12, duration: 1.28 }, 'foliageOpening+=.37')
-      .to('.splash-cluster-center-low', { x: `${5*d}vw`, y: `${31*d}vh`, scale: 1.07, opacity: .08, duration: 1.3 }, 'foliageOpening+=.12')
-      .to('.splash-cluster-lower-left', { x: `${-25*d}vw`, y: `${23*d}vh`, rotation: '-=4', opacity: .28, duration: 1.2 }, 'foliageOpening+=.44')
-      .to('.splash-cluster-lower-right', { x: `${26*d}vw`, y: `${24*d}vh`, rotation: '+=4', opacity: .28, duration: 1.2 }, 'foliageOpening+=.56')
-      .to('.splash-rays', { opacity: .4, x: 10, scale: 1.025, duration: 1.25, ease: 'sine.inOut' }, 'lightPass')
-      .to('.splash-signature', { opacity: 1, y: 0, duration: .16, ease: 'power1.out' }, 'logoWriting')
-      .to('.splash-pen-glint', { opacity: .8, duration: .12 }, 'logoWriting')
-      .to('.splash-logo-stage-k', { width: signatureWidth * .4, duration: .82, ease: 'power2.inOut' }, 'logoWriting')
-      .to('.splash-logo-stage-word', { width: signatureWidth * .77, duration: 1.38, ease: 'power2.inOut' }, 'logoWriting+=.48')
-      .to('.splash-pen-glint', { left: '84%', top: '52%', duration: 1.65, ease: 'sine.inOut' }, 'logoWriting+=.2')
-      .to('.splash-logo-stage-villas', { width: signatureWidth * .28, duration: .34, ease: 'power2.out' }, 'logoWriting+=1.78')
-      .set('.splash-logo-complete', { opacity: 1 }, 'logoWriting+=2.08')
-      .set('.splash-logo-writing', { opacity: 0 }, 'logoWriting+=2.08')
-      .to('.splash-pen-glint', { opacity: 0, duration: .14 }, 'logoWriting+=2.04')
-      .set(allHeroLayers, { opacity: 1 }, 'handoff')
-      .set(heroColumns, { opacity: 1, y: 0 }, 'handoff')
-      .set(heroCopy, { y: 0 }, 'handoff')
-      .to('.splash-signature', { opacity: 0, duration: .18, ease: 'power1.out' }, 'handoff')
-      .to('.splash-handoff-light', { opacity: 1, scaleX: 7.5, duration: .38, ease: 'power2.in' }, 'handoff+=.08')
-      .to(clusters, { x: index => index % 2 ? '+=12vw' : '-=12vw', scale: 1.08, duration: .64, stagger: .018, ease: 'power3.inOut' }, 'handoff+=.04')
-      .to('.splash-brand-leaf', { opacity: 0, duration: .42, stagger: .03 }, 'handoff+=.12')
-      .to(splash, { clipPath: 'inset(0 50% 0 50%)', duration: .48, ease: 'power3.inOut' }, 'handoff+=.32')
-      .to('.splash-handoff-light', { opacity: 0, duration: .28 }, 'handoff+=.52');
+    timeline.addLabel('breath', 0).addLabel('sunlight', .45).addLabel('signature', .62).addLabel('handoff', 1.52)
+      .to('.splash-cluster-center .splash-sway', { rotation: -1.2, x: -4, duration: .42, ease: 'sine.inOut' }, 'breath')
+      .to('.splash-cluster-upper-left .splash-sway', { rotation: -1.5, x: -5, duration: .48, ease: 'sine.inOut' }, 'breath+=.06')
+      .to('.splash-cluster-upper-right .splash-sway', { rotation: 1.4, x: 5, duration: .5, ease: 'sine.inOut' }, 'breath+=.11')
+      .to('.splash-cluster-center', { y: '-14vh', scale: 1.035, duration: .7, ease: 'power2.inOut' }, 'breath+=.2')
+      .to('.splash-cluster-mid-left', { x: '-9vw', rotation: '-=3', duration: .72 }, 'breath+=.25')
+      .to('.splash-cluster-mid-right', { x: '9vw', rotation: '+=3', duration: .72 }, 'breath+=.3')
+      .to('.splash-rays', { opacity: .4, x: 8, duration: .52, ease: 'sine.inOut' }, 'sunlight')
+      .to('.splash-signature', { opacity: 1, duration: .12 }, 'signature')
+      .to('.splash-logo-complete', { opacity: 1, scale: 1, filter: 'blur(0px)', duration: .42, ease: 'power3.out' }, 'signature')
+      .to('.splash-cluster-upper-left', { x: '34vw', y: '10vh', scale: 1.28, rotation: '+=10', duration: .28, ease: 'power3.in' }, 'handoff')
+      .to('.splash-cluster-upper-right', { x: '-34vw', y: '10vh', scale: 1.28, rotation: '-=10', duration: .28, ease: 'power3.in' }, 'handoff')
+      .set(allHeroLayers, { opacity: 1 }, 'handoff+=.22')
+      .set(heroColumns, { opacity: 1, y: 0 }, 'handoff+=.22')
+      .set(heroCopy, { y: 0 }, 'handoff+=.22')
+      .to(splash, { clipPath: 'circle(0% at 50% 50%)', duration: .46, ease: 'power3.inOut' }, 'handoff+=.24');
     window.kamuelaSplashTimeline = timeline;
     timeline.play(0);
   }
