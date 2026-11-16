@@ -16,6 +16,7 @@
   const heroFlowers = [...document.querySelectorAll('.hero-floral')];
   const heroBotanicals = [...document.querySelectorAll('.hero-botanical')];
   const heroLight = document.querySelector('.hero-sunlight');
+  const heroScene = document.querySelector('.hero-sticky');
   const allHeroLayers = [heroNav, heroLogo, heroCopy, heroGallery, heroLight, ...heroFlowers, ...heroBotanicals].filter(Boolean);
   let timeline;
   let finished = false;
@@ -26,6 +27,7 @@
     timeline?.kill();
     gsap?.set(allHeroLayers, { clearProps: 'opacity,visibility,transform' });
     gsap?.set(heroColumns, { clearProps: 'opacity,visibility,transform' });
+    gsap?.set(heroScene, { clearProps: 'filter,transform' });
     root.classList.remove('splash-pending');
     splash.dataset.state = 'complete';
     splash.remove();
@@ -37,7 +39,8 @@
   gsap.set(allHeroLayers, { opacity: 0 });
   gsap.set(heroColumns, { opacity: 0, y: compactMotion ? 14 : 22 });
   gsap.set(heroCopy, { y: 18 });
-  gsap.set(splash, { clipPath: 'circle(150% at 50% 50%)' });
+  gsap.set(heroScene, { filter: 'blur(10px)', scale: 1.012 });
+  gsap.set(splash, { opacity: 1, filter: 'blur(0px)', scale: 1 });
   gsap.set('.splash-logo-complete', { opacity: 0, scale: .985, filter: 'blur(4px)' });
 
   function buildTimeline() {
@@ -63,12 +66,13 @@
       .to('.splash-logo-complete', { opacity: 1, scale: 1, filter: 'blur(0px)', duration: .34, ease: 'power3.out' }, 'signature')
       .to('.splash-gold-dots i', { opacity: .9, scale: 1.35, duration: .18, stagger: .07, ease: 'power2.out' }, 'signature+=.08')
       .to('.splash-gold-dots i', { opacity: 0, y: -8, duration: .28, stagger: .05, ease: 'power2.in' }, 'signature+=.48')
-      .set(splash, { clipPath: 'inset(0)' }, 'handoff')
       .to('.splash-signature', { opacity: 0, duration: .14 }, 'handoff')
+      .to('.splash-handoff-light', { opacity: .24, scale: 1.06, duration: .3, ease: 'sine.out' }, 'handoff')
       .set(allHeroLayers, { opacity: 1 }, 'handoff+=.12')
       .set(heroColumns, { opacity: 1, y: 0 }, 'handoff+=.12')
       .set(heroCopy, { y: 0 }, 'handoff+=.12')
-      .to(splash, { clipPath: 'inset(0 50% 0 50%)', duration: .52, ease: 'power2.inOut' }, 'handoff+=.12');
+      .to(heroScene, { filter: 'blur(0px)', scale: 1, duration: .62, ease: 'power2.out' }, 'handoff+=.12')
+      .to(splash, { opacity: 0, filter: 'blur(14px)', scale: 1.015, duration: .58, ease: 'power2.inOut' }, 'handoff+=.12');
     window.kamuelaSplashTimeline = timeline;
     timeline.play(0);
   }
