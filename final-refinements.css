@@ -180,6 +180,8 @@
   place-items:center;
 }
 .footer-brands .footer-brand-logo-wide{width:clamp(122px,10vw,160px)}
+.footer-brands .footer-brand-logo-parklane{width:clamp(88px,7vw,112px)}
+.footer-brand-logo-parklane img{max-height:27px}
 .footer-brand-logo img{
   display:block;
   width:auto;
