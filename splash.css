@@ -1,6 +1,6 @@
 .kamuela-splash{display:none}
 html.splash-pending{overflow:hidden}
-html.splash-pending .kamuela-splash{position:fixed;display:block;inset:0;z-index:10000;overflow:hidden;isolation:isolate;color:#f3f0e7;background:#061a12;contain:layout paint;clip-path:inset(0)}
+html.splash-pending .kamuela-splash{position:fixed;display:block;inset:0;z-index:10000;overflow:hidden;isolation:isolate;opacity:0;color:#f3f0e7;background:#061a12;contain:layout paint;clip-path:inset(0)}
 html.splash-pending .kamuela-splash::before{content:"";position:absolute;inset:-5%;z-index:8;pointer-events:none;background:radial-gradient(ellipse at 50% 48%,transparent 30%,rgba(1,8,5,.16) 68%,rgba(1,8,5,.5) 100%)}
 .splash-atmosphere{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 48% 54% at 50% 48%,rgba(23,67,31,.78),rgba(6,26,18,.18) 62%,transparent 88%),radial-gradient(ellipse 64% 82% at -5% -8%,rgba(182,155,114,.22),transparent 68%),radial-gradient(ellipse 46% 62% at 88% 42%,rgba(60,19,81,.28),transparent 72%),linear-gradient(118deg,#04130d 0%,#0b2b1d 45%,#061a12 100%);will-change:opacity}
 .splash-camera{position:absolute;inset:0;z-index:3;overflow:hidden;perspective:1100px;perspective-origin:50% 48%;pointer-events:none}
