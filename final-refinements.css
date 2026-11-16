@@ -18,6 +18,7 @@
 .masthead .header-book:hover,
 .masthead .header-book:focus-visible{
   border-color:#c2b33a!important;
+  border-radius:999px!important;
   outline:1px solid #c2b33a;
   outline-offset:3px;
 }

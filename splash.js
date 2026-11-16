@@ -51,7 +51,7 @@
       return;
     }
     timeline = gsap.timeline({ paused: true, defaults: { ease: 'power2.inOut' }, onComplete: finishSplash });
-    timeline.addLabel('breath', 0).addLabel('sunlight', .38).addLabel('signature', .52).addLabel('handoff', 1.62)
+    timeline.addLabel('breath', 0).addLabel('sunlight', .38).addLabel('signature', .52).addLabel('handoff', 1.58)
       .to('.splash-cluster-center .splash-sway', { rotation: -1.2, x: -4, duration: .42, ease: 'sine.inOut' }, 'breath')
       .to('.splash-cluster-upper-left .splash-sway', { rotation: -1.5, x: -5, duration: .48, ease: 'sine.inOut' }, 'breath+=.06')
       .to('.splash-cluster-upper-right .splash-sway', { rotation: 1.4, x: 5, duration: .5, ease: 'sine.inOut' }, 'breath+=.11')
@@ -65,11 +65,10 @@
       .to('.splash-gold-dots i', { opacity: 0, y: -8, duration: .28, stagger: .05, ease: 'power2.in' }, 'signature+=.48')
       .set(splash, { clipPath: 'inset(0)' }, 'handoff')
       .to('.splash-signature', { opacity: 0, duration: .14 }, 'handoff')
-      .to('.splash-handoff-light', { opacity: .9, scaleX: 7.5, duration: .28, ease: 'power2.in' }, 'handoff')
-      .set(allHeroLayers, { opacity: 1 }, 'handoff+=.2')
-      .set(heroColumns, { opacity: 1, y: 0 }, 'handoff+=.2')
-      .set(heroCopy, { y: 0 }, 'handoff+=.2')
-      .to(splash, { clipPath: 'inset(0 50% 0 50%)', duration: .42, ease: 'power3.inOut' }, 'handoff+=.2');
+      .set(allHeroLayers, { opacity: 1 }, 'handoff+=.12')
+      .set(heroColumns, { opacity: 1, y: 0 }, 'handoff+=.12')
+      .set(heroCopy, { y: 0 }, 'handoff+=.12')
+      .to(splash, { clipPath: 'inset(0 50% 0 50%)', duration: .52, ease: 'power2.inOut' }, 'handoff+=.12');
     window.kamuelaSplashTimeline = timeline;
     timeline.play(0);
   }

@@ -88,7 +88,9 @@
   border-radius:999px;
   transition:background .3s ease,color .3s ease,border-color .3s ease;
 }
-.footer-book:hover{background:#c2b33a;color:#061a12;border-color:#c2b33a}
+.footer-book:hover,
+.footer-book:focus-visible,
+.footer-book:active{background:#c2b33a;color:#061a12;border-color:#c2b33a;border-radius:999px!important}
 .footer-book iconify-icon{font-size:16px}
 
 .footer-directory{
