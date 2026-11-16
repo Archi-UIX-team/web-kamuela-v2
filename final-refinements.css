@@ -24,9 +24,10 @@
 }
 
 /* The in-card booking action keeps its purple fill with a clear gold edge. */
-.villa-book{border:1px solid #c2b33a!important}
+.villa-book{border:1px solid #c2b33a!important;border-radius:999px!important}
 .villa-book:hover,
 .villa-book:focus-visible{
+  border-radius:999px!important;
   outline:1px solid #c2b33a;
   outline-offset:3px;
 }
@@ -99,10 +100,39 @@
   transform:translate3d(0,0,0) rotate(-50deg) scale(1.5,-1.5)
 }
 .membership-pattern-leaf-three{
+  right:5%;
   transform:translate3d(38px,24px,0) rotate(29deg) scale(.76,-.76)
 }
 .membership.is-in-view .membership-pattern-leaf-three{
   transform:translate3d(0,0,0) rotate(29deg) scale(1,-1)
+}
+
+/* Keep the smaller phone and its moving reflection wholly inside the device. */
+.membership-device{
+  overflow:hidden;
+  transform:translate3d(var(--device-x),var(--device-y),0) rotateX(var(--device-rx)) rotateY(var(--device-ry)) scale(.69)
+}
+.membership-visual.is-awake .membership-device{
+  transform:translate3d(var(--device-x),var(--device-y),0) rotateX(var(--device-rx)) rotateY(var(--device-ry)) scale(.8)
+}
+.membership-device::after{
+  inset:auto;
+  left:19%;
+  top:7%;
+  width:63%;
+  height:73%;
+  border-radius:34px;
+  clip-path:inset(0 round 34px);
+  transform:rotate(-6.9deg);
+  transform-origin:50% 50%;
+  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.15) 48%,transparent 64%);
+  background-size:300% 100%;
+  background-position:120% 0
+}
+@keyframes membership-screen-wake{
+  0%{opacity:0;background-position:120% 0}
+  42%{opacity:.9}
+  100%{opacity:0;background-position:-20% 0}
 }
 .membership>.kamuela-section-leaf-right{
   --leaf-scale-y:-1;

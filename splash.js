@@ -54,20 +54,20 @@
       return;
     }
     timeline = gsap.timeline({ paused: true, defaults: { ease: 'power2.inOut' }, onComplete: finishSplash });
-    timeline.addLabel('breath', .28).addLabel('sunlight', .5).addLabel('signature', .68).addLabel('handoff', 1.72)
-      .to(splash, { opacity: 1, duration: .16, ease: 'sine.out' }, 0)
+    timeline.addLabel('breath', .16).addLabel('sunlight', .35).addLabel('signature', .5).addLabel('handoff', 1.38)
+      .to(splash, { opacity: 1, duration: .12, ease: 'sine.out' }, 0)
       .to('.splash-cluster-center .splash-sway', { rotation: -1.2, x: -4, duration: .42, ease: 'sine.inOut' }, 'breath')
       .to('.splash-cluster-upper-left .splash-sway', { rotation: -1.5, x: -5, duration: .48, ease: 'sine.inOut' }, 'breath+=.06')
       .to('.splash-cluster-upper-right .splash-sway', { rotation: 1.4, x: 5, duration: .5, ease: 'sine.inOut' }, 'breath+=.11')
-      .to('.splash-cluster-center', { y: '-18vh', scale: .88, opacity: .42, duration: 1.18, ease: 'power2.inOut' }, 'breath+=.08')
-      .to('.splash-cluster-mid-left', { x: '-13vw', y: '2vh', scale: .82, opacity: .2, rotation: '-=3', duration: 1.08 }, 'breath+=.1')
-      .to('.splash-cluster-lower-right', { x: '8vw', y: '5vh', scale: .8, opacity: .48, duration: 1.1 }, 'breath+=.14')
-      .to('.splash-cluster-upper-left', { x: '-7vw', y: '-4vh', scale: .88, opacity: .56, duration: 1.05 }, 'breath+=.36')
-      .to('.splash-cluster-mid-right', { x: '13vw', y: '2vh', scale: .82, opacity: .2, rotation: '+=3', duration: 1.05 }, 'breath+=.4')
-      .to('.splash-cluster-lower-left', { x: '-8vw', y: '5vh', scale: .8, opacity: .48, duration: 1.04 }, 'breath+=.44')
-      .to('.splash-cluster-upper-right', { x: '7vw', y: '-4vh', scale: .88, opacity: .56, duration: .94 }, 'breath+=.66')
-      .to('.splash-cluster-back-left', { x: '-5vw', scale: .86, opacity: .12, duration: .92 }, 'breath+=.7')
-      .to('.splash-cluster-back-right', { x: '5vw', scale: .86, opacity: .12, duration: .92 }, 'breath+=.74')
+      .to('.splash-cluster-center', { y: '-18vh', scale: .88, opacity: .42, duration: .82, ease: 'power2.inOut' }, 'breath+=.04')
+      .to('.splash-cluster-mid-left', { x: '-13vw', y: '2vh', scale: .82, opacity: .2, rotation: '-=3', duration: .8 }, 'breath+=.06')
+      .to('.splash-cluster-lower-right', { x: '8vw', y: '5vh', scale: .8, opacity: .48, duration: .8 }, 'breath+=.1')
+      .to('.splash-cluster-upper-left', { x: '-7vw', y: '-4vh', scale: .88, opacity: .56, duration: .78 }, 'breath+=.28')
+      .to('.splash-cluster-mid-right', { x: '13vw', y: '2vh', scale: .82, opacity: .2, rotation: '+=3', duration: .78 }, 'breath+=.31')
+      .to('.splash-cluster-lower-left', { x: '-8vw', y: '5vh', scale: .8, opacity: .48, duration: .76 }, 'breath+=.34')
+      .to('.splash-cluster-upper-right', { x: '7vw', y: '-4vh', scale: .88, opacity: .56, duration: .7 }, 'breath+=.5')
+      .to('.splash-cluster-back-left', { x: '-5vw', scale: .86, opacity: .12, duration: .68 }, 'breath+=.53')
+      .to('.splash-cluster-back-right', { x: '5vw', scale: .86, opacity: .12, duration: .68 }, 'breath+=.56')
       .to('.splash-rays', { opacity: .36, x: 10, duration: 1.02, ease: 'sine.inOut' }, 'sunlight-=.12')
       .to('.splash-signature', { opacity: 1, duration: .1 }, 'signature')
       .to('.splash-logo-complete', { opacity: 1, scale: 1, filter: 'blur(0px)', duration: .34, ease: 'power3.out' }, 'signature')
@@ -75,11 +75,11 @@
       .to('.splash-gold-dots i', { opacity: 0, y: -8, duration: .28, stagger: .05, ease: 'power2.in' }, 'signature+=.48')
       .to('.splash-signature', { opacity: .02, duration: .42, ease: 'sine.inOut' }, 'handoff-=.18')
       .to('.splash-handoff-light', { opacity: .24, scale: 1.06, duration: .3, ease: 'sine.out' }, 'handoff')
-      .set(allHeroLayers, { opacity: 1 }, 'handoff+=.12')
-      .set(heroColumns, { opacity: 1, y: 0 }, 'handoff+=.12')
-      .set(heroCopy, { y: 0 }, 'handoff+=.12')
-      .to(heroScene, { filter: 'blur(0px)', scale: 1, duration: .62, ease: 'power2.out' }, 'handoff+=.12')
-      .to(splash, { opacity: 0, filter: 'blur(14px)', scale: 1.015, duration: .58, ease: 'power2.inOut' }, 'handoff+=.12');
+      .set(allHeroLayers, { opacity: 1 }, 'handoff+=.04')
+      .set(heroColumns, { opacity: 1, y: 0 }, 'handoff+=.04')
+      .set(heroCopy, { y: 0 }, 'handoff+=.04')
+      .to(heroScene, { filter: 'blur(0px)', scale: 1, duration: .46, ease: 'power2.out' }, 'handoff+=.04')
+      .to(splash, { opacity: 0, filter: 'blur(12px)', scale: 1.01, duration: .44, ease: 'power2.inOut' }, 'handoff+=.04');
     window.kamuelaSplashTimeline = timeline;
     timeline.play(0);
   }
@@ -91,5 +91,5 @@
       image.addEventListener('error', resolve, { once: true });
     });
   }));
-  Promise.race([decodeAssets, new Promise(resolve => setTimeout(resolve, 1300))]).then(buildTimeline);
+  Promise.race([decodeAssets, new Promise(resolve => setTimeout(resolve, 650))]).then(buildTimeline);
 })();
