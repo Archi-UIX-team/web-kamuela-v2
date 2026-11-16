@@ -35,7 +35,7 @@
   <link rel="preload" href="./assets/garden-3d-left.png" as="image" type="image/png">
   <link rel="preload" href="./assets/garden-3d-right.png" as="image" type="image/png">
   <link rel="preload" href="./assets/garden-3d-center.png" as="image" type="image/png">
-  <link rel="stylesheet" href="./splash.css?v=botanical-passage-1">
+  <link rel="stylesheet" href="./splash.css?v=hero-awakens-2">
   <script>
     document.documentElement.classList.add('splash-pending');
   </script>
@@ -73,17 +73,20 @@
       <img class="splash-logo-complete" src="./assets/logo-white.png" alt="">
       <svg viewBox="0 0 1000 423" role="presentation">
         <defs>
-          <mask id="kamuela-writing-mask" maskUnits="userSpaceOnUse">
+          <mask id="kamuela-writing-mask" maskUnits="userSpaceOnUse" x="-40" y="-40" width="1080" height="503">
             <rect width="1000" height="423" fill="black"></rect>
             <g class="splash-writing-strokes" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M190 254 C204 183 221 110 255 63 C245 120 236 180 241 237 C286 193 322 145 357 101 C331 150 291 203 241 237 C278 230 309 240 331 270"></path>
-              <path d="M318 223 C354 175 394 143 423 155 C449 166 417 206 376 218 C405 214 439 195 466 163"></path>
-              <path d="M447 207 C481 167 523 139 548 153 C567 164 542 191 512 206 C538 202 567 182 590 155"></path>
-              <path d="M574 202 C608 157 643 133 667 148 C690 163 659 197 622 210 C656 205 693 179 718 145"></path>
-              <path d="M700 198 C735 151 775 126 800 144 C822 160 792 195 753 207 C790 205 826 181 853 151"></path>
-              <path d="M829 196 C859 155 893 139 914 151 C931 163 911 187 884 198 C907 198 928 192 946 180"></path>
+              <path class="splash-stroke-k-loop" d="M46 150 C18 126 92 58 174 25 C225 4 246 22 224 84 C205 136 155 222 111 280"></path>
+              <path class="splash-stroke-k-body" d="M111 280 C151 222 205 158 274 110 C309 86 348 69 382 70"></path>
+              <path class="splash-stroke-k-cross" d="M180 176 C151 197 139 219 164 267 C196 331 251 388 320 358"></path>
+              <path d="M250 258 C274 211 318 175 350 183 C372 189 355 232 318 253 C294 267 282 251 297 220 C314 188 351 176 376 187"></path>
+              <path d="M366 253 C390 214 415 180 431 181 C449 182 432 221 415 253 C437 219 461 181 480 181 C500 182 475 228 462 253 C484 222 511 181 529 181 C549 183 524 232 507 255"></path>
+              <path d="M514 253 C542 211 566 181 585 182 C604 184 580 228 568 250 C585 241 606 214 627 183 C610 218 588 257 604 264 C620 270 652 229 678 183"></path>
+              <path d="M670 255 C700 217 731 182 758 184 C783 186 755 224 721 241 C704 249 700 261 718 264 C747 268 784 227 808 190"></path>
+              <path d="M799 253 C832 211 866 177 893 183 C916 189 890 228 857 248 C839 259 841 269 861 267 C895 264 930 236 969 214"></path>
             </g>
             <rect class="splash-villas-mask" x="348" y="286" width="315" height="72" rx="4" fill="white"></rect>
+            <rect class="splash-full-mask" x="-20" y="-20" width="1040" height="463" fill="white"></rect>
           </mask>
         </defs>
         <image href="./assets/logo-white.png" width="1000" height="423" preserveAspectRatio="xMidYMid meet" mask="url(#kamuela-writing-mask)"></image>
@@ -554,7 +557,7 @@
   <dialog id="booking" aria-labelledby="booking-title"><div class="booking-shell"><button class="close" aria-label="Close booking form">x</button><span class="eyebrow">YOUR PRIVATE ESCAPE</span><h2 id="booking-title">Find your <em>sanctuary.</em></h2><form id="booking-form"><label for="booking-villa">Choose your villa</label><select id="booking-villa" name="villa" required><option value="">Select a villa</option><option value="ubud">Royal Kamuela Ubud</option><option value="bintan">Kamuela Lagoi Bay Bintan</option><option value="canggu">Seahaven by Kamuela Canggu</option></select><button type="submit" class="booking-submit">Continue to official booking <iconify-icon icon="solar:arrow-right-up-linear" aria-hidden="true"></iconify-icon></button><small>Choose your dates, guests and availability on Kamuela's official website.</small></form></div></dialog>
   <script src="./assets/vendor/gsap.min.js"></script>
   <script src="./assets/vendor/ScrollTrigger.min.js"></script>
-  <script src="./splash.js?v=botanical-passage-1"></script><script src="./app.js?v=navbar-reference-2"></script><script src="./hero.js?v=portal-3"></script><script src="./journal.js?v=hover-preview-3"></script><script src="./offer-slider.js?v=refinement-9"></script><script src="./moments-slider.js?v=kamuela-local-reels-1"></script><script src="./membership-motion.js?v=secret-garden-membership-3"></script>
+  <script src="./splash.js?v=hero-awakens-2"></script><script src="./app.js?v=navbar-reference-2"></script><script src="./hero.js?v=portal-3"></script><script src="./journal.js?v=hover-preview-3"></script><script src="./offer-slider.js?v=refinement-9"></script><script src="./moments-slider.js?v=kamuela-local-reels-1"></script><script src="./membership-motion.js?v=secret-garden-membership-3"></script>
 </body>
 </html>
 
