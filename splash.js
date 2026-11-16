@@ -8,7 +8,6 @@
   const compactMotion = matchMedia('(max-width: 540px)').matches;
   const skip = splash.querySelector('.splash-skip');
   const clusters = [...splash.querySelectorAll('.splash-cluster')];
-  const writingPaths = [...splash.querySelectorAll('.splash-writing-strokes path')];
   const heroNav = document.querySelector('.masthead');
   const heroLogo = document.querySelector('.hero-masthead-brand');
   const heroCopy = document.querySelector('.hero-copy');
@@ -38,13 +37,13 @@
   gsap.set(allHeroLayers, { opacity: 0 });
   gsap.set(heroColumns, { opacity: 0, y: compactMotion ? 14 : 22 });
   gsap.set(heroCopy, { y: 18 });
-  writingPaths.forEach(path => {
-    const length = path.getTotalLength();
-    gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
-  });
-  gsap.set('.splash-writing-strokes', { opacity: 1 });
-  gsap.set('.splash-villas-mask', { opacity: 0, scaleX: .02, transformOrigin: '50% 50%' });
-  gsap.set('.splash-full-mask,.splash-logo-complete', { opacity: 0 });
+  gsap.set('.splash-logo-complete', { opacity: 0 });
+  const signature = splash.querySelector('.splash-signature');
+  const signatureWidth = signature.offsetWidth;
+  const signatureHeight = signature.offsetHeight;
+  splash.querySelectorAll('.splash-logo-stage img').forEach(image => gsap.set(image, { width: signatureWidth, height: signatureHeight }));
+  gsap.set('.splash-logo-stage-word img', { left: -signatureWidth * .23, top: 0 });
+  gsap.set('.splash-logo-stage-villas img', { left: -signatureWidth * .38, top: -signatureHeight * .67 });
 
   function buildTimeline() {
     if (finished) return;
@@ -86,15 +85,12 @@
       .to(splash, { backgroundColor: 'rgba(6,26,18,.38)', duration: 1.05 }, 'heroEmerges')
       .to('.splash-signature', { opacity: 1, y: 0, duration: .16, ease: 'power1.out' }, 'logoWriting')
       .to('.splash-pen-glint', { opacity: .8, duration: .12 }, 'logoWriting')
-      .to(writingPaths[0], { strokeDashoffset: 0, duration: .42 }, 'logoWriting')
-      .to(writingPaths[1], { strokeDashoffset: 0, duration: .36 }, 'logoWriting+=.32')
-      .to(writingPaths[2], { strokeDashoffset: 0, duration: .45 }, 'logoWriting+=.56')
-      .to(writingPaths.slice(3), { strokeDashoffset: 0, duration: .56, stagger: .19 }, 'logoWriting+=.73')
+      .to('.splash-logo-stage-k', { width: signatureWidth * .4, duration: .82, ease: 'power2.inOut' }, 'logoWriting')
+      .to('.splash-logo-stage-word', { width: signatureWidth * .77, duration: 1.38, ease: 'power2.inOut' }, 'logoWriting+=.48')
       .to('.splash-pen-glint', { left: '84%', top: '52%', duration: 1.65, ease: 'sine.inOut' }, 'logoWriting+=.2')
-      .to('.splash-villas-mask', { opacity: 1, scaleX: 1, duration: .3, ease: 'power2.out' }, 'logoWriting+=1.78')
-      .set('.splash-full-mask', { opacity: 1 }, 'logoWriting+=2.08')
+      .to('.splash-logo-stage-villas', { width: signatureWidth * .28, duration: .34, ease: 'power2.out' }, 'logoWriting+=1.78')
       .set('.splash-logo-complete', { opacity: 1 }, 'logoWriting+=2.08')
-      .set('.splash-signature svg', { opacity: 0 }, 'logoWriting+=2.08')
+      .set('.splash-logo-writing', { opacity: 0 }, 'logoWriting+=2.08')
       .to('.splash-pen-glint', { opacity: 0, duration: .14 }, 'logoWriting+=2.04')
       .to(heroGallery, { opacity: 1, duration: .25 }, 'galleryWake')
       .to(heroColumns, { opacity: 1, y: 0, duration: .72, stagger: .12, ease: 'power3.out' }, 'galleryWake')
