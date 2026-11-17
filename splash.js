@@ -73,14 +73,14 @@
       .to('.splash-logo-complete', { opacity: 1, scale: 1, filter: 'blur(0px)', duration: .34, ease: 'power3.out' }, 'signature')
       .to('.splash-gold-dots i', { opacity: .9, scale: 1.35, duration: .18, stagger: .07, ease: 'power2.out' }, 'signature+=.08')
       .to('.splash-gold-dots i', { opacity: 0, y: -8, duration: .28, stagger: .05, ease: 'power2.in' }, 'signature+=.48')
-      .to('.splash-signature', { opacity: .02, duration: .42, ease: 'sine.inOut' }, 'handoff-=.18')
-      .to('.splash-handoff-light', { opacity: .48, xPercent: 105, duration: .38, ease: 'power2.inOut' }, 'handoff-=.06')
-      .set(allHeroLayers, { opacity: 1 }, 'handoff+=.16')
-      .set(heroColumns, { opacity: 1, y: 0 }, 'handoff+=.16')
-      .set(heroCopy, { y: 0 }, 'handoff+=.16')
-      .to(heroScene, { filter: 'blur(0px)', scale: 1, duration: .5, ease: 'power2.out' }, 'handoff+=.16')
-      .to('.splash-handoff-light', { opacity: 0, xPercent: 285, duration: .42, ease: 'power2.inOut' }, 'handoff+=.26')
-      .to(splash, { opacity: 0, filter: 'blur(11px)', scale: 1.006, duration: .5, ease: 'power2.inOut' }, 'handoff+=.2');
+      .to('.splash-signature', { opacity: .02, duration: .48, ease: 'sine.inOut' }, 'handoff-=.2')
+      .to('.splash-handoff-light', { opacity: .4, xPercent: 82, duration: .5, ease: 'sine.inOut' }, 'handoff-=.1')
+      .to(allHeroLayers, { opacity: 1, duration: .58, ease: 'sine.inOut' }, 'handoff+=.06')
+      .to(heroColumns, { opacity: 1, y: 0, duration: .58, ease: 'power2.out' }, 'handoff+=.06')
+      .to(heroCopy, { opacity: 1, y: 0, duration: .6, ease: 'power2.out' }, 'handoff+=.08')
+      .to(heroScene, { filter: 'blur(0px)', scale: 1, duration: .72, ease: 'sine.inOut' }, 'handoff+=.04')
+      .to('.splash-handoff-light', { opacity: 0, xPercent: 285, duration: .58, ease: 'sine.inOut' }, 'handoff+=.28')
+      .to(splash, { opacity: 0, filter: 'blur(8px)', scale: 1.004, duration: .72, ease: 'sine.inOut' }, 'handoff+=.08');
     window.kamuelaSplashTimeline = timeline;
     timeline.play(0);
   }
