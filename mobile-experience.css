@@ -58,11 +58,10 @@
   .offer-mobile-detail{position:relative;z-index:2;display:inline-flex!important;min-height:44px;margin-top:14px;padding:0 4px;align-items:center;gap:8px;border-bottom:1px solid #b69b72;color:#17431f;font:500 14px/1 Inter,sans-serif}
   .offer-mobile-detail iconify-icon{font-size:17px;color:#84663d}
 
-  .moments{padding:94px 6% 120px!important}.moments-inner{display:flex!important;flex-direction:column!important}
-  .moment-gallery{order:1;width:100%}.moment-copy{order:2;width:100%;margin-top:48px}
+  .moments{padding:94px 6% 120px!important}.moments-inner{display:block!important}
   .moment-copy{max-width:none!important}.moment-copy h2{font-size:clamp(44px,12vw,60px)!important}.moment-copy p{margin-top:28px!important;font-size:15px!important}
   .moment-socials a{width:48px!important;height:48px!important}.moment-detail-cta{width:100%!important;max-width:330px;min-height:52px!important}
-  .moment-gallery{height:min(130vw,560px)!important;margin-top:0!important}
+  .moment-gallery{width:100%;height:min(130vw,560px)!important;margin-top:52px!important}
   .moment-card{border-radius:42px 42px 12px 12px!important}
   .moment-card.is-active{left:14%!important;width:72%!important}
   .moment-card.is-prev{left:-15%!important;width:42%!important;opacity:.48!important}
