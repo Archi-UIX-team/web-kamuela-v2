@@ -40,7 +40,7 @@
   gsap.set(heroColumns, { opacity: 0, y: compactMotion ? 14 : 22 });
   gsap.set(heroCopy, { y: 18 });
   gsap.set(heroScene, { filter: 'blur(10px)', scale: 1.012 });
-  gsap.set(splash, { opacity: 0, filter: 'blur(0px)', scale: 1 });
+  gsap.set(splash, { opacity: 1, filter: 'blur(0px)', scale: 1 });
   gsap.set('.splash-logo-complete', { opacity: 0, scale: .985, filter: 'blur(4px)' });
 
   function buildTimeline() {
@@ -55,7 +55,6 @@
     }
     timeline = gsap.timeline({ paused: true, defaults: { ease: 'power2.inOut' }, onComplete: finishSplash });
     timeline.addLabel('breath', .16).addLabel('sunlight', .35).addLabel('signature', .5).addLabel('handoff', 1.38)
-      .to(splash, { opacity: 1, duration: .12, ease: 'sine.out' }, 0)
       .to('.splash-cluster-center .splash-sway', { rotation: -1.2, x: -4, duration: .42, ease: 'sine.inOut' }, 'breath')
       .to('.splash-cluster-upper-left .splash-sway', { rotation: -1.5, x: -5, duration: .48, ease: 'sine.inOut' }, 'breath+=.06')
       .to('.splash-cluster-upper-right .splash-sway', { rotation: 1.4, x: 5, duration: .5, ease: 'sine.inOut' }, 'breath+=.11')
@@ -84,12 +83,12 @@
     timeline.play(0);
   }
   const essentialImages = [...splash.querySelectorAll('.splash-cluster img,.splash-logo-complete')];
-  const decodeAssets = Promise.all(essentialImages.map(image => {
-    if (image.complete && image.naturalWidth) return image.decode?.().catch(() => {}) ?? Promise.resolve();
+  const loadAssets = Promise.all(essentialImages.map(image => {
+    if (image.complete && image.naturalWidth) return Promise.resolve();
     return new Promise(resolve => {
       image.addEventListener('load', resolve, { once: true });
       image.addEventListener('error', resolve, { once: true });
     });
   }));
-  Promise.race([decodeAssets, new Promise(resolve => setTimeout(resolve, 650))]).then(buildTimeline);
+  loadAssets.then(() => requestAnimationFrame(buildTimeline));
 })();
