@@ -42,6 +42,7 @@
   gsap.set(heroScene, { filter: 'blur(10px)', scale: 1.012 });
   gsap.set(splash, { opacity: 1, filter: 'blur(0px)', scale: 1 });
   gsap.set('.splash-logo-complete', { opacity: 0, scale: .985, filter: 'blur(4px)' });
+  gsap.set('.splash-handoff-light', { xPercent: -145, rotation: -9, opacity: 0 });
 
   function buildTimeline() {
     if (finished) return;
@@ -73,12 +74,13 @@
       .to('.splash-gold-dots i', { opacity: .9, scale: 1.35, duration: .18, stagger: .07, ease: 'power2.out' }, 'signature+=.08')
       .to('.splash-gold-dots i', { opacity: 0, y: -8, duration: .28, stagger: .05, ease: 'power2.in' }, 'signature+=.48')
       .to('.splash-signature', { opacity: .02, duration: .42, ease: 'sine.inOut' }, 'handoff-=.18')
-      .to('.splash-handoff-light', { opacity: .24, scale: 1.06, duration: .3, ease: 'sine.out' }, 'handoff')
-      .set(allHeroLayers, { opacity: 1 }, 'handoff+=.04')
-      .set(heroColumns, { opacity: 1, y: 0 }, 'handoff+=.04')
-      .set(heroCopy, { y: 0 }, 'handoff+=.04')
-      .to(heroScene, { filter: 'blur(0px)', scale: 1, duration: .46, ease: 'power2.out' }, 'handoff+=.04')
-      .to(splash, { opacity: 0, filter: 'blur(12px)', scale: 1.01, duration: .44, ease: 'power2.inOut' }, 'handoff+=.04');
+      .to('.splash-handoff-light', { opacity: .48, xPercent: 105, duration: .38, ease: 'power2.inOut' }, 'handoff-=.06')
+      .set(allHeroLayers, { opacity: 1 }, 'handoff+=.16')
+      .set(heroColumns, { opacity: 1, y: 0 }, 'handoff+=.16')
+      .set(heroCopy, { y: 0 }, 'handoff+=.16')
+      .to(heroScene, { filter: 'blur(0px)', scale: 1, duration: .5, ease: 'power2.out' }, 'handoff+=.16')
+      .to('.splash-handoff-light', { opacity: 0, xPercent: 285, duration: .42, ease: 'power2.inOut' }, 'handoff+=.26')
+      .to(splash, { opacity: 0, filter: 'blur(11px)', scale: 1.006, duration: .5, ease: 'power2.inOut' }, 'handoff+=.2');
     window.kamuelaSplashTimeline = timeline;
     timeline.play(0);
   }

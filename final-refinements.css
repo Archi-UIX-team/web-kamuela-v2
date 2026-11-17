@@ -77,9 +77,7 @@
 .membership-pattern-leaf-one{top:-12%}
 .membership-pattern-leaf-two{bottom:19%}
 
-/* Compact membership copy so the controls clear the lower botanical curtain. */
-.membership{padding-top:76px!important}
-.membership-visual{min-height:540px}
+/* Desktop membership composition. Mobile compaction lives in mobile-experience.css. */
 .membership-copy h2{
   display:block;
   margin-bottom:20px;
@@ -91,8 +89,8 @@
   font:400 clamp(72px,5.6vw,84px)/1.05 Allura,cursive!important;
   letter-spacing:0!important;
 }
-.membership-copy h2{white-space:nowrap}
-.membership-copy h2 em{display:inline;font-style:normal}
+.membership-copy h2{white-space:normal}
+.membership-copy h2 em{display:block;font-style:normal}
 
 /* Simplify the device framing and mirror only leaf two behind the mockup. */
 .membership-pattern-leaf-one{display:none}
